@@ -21,9 +21,41 @@ function Footer() {
 
         <div className="footer__section">
           <div className='footer__propos'>
+            <header>
+              <h3>A propos de nous</h3>
+            </header>
             <ul>
               <li>
-                <a href="./">A propos de nous</a>
+                <button>
+                  <a href="./">Lorem</a>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <a href="./">Lorem</a>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <a href="./">Lorem</a>
+                </button>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <button>
+                  <a href="./">Lorem</a>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <a href="./">Lorem</a>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <a href="./">Lorem</a>
+                </button>
               </li>
             </ul>
           </div>
@@ -49,7 +81,7 @@ function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 }
 

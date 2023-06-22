@@ -2,6 +2,8 @@
     color: azure;
     background-color: #227448;
     text-align: center;
+    height: 100%;
+    margin-top: -3%;
 
     &__row {
         display: flex;
@@ -15,7 +17,11 @@
             padding: 1em;
 
             & .footer__newsletter {
+                display: flex;
+                flex-direction: column;
+                margin-top: 4.2em;
                 padding-right: 15%;
+                justify-content: center;
             }
 
 
@@ -81,13 +87,26 @@
                 margin: 0;
                 align-items: center;
                 display: flex;
-                flex-direction: column;
+                flex: row;
+                justify-content: space-between;
 
                 li {
                     margin-top: 1em;
                     margin-bottom: 1em;
+                    margin-right: 1.6em;
                     font-size: 1.1em;
                     font-weight: bold;
+
+                    button {
+                        width: 90%;
+                        padding: 0.8em;
+                        margin-left: 2em;
+                        margin-right: 2em;
+                        background-color: #227448;
+                        border-color: azure;
+                        border-radius: 2em;
+                        cursor: pointer;
+                    }
 
                     a {
                         color: azure;
@@ -98,6 +117,11 @@
         }
 
         & .footer__contact {
+            padding-top: 4.2em;
+            padding-right: 4em;
+            margin-right: -6em;
+            margin-left: -5em;
+
             button {
                 width: 60%;
                 height: 3.42em;
@@ -109,9 +133,21 @@
             }
         }
 
-        & .footer__social {
-            font-size: inherit;
-        }
+        & .footer__socials {
+            margin-top: -5em;
+            padding-left: 5em;
+            display: flex;
+            justify-content: flex-end;
 
+            & .footer__social {
+                margin-left: 0.7em;
+                margin-right: -0.5em;
+
+                svg {
+                    font-size: 1.8em;
+                }
+            }
+
+        }
     }
 }
