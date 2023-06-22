@@ -1,4 +1,4 @@
-import { Users } from './Users'
+import { User } from './User'
 
 export class Profils{
 
@@ -11,9 +11,9 @@ export class Profils{
     private city: string;
     private avatar: string;
     private website: string;
-    private users : Users;
+    private User : User;
 
-    constructor(id : number, email : string, firstname : string, lastname : string, phone : number, postal : number, city : string, avatar : string, website : string, users : Users){
+    constructor(id : number, email : string, firstname : string, lastname : string, phone : number, postal : number, city : string, avatar : string, website : string, User : User){
         this.setId(id);
         this.setEmail(email);
         this.setFirstname(firstname);
@@ -23,7 +23,7 @@ export class Profils{
         this.setCity(city);
         this.setAvatar(avatar);
         this.setWebsite(website);
-        this.setUsers(users)
+        this.setUser(User)
     }
 
     private setId(id: number){
@@ -98,13 +98,13 @@ export class Profils{
         return this.website;
     }
 
-    setUsers(users : Users)
+    setUser(User : User)
     {
-        this.users = users;
+        this.User = User;
     }
 
-    getUsers() : Users{
-        return this.users;
+    getUser() : User{
+        return this.User;
     }
 
 }
