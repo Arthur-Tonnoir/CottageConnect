@@ -1,45 +1,47 @@
 .footer {
-    color: red;
-    padding: 2em 1em;
-    font-size: 1em;
-    
+    background-color: #10631b;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-decoration: none;
 
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    .container {
-        max-width: 100%;
-        margin: 0 auto;
-        
-    }
-
-    &__socials {
-        margin-left: 80%;
-        padding: 1em 0;
-
-        .footer__social {
-            margin-right: 1em;
-
-            svg {
-                font-size: 2em;
-            }
-        }
-    }
-
-    &__links {
+    .footer-section {
+        width: 33%;
+        padding: 1em;
+        box-sizing: border-box;
         display: flex;
-        flex-wrap: wrap;
-        list-style: none;
+        flex-direction: column;
+        align-items: center;
 
-        .footer__link {
-            margin-bottom: 1.2em;
-            margin-left: 6em;
+        input[type="email"] {
+            width: 110%;
+            padding: 4%;
+            border: none;
+            border-radius: 0.4em;
+            margin-bottom: 1em;
+        }
 
-            @media screen and (min-width: 768px) {
-                flex: 1 0 25px;
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+
+            li {
+                margin-top: 1em;
+                margin-bottom: 1em;
+                font-size: 1.1em;
+                font-weight: bold;
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                    &:visited {
+                        // Couleur a définir ?? Ou Laisser en Blanc
+                    }
+                }
             }
         }
+
     }
 }
