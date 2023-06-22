@@ -16,10 +16,10 @@ app.listen(PORT, () => {
     
 })
 
-function getData(): MySQL{
-    return data;
-}
+const userRouter = require("./Controller/UsersController")
+app.use(express.json())
+app.use("/users", userRouter);
 
-function getApp() {
-    return app;
+export function getData(): MySQL{
+    return data;
 }
