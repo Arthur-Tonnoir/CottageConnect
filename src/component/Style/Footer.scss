@@ -1,46 +1,116 @@
 .footer {
-    background-color: #10631b;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    text-decoration: none;
+    color: azure;
+    background-color: #227448;
+    text-align: center;
 
-    .footer-section {
-        width: 33%;
-        padding: 1em;
-        box-sizing: border-box;
+    &__row {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 2em;
 
-        input[type="email"] {
-            width: 110%;
-            padding: 4%;
-            border: none;
-            border-radius: 0.4em;
-            margin-bottom: 1em;
-        }
+        & .footer__section {
+            flex: 1;
+            margin: 0 1em;
+            padding: 1em;
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            align-items: center;
+            & .footer__newsletter {
+                padding-right: 15%;
+            }
 
-            li {
-                margin-top: 1em;
-                margin-bottom: 1em;
-                font-size: 1.1em;
-                font-weight: bold;
 
-                a {
-                    color: white;
-                    text-decoration: none;
-                    &:visited {
-                        // Couleur a définir ?? Ou Laisser en Blanc
+            form {
+                display: flex;
+                align-items: baseline;
+                flex-direction: row;
+
+                input[type="email"] {
+                    color: azure;
+                    background-color: #227448;
+                    width: 100%;
+                    padding: 1em;
+                    border-color: azure;
+                    border-top-left-radius: 2em;
+                    border-bottom-left-radius: 2em;
+                    border-top-right-radius: 0.2em;
+                    border-bottom-right-radius: 0.2em;
+                    margin-bottom: 1em;
+                }
+
+                input[type="email"]::placeholder {
+                    color: azure;
+                    font-style: italic;
+                    font-size: 110%;
+                    padding-left: 1.5em;
+                }
+
+                button {
+                    width: 60%;
+                    height: 3.42em;
+                    background-color: azure;
+                    color: #227448;
+                    border: none;
+                    border-radius: 2em;
+                    cursor: pointer;
+                    margin-left: -1.5em;
+
+                    &:hover {
+                        background-color: azure;
+                        color: #227448;
                     }
                 }
             }
+        }
+
+        a {
+            font-size: 1.3em;
+            color: azure;
+            text-decoration: none;
+        }
+
+        & .footer__propos {
+            height: 100%;
+            padding-left: 5em;
+            padding-right: 5em;
+            border-left: solid azure;
+            border-right: solid azure;
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+
+                li {
+                    margin-top: 1em;
+                    margin-bottom: 1em;
+                    font-size: 1.1em;
+                    font-weight: bold;
+
+                    a {
+                        color: azure;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        & .footer__contact {
+            button {
+                width: 60%;
+                height: 3.42em;
+                background-color: #227448;
+                border-color: azure;
+                border-radius: 2em;
+                cursor: pointer;
+                margin-bottom: 1.5em;
+            }
+        }
+
+        & .footer__social {
+            font-size: inherit;
         }
 
     }

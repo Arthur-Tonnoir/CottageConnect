@@ -1,56 +1,56 @@
 import React from 'react';
-import ".//Style/Footer.scss"
+import './/Style/Footer.scss';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
 function Footer() {
   return (
     <footer className="footer">
-      {/* Footer diviser en 3 section */}
+      <div className="footer__row">
+        <div className="footer__section">
+          <div className="footer__newsletter">
+            <header>
+              <h3>Abonnez-vous à notre Newsletter</h3>
+            </header>
+            <form>
+              <input type="email" name="email" placeholder="Adresse e-mail" />
+              <button>S'inscrire</button>
+            </form>
+          </div>
+        </div>
 
-      {/* 1ere section */}
-      <div className="footer-section">
-        <ul>
-          <li>
-            <a href="./">Abonnez vous à la Newsletter</a>
-          </li>
-          <li>
-            <input type="email" placeholder="Entrez votre adresse email" />
-          </li>
-        </ul>
-      </div>
+        <div className="footer__section">
+          <div className='footer__propos'>
+            <ul>
+              <li>
+                <a href="./">A propos de nous</a>
+              </li>
+            </ul>
+          </div>
 
-      {/* 2eme section */}
-      <div className="footer-section">
-        <ul>
-          <li>
-            <a href="./">A propos de nous</a>
-          </li>
-        </ul>
-      </div>
+        </div>
 
-      {/* 3eme section */}
-      <div className="footer-section">
-        <ul>
-          <li>
-            <a href="">FAQ</a>
-          </li>
-          <li>
-            <a href="">Nous contacter</a>
-          </li>
-        </ul>
+        <div className="footer__section">
+          <div className="footer__contact">
+            <button>
+              <a href="">FAQ</a>
+            </button>
+            <button>
+              <a href="">Nous contacter</a>
+            </button>
+            <div className='footer__socials'>
+              <a href="./" className='footer__social'>
+                <FacebookIcon />
+              </a>
+              <a href="./" className='footer__social'>
+                <InstagramIcon />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      {/* <div className='footer__socials'>
-        <a href="./" className='footer__social'>
-          <FacebookIcon />
-        </a>
-        <a href="./" className='footer__social'>
-          <InstagramIcon />
-        </a>
-      </div> */}
     </footer>
   );
 }
-
 
 export default Footer;
