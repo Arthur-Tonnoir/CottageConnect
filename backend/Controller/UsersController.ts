@@ -36,4 +36,18 @@ router.post("/:user", (req, res) => {
     
 })
 
+router.put("/:user", (req, res) => {
+    userService.update(req.params.user).then((result) => {
+        res.send(result)
+    });
+    
+})
+
+router.delete("/:id", (req, res) => {
+    userService.delete(req.params.id).then((result) => {
+        res.send(result)
+    });
+    
+})
+
 module.exports = router;

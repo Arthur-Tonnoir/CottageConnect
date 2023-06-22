@@ -6,8 +6,8 @@ export interface ICrud{
 
     create(entite: string)
 
-    update()
+    update(entite: string)
 
-    delete()
+    delete(id: string)
 
 }

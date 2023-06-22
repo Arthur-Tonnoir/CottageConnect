@@ -57,11 +57,33 @@ export class UsersService implements ICrud{
             });
         });
     }
-    update(): Promise<any> {
-        throw new Error("Method not implemented.");
+    update(entite: any): Promise<Boolean> {
+        let json = JSON.parse(entite);
+        return new Promise((resolve, reject) => {
+            getData().getConnection().query("UPDATE users SET username =" + json.username + " password =" + json.password + "role = " + json.role +  " WHERE id = " + json.id + ";", function (err: any, result: any) {
+            if (err) {
+                console.error("Erreur de récupération de la liste des utilisateurs : " + err);
+                reject(err);
+            } else {
+                let resultat = result;
+                resolve(resultat);
+            }
+            });
+        });
     }
-    delete(): Promise<any> {
-        throw new Error("Method not implemented.");
+    delete(id: any): Promise<Boolean> {
+        
+        return new Promise((resolve, reject) => {
+            getData().getConnection().query("DELETE FROM users WHERE id = " + id + " ;", function (err: any, result: any) {
+            if (err) {
+                console.error("Erreur de récupération de la liste des utilisateurs : " + err);
+                reject(err);
+            } else {
+                let resultat = result;
+                resolve(resultat);
+            }
+            });
+        });
     }
 
     
