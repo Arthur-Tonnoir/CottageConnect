@@ -1,9 +1,9 @@
-export class Users{
+export class User{
 
-    private id: number;
-    private username: string;
-    private password: string;
-    private role: string;
+    private id: number = 0;
+    private username: string = "";
+    private password: string = "";
+    private role: string  = "";
 
     constructor(id: number, username: string, password: string, role: string){
         this.setId(id);
