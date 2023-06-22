@@ -1,10 +1,10 @@
-interface ICrud{
+export interface ICrud{
 
     findAll()
 
-    findById()
+    findById(id: string)
 
-    create()
+    create(entite: string)
 
     update()
 
