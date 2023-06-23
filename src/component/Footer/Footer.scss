@@ -4,6 +4,7 @@
     text-align: center;
     height: 100%;
     margin-top: -3%;
+    width: 100%;
 
     &__row {
         display: flex;
@@ -33,7 +34,7 @@
                 input[type="email"] {
                     color: azure;
                     background-color: #227448;
-                    width: 100%;
+                    width: 90%;
                     padding: 1em;
                     border-color: azure;
                     border-top-left-radius: 2em;
@@ -88,7 +89,7 @@
                 align-items: center;
                 display: flex;
                 flex: row;
-                justify-content: space-between;
+                justify-content: space-evenly;
 
                 li {
                     margin-top: 1em;
@@ -130,23 +131,135 @@
                 border-radius: 2em;
                 cursor: pointer;
                 margin-bottom: 1.5em;
+                margin-left: -4em;
             }
         }
 
         & .footer__socials {
             margin-top: -5em;
-            padding-left: 5em;
             display: flex;
             justify-content: flex-end;
 
             & .footer__social {
                 margin-left: 0.7em;
                 margin-right: -0.5em;
+                padding-left: 1em;
 
                 svg {
-                    font-size: 1.8em;
+                    font-size: 2.2em;
                 }
             }
+
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        &__row {
+            flex-direction: column;
+
+            & .footer__section {
+                margin: 1em 0;
+                 
+                & .footer__newsletter {
+                    margin-left: 5em;
+                }
+
+                & .footer__propos {
+                    padding: 1em;
+                    border: none;
+
+                    ul {
+                        justify-content: space-evenly;
+                    }
+                }
+
+                & .footer__contact {
+                    padding-right: 1em;
+                    margin-right: 0;
+                    margin-left: 0;
+                    padding-left: 3em;
+
+                }
+
+                & .footer__socials {
+                    margin-left: -7em;
+                    margin-top: 1em;
+                    padding-left: 1em;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        & .footer__row {
+            padding: 1em;
+        }
+
+        & .footer__section {
+            margin: 1em 0;
+            padding: 0;
+
+            & .footer__newsletter {
+                margin-top: 1em;
+                padding-right: 0;
+                margin-left: -0.1em;
+            }
+
+            form {
+                flex-direction: column;
+
+                input[type="email"] {
+                    margin-bottom: 0.5em;
+                    border-bottom-right-radius: 2em;
+                    border-top-right-radius: 2em;
+                }
+
+                button {
+                    margin-left: 0;
+                    width: 99%;
+                }
+            }
+        }
+
+        & .footer__propos {
+            padding: 0;
+            border: none;
+
+            ul {
+                flex-direction: column;
+                align-items: stretch;
+
+                li {
+                    margin: 0.5em;
+
+                    button {
+                        width: 80%;
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+
+        & .footer__contact {
+            padding-top: 1em;
+            display: grid;
+            justify-content: center;
+            padding-right: 0;
+            margin-right: 0;
+            margin-left: 0;
+
+            button {
+                margin-left: 0.9em;
+                width: 80%;
+            }
+        }
+
+        & .footer__socials {
+            margin-top: 1em;
+            padding-left: 0;
+            justify-content: center;
 
         }
     }

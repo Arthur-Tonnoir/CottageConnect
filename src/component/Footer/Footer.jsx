@@ -1,5 +1,5 @@
 import React from 'react';
-import './/Style/Footer.scss';
+import './Footer.scss';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
@@ -22,7 +22,7 @@ function Footer() {
         <div className="footer__section">
           <div className='footer__propos'>
             <header>
-              <h3>A propos de nous</h3>
+              <h3>A propos de Casa Mea</h3>
             </header>
             <ul>
               <li>
