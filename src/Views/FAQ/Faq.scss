@@ -1,0 +1,28 @@
+.container__accordion {
+
+    h3 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .container__more {
+        font-weight: bold;
+        font-size: 1em;
+        text-align: center;
+        width: 15%;
+        margin-left: 43%;
+        margin-top: 1rem;
+        height: 3.50em;
+        background-color: #227448;
+        color: #000000;
+        font-weight: bold;
+        border: none;
+        border-radius: 0.5em;
+        cursor: pointer;
+
+        &:hover {
+            background-color: azure;
+            color: #57a77c;
+        }
+    }
+}

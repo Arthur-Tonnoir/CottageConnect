@@ -11,7 +11,10 @@ function Accordion({ title, content }) {
         <div className='container'>
             <div className={`accordion ${active && "active"}`}>
                 <div className='accordion__title' onClick={handleToggle}>
-                    <ArrowForwardIosIcon /> {title}
+                    <span className={`arrow-icon ${active && "rotate_90"}`}>
+                        <ArrowForwardIosIcon />
+                    </span>
+                    {title}
                 </div>
                 <div className='accordion__content'>{content}</div>
             </div>
