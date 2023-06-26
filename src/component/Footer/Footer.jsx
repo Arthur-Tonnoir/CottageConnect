@@ -9,9 +9,7 @@ function Footer() {
       <div className="footer__row">
         <div className="footer__section">
           <div className="footer__newsletter">
-            <header>
               <h3>Abonnez-vous à notre Newsletter</h3>
-            </header>
             <form>
               <input type="email" name="email" placeholder="Adresse e-mail" />
               <button>S'inscrire</button>
@@ -21,9 +19,7 @@ function Footer() {
 
         <div className="footer__section">
           <div className='footer__propos'>
-            <header>
               <h3>A propos de Casa Mea</h3>
-            </header>
             <ul>
               <li>
                 <button>

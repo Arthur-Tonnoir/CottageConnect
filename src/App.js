@@ -1,10 +1,11 @@
 import './App.css';
-import Footer from './component/Footer/Footer';
-import Faq from './Views/FAQ/Faq'
+import Faq from './Views/FAQ/Faq';
+import FormContact from './Views/FormContact/FormContact';
 
 function App() {
   return (
     <Faq />
+    // <FormContact />
   );
 }
 

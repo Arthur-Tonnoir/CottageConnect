@@ -1,0 +1,139 @@
+ /* BODY */
+ * {
+     margin: 0;
+     padding: 0;
+     list-style: none;
+
+     /* MENU */
+     header {
+         display: flex;
+         width: 100%;
+         height: 4em;
+         background-color: #227448;
+         align-items: center;
+         font-size: 1.3em;
+         margin-bottom: 2em;
+
+         .navbar {
+             width: 100%;
+             justify-content: space-between;
+             margin-right: 3em;
+             margin-left: 3em;
+             display: flex;
+
+             li:nth-child(2),
+             li:nth-child(3),
+             li:nth-child(6),
+             li:nth-child(7),
+             li:nth-child(5) {
+                 position: relative;
+             }
+
+             .langue__arrow {
+                transform: rotate(90deg);
+             }
+         }
+     }
+
+
+
+
+
+     a,
+     li {
+         color: aliceblue;
+         text-decoration: none;
+     }
+
+     /* MENUS DEROULANTS */
+
+     .navbar li ul {
+         /* PERMET L'APPARITION DU SS-MENU */
+         display: none;
+     }
+
+     .navbar li:hover ul {
+         display: block;
+     }
+
+     /* SOUS MENUS DEROULANT */
+
+     .navbar__deroulant1,
+     .navbar__deroulant2,
+     .navbar__deroulant3,
+     .navbar__deroulant4,
+     .navbar__deroulant5 {
+         position: absolute;
+         border-radius: 0.5em;
+         display: block;
+         text-align: center;
+         left: 50%;
+         transform: translateX(-50%);
+         background-color: #227448;
+     }
+
+     .navbar__deroulant1 a,
+     .navbar__deroulant2 a,
+     .navbar__deroulant3 a,
+     .navbar__deroulant4 a,
+     .navbar__deroulant5 a {
+         /* border: solid; */
+         text-align: center;
+     }
+
+     .langue {
+         padding-left: 1.02rem;
+     }
+
+
+     /* TAILLE DES SS-CATEGORIES */
+
+     .navbar__deroulant1 li a,
+     .navbar__deroulant2 li a,
+     .navbar__deroulant3 li a,
+     .navbar__deroulant4 li a,
+     .navbar__deroulant5 li a {
+         line-height: 2em;
+     }
+
+     .navbar__deroulant1,
+     .navbar__deroulant4,
+     .navbar__deroulant3 {
+         width: 150px;
+     }
+
+     .navbar__deroulant2 {
+         width: 2em;
+     }
+
+     .vide {
+         height: 1.2em;
+         /* border: solid; */
+     }
+
+
+     /* RECHERCHE SS CATEGORIE */
+
+     .navbar__deroulant5 {
+         z-index: 1;
+         width: 420%;
+         height: 12em;
+     }
+
+     .recherche {
+         height: 90%;
+     }
+
+     input[type="text"] {
+         border: solid 0.2em;
+         height: 3.5em;
+     }
+
+     #destination {
+         margin-top: 0.5em;
+     }
+
+     .hide {
+         display: none;
+     }
+ }

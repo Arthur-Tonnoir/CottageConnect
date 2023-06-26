@@ -1,8 +1,10 @@
 .container {
     width: 100%;
-    margin: 0 15%;
+    display: flex;
+    justify-content: center;
 
     .accordion {
+
         width: 70%;
         margin-bottom: 1em;
 
