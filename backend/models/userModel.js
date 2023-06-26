@@ -1,12 +1,20 @@
 const sql = require('../config/db.config');
 
 const User = function (user) {
-    this.pseudo = user.pseudo;
-    this.email = user.email;
+    this.username = user.username;
     this.password = user.password;
+    this.email = user.email;
+    this.is_admin = user.is_admin;
+    this.firstname = user.firstname;
+    this.lastname = user.lastname;
+    this.phone = user.phone;
+    this.postal = user.postal;
+    this.city = user.city;
+    this.avatar = user.avatar;
+    this.website = user.website;
 };
 
-User.getAll = result => {
+User.findAll = result => {
     sql.query('SELECT * FROM users', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
@@ -19,7 +27,7 @@ User.getAll = result => {
     });
 };
 
-User.getById = (id, result) => {
+User.findById = (id, result) => {
     sql.query('SELECT * FROM users WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
@@ -50,10 +58,10 @@ User.create = (newUser, result) => {
     });
 };
 
-User.updateById = (id, user, result) => {
+User.update = (id, user, result) => {
     sql.query(
-        'UPDATE users SET pseudo = ?, email = ?, password = ? WHERE id = ?',
-        [user.pseudo, user.email, user.password, id],
+        'UPDATE users SET username = ?, password = ? , email = ?, is_admin = ?, firstname = ?, lastname = ?, phone = ?, postal = ?, city = ?, avatar = ?, website = ?  WHERE id = ?',
+        [user.username, user.password, user.email, user.is_admin, user.firstname, user.lastname, user.phone, user.postal, user.city, user.avatar, user.website, id],
         (err, res) => {
             if (err) {
                 console.log('Erreur :', err);
@@ -73,7 +81,7 @@ User.updateById = (id, user, result) => {
     );
 };
 
-User.remove = (id, result) => {
+User.delete = (id, result) => {
     sql.query('DELETE FROM users WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);

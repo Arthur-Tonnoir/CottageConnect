@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 
-exports.getAllUsers = (req, res) => {
-    User.getAll((err, data) => {
+exports.findAll = (req, res) => {
+    User.findAll((err, data) => {
         if (err) {
             res.status(500).send({
                 message:
@@ -13,10 +13,10 @@ exports.getAllUsers = (req, res) => {
     });
 };
 
-exports.getUserById = (req, res) => {
+exports.findById = (req, res) => {
     const id = req.params.id;
 
-    User.getById(id, (err, data) => {
+    User.findById(id, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
@@ -33,7 +33,7 @@ exports.getUserById = (req, res) => {
     });
 };
 
-exports.createUser = (req, res) => {
+exports.create = (req, res) => {
     if (!req.body) {
         res.status(400).send({
             message: 'Le contenu de la requête ne peut pas être vide.'
@@ -42,8 +42,16 @@ exports.createUser = (req, res) => {
 
     const newUser = new User({
         username: req.body.username,
+        password: req.body.password,
         email: req.body.email,
-        password: req.body.password
+        is_admin: req.body.is_admin,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        phone: req.body.phone,
+        postal: req.body.postal,
+        city: req.body.city,
+        avatar: req.body.avatar,
+        website: req.body.website
     });
 
     User.create(newUser, (err, data) => {
@@ -58,7 +66,7 @@ exports.createUser = (req, res) => {
     });
 };
 
-exports.updateUser = (req, res) => {
+exports.update = (req, res) => {
     if (!req.body) {
         res.status(400).send({
             message: 'Le contenu de la requête ne peut pas être vide.'
@@ -67,13 +75,22 @@ exports.updateUser = (req, res) => {
 
     const id = req.params.id;
 
-    const updatedUser = new User({
+    const updated = new User({
         username: req.body.username,
+        password: req.body.password,
         email: req.body.email,
-        password: req.body.password
+        is_admin: req.body.is_admin,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        phone: req.body.phone,
+        postal: req.body.postal,
+        city: req.body.city,
+        avatar: req.body.avatar,
+        website: req.body.website
+        
     });
 
-    User.updateById(id, updatedUser, (err, data) => {
+    User.update(id, updated, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
@@ -90,10 +107,10 @@ exports.updateUser = (req, res) => {
     });
 };
 
-exports.deleteUser = (req, res) => {
+exports.delete = (req, res) => {
     const id = req.params.id;
 
-    User.remove(id, (err, data) => {
+    User.delete(id, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
