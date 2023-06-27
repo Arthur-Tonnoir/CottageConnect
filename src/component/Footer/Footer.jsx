@@ -11,8 +11,8 @@ function Footer() {
           <div className="footer__newsletter">
               <h3>Abonnez-vous à notre Newsletter</h3>
             <form>
-              <input type="email" name="email" placeholder="Adresse e-mail" />
-              <button>S'inscrire</button>
+              <input type="email" name="email" placeholder="Adresse e-mail" className='footer__input' />
+              <button className='footer__button'>S'inscrire</button>
             </form>
           </div>
         </div>
@@ -22,34 +22,34 @@ function Footer() {
               <h3>A propos de Casa Mea</h3>
             <ul>
               <li>
-                <button>
+                <button className='footer__button'>
                   <a href="./">Lorem</a>
                 </button>
               </li>
               <li>
-                <button>
+                <button className='footer__button'>
                   <a href="./">Lorem</a>
                 </button>
               </li>
               <li>
-                <button>
+                <button className='footer__button'>
                   <a href="./">Lorem</a>
                 </button>
               </li>
             </ul>
             <ul>
               <li>
-                <button>
+                <button className='footer__button'>
                   <a href="./">Lorem</a>
                 </button>
               </li>
               <li>
-                <button>
+                <button className='footer__button'>
                   <a href="./">Lorem</a>
                 </button>
               </li>
               <li>
-                <button>
+                <button className='footer__button'>
                   <a href="./">Lorem</a>
                 </button>
               </li>
@@ -60,10 +60,10 @@ function Footer() {
 
         <div className="footer__section">
           <div className="footer__contact">
-            <button>
+            <button className='footer__button'>
               <a href="">FAQ</a>
             </button>
-            <button>
+            <button className='footer__button'>
               <a href="">Nous contacter</a>
             </button>
             <div className='footer__socials'>

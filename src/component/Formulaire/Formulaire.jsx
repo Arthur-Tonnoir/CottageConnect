@@ -3,20 +3,20 @@ import './Formulaire.scss'
 
 function Formulaire() {
     return (
-        <div class="container">
-            <h3>Contactez nous !</h3>
-            <input type="text" id="Prenom" placeholder="Prénom" />
+        <div class="container__form">
+            <h3 className="form__title">Contactez nous !</h3>
+            <div className="input__formulaires">
+                <input className="input__formulaire" type="text" id="Prenom" placeholder="Prénom" />
 
-            <input type="text" id="Nom" placeholder="Nom" />
+                <input className="input__formulaire" type="text" id="Nom" placeholder="Nom" />
 
-            <input id="Adresse email" type="email" placeholder="Votre email" />
-            <br />
-            <div class="message">
-                <textarea id="message" placeholder="Votre message"></textarea>
+                <input className="input__formulaire" type="email" placeholder="Votre email" />
             </div>
-            <br />
-            <div class="Soumettre">
-                <button name="button"> Soumettre </button>
+            <div className="text__messages">
+                <textarea className="message" placeholder="Votre message"></textarea>
+            </div>
+            <div className="button__submits">
+                <button className="button__submit" name="button"> Soumettre </button>
             </div>
         </div>
     )

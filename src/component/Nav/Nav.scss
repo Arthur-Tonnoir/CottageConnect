@@ -30,14 +30,10 @@
              }
 
              .langue__arrow {
-                transform: rotate(90deg);
+                 transform: rotate(90deg);
              }
          }
      }
-
-
-
-
 
      a,
      li {
@@ -136,4 +132,53 @@
      .hide {
          display: none;
      }
+ }
+
+ /* Styles for the burger menu */
+ .menu-toggle {
+     display: none;
+ }
+
+ .burger-icon {
+     display: none;
+ }
+
+ .burger-icon span {
+     /* Styles for the burger icon spans */
+ }
+
+ /* Styles for mobile navbar */
+ @media only screen and (max-width: 425px) {
+     .navbar {
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         background-color: #227448;
+         padding: 1em;
+         font-size: 1.3em;
+     }
+
+     .navbar li {
+         margin-bottom: 1em;
+     }
+
+     .navbar__deroulant1,
+     .navbar__deroulant2,
+     .navbar__deroulant3,
+     .navbar__deroulant4,
+     .navbar__deroulant5 {
+         display: none;
+         /* Additional styles for the dropdown menus */
+     }
+
+     .navbar.open .navbar__deroulant1,
+     .navbar.open .navbar__deroulant2,
+     .navbar.open .navbar__deroulant3,
+     .navbar.open .navbar__deroulant4,
+     .navbar.open .navbar__deroulant5 {
+         display: block;
+         /* Additional styles when the menu is open */
+     }
+
+     /* Adjust other styles for mobile layout */
  }

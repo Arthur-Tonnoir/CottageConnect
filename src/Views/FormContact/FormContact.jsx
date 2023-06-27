@@ -6,13 +6,13 @@ import Formulaire from "../../component/Formulaire/Formulaire";
 
 function FormContact() {
     return (
-        <div>
+        <body>
             <Nav />
             <div className="container__formulaire">
                 <Formulaire />
             </div>
             <Footer />
-        </div >
+        </body>
     )
 }
 

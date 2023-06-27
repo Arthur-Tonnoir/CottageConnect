@@ -1,0 +1,71 @@
+.container__form {
+    height: 50vh;
+    width: 100%;
+
+    .form__title {
+        text-align: center;
+        margin-bottom: 2em;
+    }
+}
+
+.input__formulaires {
+    display: flex;
+    justify-content: center;
+    margin-bottom: em;
+}
+
+.input__formulaire {
+    font-weight: bold;
+    width: 20%;
+    color: azure;
+    background-color: #57a77c;
+    text-align: center;
+    height: 4.5em;
+    border: none;
+    border-radius: 0.8em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 2em;
+}
+
+.input__formulaire::placeholder {
+    color: azure;
+}
+
+
+.text__messages {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.message {
+    color: azure;
+    background-color: #57a77c;
+    width: 65.5%;
+    height: 10em;
+    border-radius: 10px;
+    border: none;
+    resize: vertical;
+    margin-bottom: 2em;
+}
+.message::placeholder {
+    padding-top: 3em;
+    text-align: center;
+    font-weight: bold;
+    color: azure;
+    font-size: 1.3em;
+}
+
+.button__submits {
+    display: flex;
+    justify-content: center;
+}
+
+.button__submit {
+    width: 15%;
+    height: 4.5em;
+    border-radius: 0.8em;
+    color: azure;
+    background-color: #57a77c;
+}
