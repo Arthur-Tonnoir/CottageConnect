@@ -1,17 +1,18 @@
-const mysql = require('mysql2');
+const mysql = require("mysql2");
+const dotenv = require("dotenv");
 
-// Configurez votre connexion à la base de données MySQL
+// Configurez votre connexion à la base de données MySQLco
 const connection = mysql.createConnection({
-  host: 'localhost',
-  port: 3306,
-  user: 'cottages',
-  password: 'tadV-CBbWrCUH43',
-  database: 'cottages',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  port: process.env.DB_PORT,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
-connection.connect(error => {
+connection.connect((error) => {
   if (error) throw error;
-  console.log('Connected to the database.');
+  console.log("Connected to the database.");
 });
 
 module.exports = connection;
