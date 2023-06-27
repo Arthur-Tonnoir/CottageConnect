@@ -27,8 +27,8 @@ app.use('/cities', commoditieRoutes);
 const linktableRoutes = require('./routes/linktableRoutes');
 app.use('/linktables', linktableRoutes);
 
-const pictureController = require('./routes/pictureRoutes');
-app.use('/pictures', pictureController);
+const pictureRoutes = require('./routes/pictureRoutes');
+app.use('/pictures', pictureRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
