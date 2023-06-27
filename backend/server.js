@@ -21,6 +21,9 @@ app.use('/categories', categorieRoutes);
 const citieRoutes = require('./routes/citieRoutes');
 app.use('/cities', citieRoutes);
 
+const commoditieRoutes = require('./routes/commoditieRoutes');
+app.use('/cities', commoditieRoutes);
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
