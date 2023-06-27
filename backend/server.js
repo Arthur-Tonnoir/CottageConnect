@@ -30,6 +30,9 @@ app.use('/linktables', linktableRoutes);
 const pictureRoutes = require('./routes/pictureRoutes');
 app.use('/pictures', pictureRoutes);
 
+const regionRoutes = require('./routes/regionRoutes');
+app.use('/regions', regionRoutes);
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
