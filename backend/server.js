@@ -18,6 +18,9 @@ app.use('/avis', aviRoutes);
 const categorieRoutes = require('./routes/categorieRoutes');
 app.use('/categories', categorieRoutes);
 
+const citieRoutes = require('./routes/citieRoutes');
+app.use('/cities', citieRoutes);
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
