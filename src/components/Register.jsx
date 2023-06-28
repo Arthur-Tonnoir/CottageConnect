@@ -7,6 +7,7 @@ export default function Register() {
     username: "",
     password: "",
     email: "",
+    is_admin: false
   });
 
   const navigate = useNavigate();
