@@ -47,30 +47,30 @@ User.create = (user, result) => {
       return;
     }
     if (user.password === "") {
-      result({ Error: "Erreur: Password must not be empty" }, null);
+      result({ Error: "Error : Password must not be empty" }, null);
       return;
     }
     if (user.password < 3) {
-      result({ Error: "Erreur: Password must be 3 or more character" }, null);
+      result({ Error: "Error : Password must be 3 or more character" }, null);
       return;
     }
     if (user.username.length < 3) {
-      result({ Error: "Erreur: Username must be more than 3 character" }, null);
+      result({ Error: "Error : Username must be more than 3 character" }, null);
       return;
     }
     if (user.email.length < 3) {
-      result({ Error: "Erreur: Email must not be empty" }, null);
+      result({ Error: "Error : Email must not be empty" }, null);
       return;
     }
     user.password = hash;
     sql.query("INSERT INTO users SET ?", user, (err, res) => {
       if (err) {
-        console.log("Erreur :", err);
+        console.log("Error :", err);
         result(err, null);
         return;
       }
 
-      console.log("Utilisateur créé :", { id: res.insertId, ...user });
+      console.log("User created :", { id: res.insertId, ...user });
       result(null, { id: res.insertId, ...user });
     });
   });

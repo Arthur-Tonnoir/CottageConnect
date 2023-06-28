@@ -50,7 +50,7 @@ exports.createUser = (req, res) => {
 
   User.create(newUser, (err, data) => {
     if (err) {
-      res.status(500).send({
+      res.send({
         message:
           err.Error ||
           err.sqlMessage ||
