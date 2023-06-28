@@ -33,6 +33,9 @@ app.use('/pictures', pictureRoutes);
 const regionRoutes = require('./routes/regionRoutes');
 app.use('/regions', regionRoutes);
 
+const reservationRoutes = require('./routes/reservationRoutes');
+app.use('/reservations', reservationRoutes);
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
