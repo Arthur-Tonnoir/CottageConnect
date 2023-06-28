@@ -46,6 +46,22 @@ User.create = (user, result) => {
       result({ Error: "Error during hashing" }, null);
       return;
     }
+    if (user.password === "") {
+      result({ Error: "Erreur: Password must not be empty" }, null);
+      return;
+    }
+    if (user.password < 3) {
+      result({ Error: "Erreur: Password must be 3 or more character" }, null);
+      return;
+    }
+    if (user.username.length < 3) {
+      result({ Error: "Erreur: Username must be more than 3 character" }, null);
+      return;
+    }
+    if (user.email.length < 3) {
+      result({ Error: "Erreur: Email must not be empty" }, null);
+      return;
+    }
     user.password = hash;
     sql.query("INSERT INTO users SET ?", user, (err, res) => {
       if (err) {
@@ -110,13 +126,14 @@ User.login = (username, password, result) => {
     }
     if (res.length > 0) {
       const username = res[0].username;
+      const role = res[0].is_admin;
       bcrypt.compare(password, res[0].password, (err, res) => {
         if (err) {
           result({ error: "PASSWORD compare error" }, null);
           return;
         }
         if (res) {
-          const token = jwt.sign({ username }, process.env.JWT_SECRET, {
+          const token = jwt.sign({ username, role }, process.env.JWT_SECRET, {
             expiresIn: "1d",
           });
           result(null, { Status: "Success", Token: token });

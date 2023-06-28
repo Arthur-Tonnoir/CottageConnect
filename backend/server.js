@@ -29,6 +29,7 @@ const verifyUser = (req, res, next) => {
         return res.json({ Error: "Token error" });
       } else {
         req.username = decoded.username;
+        req.role = decoded.role;
         next();
       }
     });
@@ -36,7 +37,11 @@ const verifyUser = (req, res, next) => {
 };
 
 app.get("/", verifyUser, (req, res) => {
-  return res.json({ Status: "Success", username: req.username });
+  return res.json({
+    Status: "Success",
+    username: req.username,
+    role: req.role,
+  });
 });
 
 app.listen(port, () => {

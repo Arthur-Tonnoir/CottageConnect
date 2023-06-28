@@ -52,7 +52,8 @@ exports.createUser = (req, res) => {
     if (err) {
       res.status(500).send({
         message:
-          err.message ||
+          err.Error ||
+          err.sqlMessage ||
           "Une erreur s'est produite lors de la création de l'utilisateur.",
       });
     } else {
