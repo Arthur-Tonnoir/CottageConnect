@@ -1,52 +1,49 @@
 const sql = require("../config/db.config");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const cookie = require("cookie-parser");
 
 const User = function (user) {
-    this.username = user.username;
-    this.password = user.password;
-    this.email = user.email;
-    this.is_admin = user.is_admin;
-    this.firstname = user.firstname;
-    this.lastname = user.lastname;
-    this.phone = user.phone;
-    this.postal = user.postal;
-    this.city = user.city;
-    this.avatar = user.avatar;
-    this.website = user.website;
+  this.username = user.username;
+  this.password = user.password;
+  this.email = user.email;
+  this.is_admin = user.is_admin;
+  this.firstname = user.firstname;
+  this.lastname = user.lastname;
+  this.phone = user.phone;
+  this.postal = user.postal;
+  this.city = user.city;
+  this.avatar = user.avatar;
+  this.website = user.website;
 };
 
-User.findAll = result => {
-    sql.query('SELECT * FROM users', (err, res) => {
-        if (err) {
-            console.log('Erreur :', err);
-            result(null, err);
-            return;
-        }
+User.findAll = (result) => {
+  sql.query("SELECT * FROM users", (err, res) => {
+    if (err) {
+      console.log("Erreur :", err);
+      result(null, err);
+      return;
+    }
 
-        console.log('Utilisateurs :', res);
-        result(null, res);
-    });
+    console.log("Utilisateurs :", res);
+    result(null, res);
+  });
 };
 
 User.findById = (id, result) => {
-    sql.query('SELECT * FROM users WHERE id = ?', id, (err, res) => {
-        if (err) {
-            console.log('Erreur :', err);
-            result(err, null);
-            return;
-        }
-        if (res.length) {
-            console.log('Utilisateur trouvé :', res[0]);
-            result(null, res[0]);
-            return;
-        }
-        result({ kind: 'not_found' }, null);
-    });
+  sql.query("SELECT * FROM users WHERE id = ?", id, (err, res) => {
+    if (err) {
+      console.log("Erreur :", err);
+      result(err, null);
+      return;
+    }
+    if (res.length) {
+      console.log("Utilisateur trouvé :", res[0]);
+      result(null, res[0]);
+      return;
+    }
+    result({ kind: "not_found" }, null);
+  });
 };
-
-
 
 User.create = (newUser, result) => {
   bcrypt.hash(newUser.password.toString(), 10, (err, hash) => {
@@ -84,29 +81,49 @@ User.create = (newUser, result) => {
   });
 };
 
-
 User.update = (id, user, result) => {
+  bcrypt.hash(user.password.toString(), 10, (err, hash) => {
+    if (err) {
+      console.log("Erreur hashing:", err);
+      result(err, null);
+      return;
+    }
+    user.password = hash;
     sql.query(
-        'UPDATE users SET username = ?, password = ? , email = ?, is_admin = ?, firstname = ?, lastname = ?, phone = ?, postal = ?, city = ?, avatar = ?, website = ?  WHERE id = ?',
-        [user.username, user.password, user.email, user.is_admin, user.firstname, user.lastname, user.phone, user.postal, user.city, user.avatar, user.website, id],
-        (err, res) => {
-            if (err) {
-                console.log('Erreur :', err);
-                result(err, null);
-                return;
-            }
-            if (res.affectedRows === 0) {
-              result({ kind: "not_found" }, null);
-              return;
-            }
-            console.log("Utilisateur mis à jour :", { id: id, ...user });
-            result(null, { id: id, ...user });
+      "UPDATE users SET username = ?, password = ? , email = ?, is_admin = ?, firstname = ?, lastname = ?, phone = ?, postal = ?, city = ?, avatar = ?, website = ?  WHERE id = ?",
+      [
+        user.username,
+        user.password,
+        user.email,
+        user.is_admin,
+        user.firstname,
+        user.lastname,
+        user.phone,
+        user.postal,
+        user.city,
+        user.avatar,
+        user.website,
+        id,
+      ],
+      (err, res) => {
+        if (err) {
+          console.log("Erreur :", err);
+          result(err, null);
+          return;
         }
+        if (res.affectedRows === 0) {
+          result({ kind: "not_found" }, null);
+          return;
+        }
+        console.log("Utilisateur mis à jour :", { id: id, ...user });
+        result(null, { id: id, ...user });
+      }
     );
+  });
 };
 
 User.delete = (id, result) => {
-    sql.query('DELETE FROM users WHERE id = ?', id, (err, res) => {
+  sql.query("DELETE FROM users WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("Erreur :", err);
       result(err, null);
