@@ -1,4 +1,4 @@
-const Facture = require('./factureModel');
+const Facture = require('../models/factureModel');
 
 exports.findAll = (req, res) => {
     Facture.findAll((err, data) => {
