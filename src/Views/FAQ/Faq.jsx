@@ -8,7 +8,7 @@ import Nav from '../../component/Nav/Nav'
 function Faq() {
     return (
         <body>
-                {/* <Nav /> */}
+                <Nav />
                 <div className="container__accordion">
                     <h3>Titre de la catégorie FAQ</h3>
                     <div className="accordion">
