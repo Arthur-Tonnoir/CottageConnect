@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Profil from "./components/Profil";
 import Home from "./components/Home";
+import Admin from "./components/Admin";
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" Component={Login} />
           <Route path="/register" Component={Register} />
           <Route path="/profil" Component={Profil} />
+          <Route path="/admin" Component={Admin} />
         </Routes>
       </Router>
     </div>

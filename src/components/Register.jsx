@@ -18,7 +18,7 @@ export default function Register() {
         if (res.data.Status === "Success") {
           navigate("/login");
         } else {
-          alert("Error");
+          alert(res.data.message);
           console.log(res);
         }
       })
