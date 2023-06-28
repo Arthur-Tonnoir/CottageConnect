@@ -39,6 +39,9 @@ app.use('/reservations', reservationRoutes);
 const cottageRoutes = require('./routes/cottageRoutes');
 app.use('/cottages', cottageRoutes);
 
+const factureRoutes = require('./routes/factureRoutes');
+app.use('/factures', factureRoutes);
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
