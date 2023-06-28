@@ -1,4 +1,5 @@
-const User = require('../models/userModel');
+const User = require("../models/userModel");
+
 
 exports.findAll = (req, res) => {
     User.findAll((err, data) => {
@@ -34,13 +35,14 @@ exports.findById = (req, res) => {
 };
 
 exports.create = (req, res) => {
-    if (!req.body) {
+  if (!req.body) {
         res.status(400).send({
             message: 'Le contenu de la requête ne peut pas être vide.'
         });
-    }
+  }
 
-    const newUser = new User({
+
+  const newUser = new User({
         username: req.body.username,
         password: req.body.password,
         email: req.body.email,
@@ -54,16 +56,17 @@ exports.create = (req, res) => {
         website: req.body.website
     });
 
-    User.create(newUser, (err, data) => {
-        if (err) {
-            res.status(500).send({
-                message:
-                    err.message || 'Une erreur s\'est produite lors de la création de l\'utilisateur.'
-            });
-        } else {
-            res.send(data);
-        }
-    });
+  User.create(newUser, (err, data) => {
+    if (err) {
+      res.send({
+        message:
+          err.message ||
+          "Une erreur s'est produite lors de la création de l'utilisateur.",
+      });
+    } else {
+      res.send({ Status: "Success", Data: data });
+    }
+  });
 };
 
 exports.update = (req, res) => {
@@ -73,7 +76,8 @@ exports.update = (req, res) => {
         });
     }
 
-    const id = req.params.id;
+  const id = req.params.id;
+
 
     const updated = new User({
         username: req.body.username,
@@ -125,4 +129,21 @@ exports.delete = (req, res) => {
             res.send({ message: 'Utilisateur supprimé avec succès !' });
         }
     });
+};
+
+exports.login = (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  User.login(username, password, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.cookie("token", data.Token);
+      res.send(data.Status);
+    }
+  });
+};
+exports.logout = (req, res) => {
+  res.clearCookie("token");
+  res.json({ status: "Success" });
 };
