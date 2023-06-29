@@ -149,15 +149,20 @@ User.login = (username, password, result) => {
     if (res.length > 0) {
       const username = res[0].username;
       const role = res[0].is_admin;
+      const id = res[0].id;
       bcrypt.compare(password, res[0].password, (err, res) => {
         if (err) {
           result({ error: "PASSWORD compare error" }, null);
           return;
         }
         if (res) {
-          const token = jwt.sign({ username, role }, process.env.JWT_SECRET, {
-            expiresIn: "1d",
-          });
+          const token = jwt.sign(
+            { username, role, id },
+            process.env.JWT_SECRET,
+            {
+              expiresIn: "1d",
+            }
+          );
           result(null, { Status: "Success", Token: token });
           return;
         } else {
