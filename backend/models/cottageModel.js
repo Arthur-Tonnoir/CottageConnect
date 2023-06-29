@@ -11,6 +11,7 @@ const Cottage = function (cottage){
     this.id_city = cottage.id_city;
     this.id_categories = cottage.id_categories;
     this.id_users = cottage.id_users;
+    this.max_personnes = cottage.max_personnes
 }
 
 Cottage.findAll = result => {
@@ -58,8 +59,8 @@ Cottage.create = (newCottages, result) => {
 
 Cottage.update = (id, cottage, result) => {
     sql.query(
-        'UPDATE cottages SET name = ?, date_creation = ? , content = ?, dayprice = ?, caution = ?, adress = ?, res_count = ?, id_city = ?, id_categories = ?, id_users = ?  WHERE id = ?',
-        [cottage.name, cottage.date_creation, cottage.content, cottage.dayprice, cottage.caution, cottage.adress, cottage.res_count, cottage.id_city, cottage.id_categories, cottage.id_users, id],
+        'UPDATE cottages SET name = ?, date_creation = ? , content = ?, dayprice = ?, caution = ?, adress = ?, res_count = ?, id_city = ?, id_categories = ?, id_users = ?, max_personnes = ?  WHERE id = ?',
+        [cottage.name, cottage.date_creation, cottage.content, cottage.dayprice, cottage.caution, cottage.adress, cottage.res_count, cottage.id_city, cottage.id_categories, cottage.id_users, cottage.max_personnes, id],
         (err, res) => {
             if (err) {
                 console.log('Erreur :', err);

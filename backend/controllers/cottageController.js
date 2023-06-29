@@ -50,7 +50,8 @@ exports.create = (req, res) => {
         res_count: req.body.res_count,
         id_city: req.body.id_city,
         id_categories: req.body.id_categories,
-        id_users: req.body.id_users
+        id_users: req.body.id_users,
+        max_personnes: req.body.max_personnes
     });
 
     Cottage.create(newCottage, (err, data) => {
@@ -84,7 +85,8 @@ exports.update = (req, res) => {
         res_count: req.body.res_count,
         id_city: req.body.id_city,
         id_categories: req.body.id_categories,
-        id_users: req.body.id_users
+        id_users: req.body.id_users,
+        max_personnes: req.body.max_personnes
     });
 
     Cottage.update(id, updated, (err, data) => {
