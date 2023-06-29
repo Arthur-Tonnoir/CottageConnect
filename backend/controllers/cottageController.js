@@ -123,3 +123,33 @@ exports.delete = (req, res) => {
         }
     });
 };
+
+// fonction recupérer cottages par Nombre de reservations
+
+exports.res_Count = (req, res) => {
+    const limit = req.params.limit
+    Cottage.res_Count(limit, (err, data) => {
+        if (err) {
+            res.status(500).send({
+                message:
+                    err.message || 'Une erreur s\'est produite lors de la récupération des cottages.'
+            });
+        } else {
+            res.send(data);
+        }
+    });
+};
+
+// fonction recupérer cottages aléatoirement
+exports.res_Rand = (req, res) => {
+    Cottage.res_Rand((err, data) => {
+        if (err) {
+            res.status(500).send({
+                message:
+                    err.message || 'Une erreur s\'est produite lors de la récupération des cottages.'
+            });
+        } else {
+            res.send(data);
+        }
+    });
+};
