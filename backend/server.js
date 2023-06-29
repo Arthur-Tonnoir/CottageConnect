@@ -28,6 +28,7 @@ const verifyUser = (req, res, next) => {
       if (err) {
         return res.json({ Error: "Token error" });
       } else {
+        req.id = decoded.id;
         req.username = decoded.username;
         req.role = decoded.role;
         next();
@@ -41,38 +42,39 @@ app.get("/", verifyUser, (req, res) => {
     Status: "Success",
     username: req.username,
     role: req.role,
+    id: req.id,
   });
 });
 
-const aviRoutes = require('./routes/aviRoutes');
-app.use('/avis', aviRoutes);
+const aviRoutes = require("./routes/aviRoutes");
+app.use("/avis", aviRoutes);
 
-const categorieRoutes = require('./routes/categorieRoutes');
-app.use('/categories', categorieRoutes);
+const categorieRoutes = require("./routes/categorieRoutes");
+app.use("/categories", categorieRoutes);
 
-const citieRoutes = require('./routes/citieRoutes');
-app.use('/cities', citieRoutes);
+const citieRoutes = require("./routes/citieRoutes");
+app.use("/cities", citieRoutes);
 
-const commoditieRoutes = require('./routes/commoditieRoutes');
-app.use('/cities', commoditieRoutes);
+const commoditieRoutes = require("./routes/commoditieRoutes");
+app.use("/cities", commoditieRoutes);
 
-const linktableRoutes = require('./routes/linktableRoutes');
-app.use('/linktables', linktableRoutes);
+const linktableRoutes = require("./routes/linktableRoutes");
+app.use("/linktables", linktableRoutes);
 
-const pictureRoutes = require('./routes/pictureRoutes');
-app.use('/pictures', pictureRoutes);
+const pictureRoutes = require("./routes/pictureRoutes");
+app.use("/pictures", pictureRoutes);
 
-const regionRoutes = require('./routes/regionRoutes');
-app.use('/regions', regionRoutes);
+const regionRoutes = require("./routes/regionRoutes");
+app.use("/regions", regionRoutes);
 
-const reservationRoutes = require('./routes/reservationRoutes');
-app.use('/reservations', reservationRoutes);
+const reservationRoutes = require("./routes/reservationRoutes");
+app.use("/reservations", reservationRoutes);
 
-const cottageRoutes = require('./routes/cottageRoutes');
-app.use('/cottages', cottageRoutes);
+const cottageRoutes = require("./routes/cottageRoutes");
+app.use("/cottages", cottageRoutes);
 
-const factureRoutes = require('./routes/factureRoutes');
-app.use('/factures', factureRoutes);
+const factureRoutes = require("./routes/factureRoutes");
+app.use("/factures", factureRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

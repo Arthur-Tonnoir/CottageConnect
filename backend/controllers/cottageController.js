@@ -33,6 +33,28 @@ exports.findById = (req, res) => {
     });
 };
 
+exports.findByMaxPersonneAndDateCreationAndVille = (req, res) => {
+    const max_personne = req.params.max_personne;
+    const date_creation = req.params.date_creation;
+    const ville = req.params.ville;
+    
+    Cottage.findByMaxPersonneAndDateCreationAndVille(max_personne, date_creation, ville, (err, data) => {
+        if (err) {
+            if (err.kind === 'not_found') {
+                res.status(404).send({
+                    message: `Cottage introuvable avec comme filtre ${max_personne}, ${date_creation}, ${ville}`
+                });
+            } else {
+                res.status(500).send({
+                    message: `Erreur lors de la récupération du cottage avec comme filtre ${max_personne}, ${date_creation}, ${ville}.`
+                });
+            }
+        } else {
+            res.send(data);
+        }
+    })
+}
+
 exports.create = (req, res) => {
     if (!req.body) {
         res.status(400).send({
@@ -50,7 +72,8 @@ exports.create = (req, res) => {
         res_count: req.body.res_count,
         id_city: req.body.id_city,
         id_categories: req.body.id_categories,
-        id_users: req.body.id_users
+        id_users: req.body.id_users,
+        max_personnes: req.body.max_personnes
     });
 
     Cottage.create(newCottage, (err, data) => {
@@ -84,7 +107,8 @@ exports.update = (req, res) => {
         res_count: req.body.res_count,
         id_city: req.body.id_city,
         id_categories: req.body.id_categories,
-        id_users: req.body.id_users
+        id_users: req.body.id_users,
+        max_personnes: req.body.max_personnes
     });
 
     Cottage.update(id, updated, (err, data) => {
