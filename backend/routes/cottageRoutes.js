@@ -3,9 +3,10 @@ const router = express.Router();
 const cottageController = require('../controllers/cottageController');
 
 router.get('/', cottageController.findAll);
-router.get('/:id', cottageController.findById);
-router.post('/', cottageController.create);
-router.put('/:id', cottageController.update);
-router.delete('/:id', cottageController.delete);
+router.get('/cottage/:id', cottageController.findById);
+router.get('/cottage/:max_personne/:date_creation/:ville', cottageController.findByMaxPersonneAndDateCreationAndVille)
+router.post('/cottage/', cottageController.create);
+router.put('/cottage/:id', cottageController.update);
+router.delete('/cottage/:id', cottageController.delete);
 
 module.exports = router;

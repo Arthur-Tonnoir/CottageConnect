@@ -33,6 +33,28 @@ exports.findById = (req, res) => {
     });
 };
 
+exports.findByMaxPersonneAndDateCreationAndVille = (req, res) => {
+    const max_personne = req.params.max_personne;
+    const date_creation = req.params.date_creation;
+    const ville = req.params.ville;
+    
+    Cottage.findByMaxPersonneAndDateCreationAndVille(max_personne, date_creation, ville, (err, data) => {
+        if (err) {
+            if (err.kind === 'not_found') {
+                res.status(404).send({
+                    message: `Cottage introuvable avec comme filtre ${max_personne}, ${date_creation}, ${ville}`
+                });
+            } else {
+                res.status(500).send({
+                    message: `Erreur lors de la récupération du cottage avec comme filtre ${max_personne}, ${date_creation}, ${ville}.`
+                });
+            }
+        } else {
+            res.send(data);
+        }
+    })
+}
+
 exports.create = (req, res) => {
     if (!req.body) {
         res.status(400).send({
