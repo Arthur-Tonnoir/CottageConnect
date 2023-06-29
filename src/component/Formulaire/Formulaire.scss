@@ -1,20 +1,19 @@
-.container__form {
-    height: 50vh;
+.containerForm {
     width: 100%;
 
-    .form__title {
+    .formTitle {
         text-align: center;
         margin-bottom: 2em;
     }
 }
 
-.input__formulaires {
+.inputFormulaires {
     display: flex;
     justify-content: center;
     margin-bottom: em;
 }
 
-.input__formulaire {
+.inputFormulaire {
     font-weight: bold;
     width: 20%;
     color: azure;
@@ -28,12 +27,12 @@
     margin-bottom: 2em;
 }
 
-.input__formulaire::placeholder {
+.inputFormulaire::placeholder {
     color: azure;
 }
 
 
-.text__messages {
+.textMessages {
     display: flex;
     justify-content: center;
     margin-bottom: 2em;
@@ -57,12 +56,12 @@
     font-size: 1.3em;
 }
 
-.button__submits {
+.buttonSubmits {
     display: flex;
     justify-content: center;
 }
 
-.button__submit {
+.buttonSubmit {
     width: 15%;
     height: 4.5em;
     border-radius: 0.8em;

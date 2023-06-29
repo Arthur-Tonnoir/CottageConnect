@@ -33,34 +33,34 @@ function Nav() {
                 <li>
                     <a href="#" className="logo">Logo</a>
                 </li>
-                <li>Destinations
-                    <ul className="navbarDestination">
-                        <li className="vide"></li>
-                        <li>
-                            <a href="#">Cat1</a>
-                        </li>
-                        <li>
-                            <a href="#">Cat2</a>
-                        </li>
-                        <li>
-                            <a href="#">Cat3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>Nos offres spéciales
-                    <ul className="navbarOffer">
-                        <li className="vide"></li>
-                        <li>
-                            <a href="#">Categorie1</a>
-                        </li>
-                        <li>
-                            <a href="#">Categorie2</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Publiez votre annonce</a>
-                </li>
+                    <li>Destinations
+                        <ul className="navbarDestination">
+                            <li className="vide"></li>
+                            <li>
+                                <a href="#">Cat1</a>
+                            </li>
+                            <li>
+                                <a href="#">Cat2</a>
+                            </li>
+                            <li>
+                                <a href="#">Cat3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Nos offres spéciales
+                        <ul className="navbarOffer">
+                            <li className="vide"></li>
+                            <li>
+                                <a href="#">Categorie1</a>
+                            </li>
+                            <li>
+                                <a href="#">Categorie2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Publiez votre annonce</a>
+                    </li>
                 <li>Recherche
                     <ul className="navbarSearch">
                         <li className="vide"></li>

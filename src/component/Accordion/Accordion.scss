@@ -8,18 +8,18 @@
         width: 70%;
         margin-bottom: 1em;
 
-        .accordion__title {
+        .accordionTitle {
             border-radius: 1em;
         }
 
         &.active {
 
-            .accordion__title {
+            .accordionTitle {
                 background-color: #227448;
                 border-radius: 1em;
             }
 
-            .accordion__content {
+            .accordionContent {
                 visibility: visible;
                 height: auto;
                 overflow: visible;
@@ -29,7 +29,7 @@
             }
         }
 
-        .accordion__title {
+        .accordionTitle {
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -43,20 +43,20 @@
                 background-color: #227448;
             }
 
-            .arrow-icon {
+            .arrowIcon {
                 margin-right: 7em;
 
                 svg {
                     font-size: 2em;
                 }
 
-                &.rotate_90 {
+                &.rotateArrow {
                     transform: rotate(90deg);
                 }
             }
         }
 
-        .accordion__content {
+        .accordionContent {
             background-color: #40a16e;
             visibility: hidden;
             height: 0;

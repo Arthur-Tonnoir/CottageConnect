@@ -8,7 +8,7 @@ function FormContact() {
     return (
         <body>
             <Nav />
-            <div className="container__formulaire">
+            <div className="containerormulaire">
                 <Formulaire />
             </div>
             <Footer />
