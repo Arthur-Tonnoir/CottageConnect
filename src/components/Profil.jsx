@@ -6,6 +6,7 @@ function Profil() {
   const [auth, setAuth] = useState(false);
   const [message, setMessage] = useState("");
   const [username, setUsername] = useState("");
+  const [data, setData] = useState("");
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
@@ -15,18 +16,41 @@ function Profil() {
         if (res.data.Status === "Success") {
           setAuth(true);
           setUsername(res.data.username);
+          return axios.get(`http://localhost:3001/users/user/${res.data.id}`);
         } else {
           setAuth(false);
           setMessage(res.data.Error);
         }
       })
-      .catch((err) => console.log(err));
+      .then((res) => {
+        if (res) {
+          setData(res.data);
+        } else {
+          return console.log("Not Auth");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   return (
     <div>
       {auth ? (
         <div>
           <h2>{username}'s PROFIL</h2>
+          <ul>
+            <li>username : {data.username}</li>
+            <li>password : {data.password}</li>
+            <li>is_admin : {data.is_admin}</li>
+            <li>firstname : {data.firstname}</li>
+            <li>lastname : {data.lastname}</li>
+            <li>phone : {data.phone}</li>
+            <li>postal : {data.postal}</li>
+            <li>city : {data.city}</li>
+            <li>avatar : {data.avatar}</li>
+            <li>website : {data.website}</li>
+            <li>id : {data.id}</li>
+          </ul>
         </div>
       ) : (
         <div>
