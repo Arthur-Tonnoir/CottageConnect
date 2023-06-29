@@ -1,19 +1,17 @@
-body {
-    height: 100%;
-    width: 100%;
-    background-color: #834116b0;
-    color: aliceblue;
+.backgroundAccordion {
+    background-image: url(../../../public/img/background2.jfif);
+    background-position: center;
 }
 
 .containerAccordion {
-
     h3 {
         text-align: center;
         margin-bottom: 2em;
+        margin-top: 2em;
     }
 
     .containerMore {
-        margin-bottom: 10em;
+        margin-bottom: 7em;
         font-weight: bold;
         font-size: 1em;
         text-align: center;

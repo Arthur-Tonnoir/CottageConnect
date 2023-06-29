@@ -6,11 +6,11 @@ import Inscription from "../../component/Inscription/Inscription"
 
 function SignIn() {
     return (
-        <body>
+        <div>
             <Nav />
             <Inscription />
             <Footer />
-        </body>
+        </div>
     )
 }
 

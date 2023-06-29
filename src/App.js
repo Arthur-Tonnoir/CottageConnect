@@ -8,10 +8,10 @@ import Login from './Views/Login/Login';
 
 function App() {
   return (
-    // <Faq />
+    <Faq />
     // <FormContact />
     // <SignIn />
-    <Login />
+    // <Login />
   );
 }
 
