@@ -72,6 +72,15 @@ a, li {color: white;
     padding-left: 1.02rem;
 }
 
+.fleche {
+  vertical-align: middle;
+}
+
+#nomLangue {
+  vertical-align: middle;
+}
+
+
 
                             /* TAILLE DES SS-CATEGORIES */
 
@@ -126,3 +135,13 @@ input {
 #destination {
     margin-top: 0.5em;
 }
+
+#voyageurs {
+  border: solid 0.2em green;
+  border-radius: 1.5em;
+  height: 3em;
+}
+
+option {
+  border-radius: 1.5em;
+} 

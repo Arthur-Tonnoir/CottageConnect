@@ -37,3 +37,13 @@ btnUSA.style.display=`block`;
 btnEspagne.style.display=`block`;
 btnFrance.style.display=`block`;
 });
+
+                                        // TEST RESET CSS
+
+// Rétablir les propriétés CSS du <ul> avec la classe "sousderoulant2"
+// function resetCSS() {
+//     var element = document.querySelector(".sousderoulant2");
+//     element.style.removeProperty("line-height");
+//     element.style.removeProperty("width");
+//   }
+  
