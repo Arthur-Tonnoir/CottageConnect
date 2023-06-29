@@ -119,4 +119,32 @@ Cottage.delete = (id, result) => {
     });
 };
 
+// fonction recupérer cottages par Nombre de reservations
+Cottage.res_Count = (limit, result) => {
+    sql.query(`SELECT * FROM cottages ORDER BY res_count DESC limit ${limit}`, (err, res) => {
+        if (err) {
+            console.log('Erreur :', err);
+            result(null, err);
+            return;
+        }
+
+        console.log('Cottages :', res);
+        result(null, res);
+    });
+};
+
+// fonction recupérer cottages aléatoirement
+Cottage.res_Rand = result => {
+    sql.query('SELECT * FROM cottages ORDER BY RAND() limit 10', (err, res) => {
+        if (err) {
+            console.log('Erreur :', err);
+            result(null, err);
+            return;
+        }
+
+        console.log('Cottages :', res);
+        result(null, res);
+    });
+};
+
 module.exports = Cottage;
