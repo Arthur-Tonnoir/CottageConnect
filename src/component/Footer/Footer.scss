@@ -29,37 +29,36 @@
     margin-top: 3em;
     padding-right: 15%;
     justify-content: center;
-    padding-top: 2em;
 }
 
 
-form {
+.formNewsletter {
     display: flex;
     align-items: baseline;
     flex-direction: row;
 
-    input[type="email"] {
+    .footerInput {
         margin-top: 1em;
         color: azure;
         background-color: #227448;
         width: 90%;
         padding: 1em;
-        border-color: azure;
         border-top-left-radius: 2em;
         border-bottom-left-radius: 2em;
         border-top-right-radius: 0.2em;
         border-bottom-right-radius: 0.2em;
         margin-bottom: 1em;
+        border-color: azure;
     }
 
-    input[type="email"]::placeholder {
+    .footerInput::placeholder {
         color: azure;
         font-style: italic;
         font-size: 100%;
         padding-left: 1.5em;
     }
 
-    button {
+    .footerButton {
         width: 60%;
         height: 3.42em;
         background-color: azure;
@@ -84,7 +83,6 @@ form {
 
 .footerPropos {
     height: 100%;
-    padding-top: 2em;
     padding-left: 5em;
     padding-right: 5em;
     border-left: solid azure;
@@ -126,7 +124,7 @@ form {
 }
 
 .footerContact {
-    padding-top: 5em;
+    padding-top: 2.5em;
     padding-right: 4em;
     margin-right: -6em;
     margin-left: -5em;
