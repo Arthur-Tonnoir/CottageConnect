@@ -11,7 +11,7 @@ function Profil() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/")
+      .get("http://localhost:3001/users/")
       .then((res) => {
         if (res.data.Status === "Success") {
           setAuth(true);

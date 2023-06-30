@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 dotenv.config(__dirname + "/.env");
 const app = express();
@@ -18,33 +17,6 @@ app.use(
 app.use(cookieParser());
 const userRoutes = require("./routes/userRoutes");
 app.use("/users", userRoutes);
-
-const verifyUser = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.json({ Error: "You are not authentificated" });
-  } else {
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      if (err) {
-        return res.json({ Error: "Token error" });
-      } else {
-        req.id = decoded.id;
-        req.username = decoded.username;
-        req.role = decoded.role;
-        next();
-      }
-    });
-  }
-};
-
-app.get("/", verifyUser, (req, res) => {
-  return res.json({
-    Status: "Success",
-    username: req.username,
-    role: req.role,
-    id: req.id,
-  });
-});
 
 const aviRoutes = require("./routes/aviRoutes");
 app.use("/avis", aviRoutes);
