@@ -10,7 +10,7 @@ function Footer() {
         <div className="footerSection">
           <div className="footerNewsletter">
             <h3>Abonnez-vous à notre Newsletter</h3>
-            <form>
+            <form className='formNewsletter'>
               <input type="email" name="email" placeholder="Adresse e-mail" className='footerInput' />
               <button className='footerButton'>S'inscrire</button>
             </form>
