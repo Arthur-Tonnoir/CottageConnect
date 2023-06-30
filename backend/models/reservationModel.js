@@ -41,18 +41,17 @@ Reservation.findById = (id, result) => {
   });
 };
 
-Reservation.create = (
-  newReservation, cottageId, date_start, date_end,result
-) => {
+Reservation.create = (newReservation, result) => {
   sql.query(
     `SELECT * FROM reservations WHERE id_cottages = ? AND
     (date_start <= ? AND date_end >= ?)`,
-    [cottageId, date_end, date_start],
+    [newReservation.id_cottages, newReservation.date_end, newReservation.date_start],
     (err, res) => {
       if (err) {
         console.log(err);
       }
       if (res.length === 0) {
+        console.log(newReservation);
         sql.query(
           "INSERT INTO reservations SET ?",
           newReservation,

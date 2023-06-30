@@ -1,3 +1,4 @@
+const { logDOM } = require("@testing-library/react");
 const Reservation = require("../models/reservationModel");
 
 exports.findAll = (req, res) => {
@@ -40,9 +41,10 @@ exports.create = (req, res) => {
       message: "Le contenu de la requête ne peut pas être vide.",
     });
   }
-
+  let date = new Date()
+  date = date.toISOString().split('T')[0];
   const newReservation = new Reservation({
-    create_at: new Date(),
+    created_at: date,
     date_start: req.body.date_start,
     date_end: req.body.date_end,
     duration: req.body.duration,
@@ -56,7 +58,7 @@ exports.create = (req, res) => {
     if (err) {
       res.status(500).send({
         message:
-          err.message ||
+          err.Erreur ||
           "Une erreur s'est produite lors de la création de la reservation.",
       });
     } else {
