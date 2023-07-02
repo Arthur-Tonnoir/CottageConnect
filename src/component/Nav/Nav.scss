@@ -164,17 +164,22 @@
 
  .navbarSearch {
      z-index: 1;
-     width: 420%;
-     height: 12em;
+     width: 3200%;
+     height: 6em;
  }
 
  .recherche {
-     height: 90%;
+     margin: 2em;
+     display: flex;
+     height: 100%;
  }
 
  .inputDestination {
+     text-align: center;
      border: solid 0.2em;
+     border-radius: 2em;
      height: 3.5em;
+     align-items: flex-start;
  }
 
  #destination {
@@ -183,4 +188,85 @@
 
  .hide {
      display: none;
+ }
+
+ .conteneurRecherche {
+     display: flex;
+     width: 32em;
+     height: 3em;
+ }
+
+ .champRecherche,
+ .dropdown-btn {
+     text-align: center;
+     border: none;
+     border-radius: 2em;
+     margin: 2.6em;
+     height: 3em;
+     font-size: 1em;
+     background: #AFA8A8;
+     color: white;
+     /* width: 65%; */
+     width: 13em;
+     text-decoration: none;
+ }
+
+ .customDateInput {
+     position: relative;
+     display: inline-block;
+ }
+
+ .customDateInput label {
+     position: absolute;
+     /* top: 0; */
+     /* left: 0; */
+     /* pointer-events: none; */
+     padding: 0.5em;
+     /* font-size: 1em; */
+     background: #AFA8A8;
+     color: white;
+     border-radius: 2em;
+     transition: all 0.3s ease;
+ }
+
+ .customDateInput input[type="date"] {
+     /* padding: 0.5em; */
+     /* font-size: 1em; */
+     background: #AFA8A8;
+     color: white;
+     border: none;
+     border-radius: 2em;
+ }
+
+ .customDateInput input[type="date"]:focus+label,
+ .customDateInput input[type="date"]:valid+label {
+     transform: translateX(-100%);
+ }
+
+ .champDate {
+     z-index: 1;
+     /* border: solid black; */
+     margin: 2em;
+     border-radius: 2em;
+     height: 2em;
+     font-size: 1em;
+     background: #AFA8A8;
+     color: white;
+     width: 10em;
+     text-decoration: none;
+     position: absolute;
+     /* display: none; */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ .cd1,
+ .cd2 {
+     visibility: visible;
+ }
+
+ .cd1Hidden,
+ .cd2Hidden {
+     visibility: hidden;
  }
