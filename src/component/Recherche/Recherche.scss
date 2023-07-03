@@ -1,23 +1,28 @@
+ .searchContainer {
+  height: 50vh;
+  padding: 3.5em;
+ }
+ 
  /* CARTE INTERACTIVE */
 
- .map__image {
+ .mapImage {
    width: 35%;
    float: right;
-   height: 19.5em;
+   height: 22.5em;
    background: #AFA8A8;
    padding-top: 1em;
    border-top-right-radius: 15px;
    border-bottom-right-radius: 15px;
  }
 
- .map__image path {
+ .mapImage path {
    fill: green;
    stroke: #fff;
    stroke-width: 0.1em;
    transition: fill color 0.3s;
  }
 
- .map__image path:hover {
+ .mapImage path:hover {
    fill: rgb(37, 100, 37);
    stroke: #fff;
    stroke-width: 0.1em;
@@ -27,11 +32,11 @@
 
  /*DEROULANT MOTS-CLES */
 
- .dropdown {
+ .dropDown {
    display: inline-block;
  }
 
- .dropdown-content {
+ .dropDownContent {
    display: none;
    position: absolute;
    min-width: 160px;
@@ -47,17 +52,16 @@
    line-height: 1.5em;
  }
 
- .dropdown-content label {
+ .dropdownContent label {
    display: block;
  }
 
  /* BOUTONS ET INPUTS/LISTES */
 
- .infodestination {
+ .infoDestination {
    border: solid;
-
-   width: 70.938em;
-   height: 20.5em;
+   width: 80%;
+   height: 23.5em;
    border-radius: 15px;
    border: 1px solid #000;
 
@@ -68,7 +72,7 @@
 
  }
 
- .conteneur_recherche {
+ .conteneurSearch {
    display: flex;
    width: 32em;
    height: 3em;
@@ -79,7 +83,7 @@
    height: 3.5em
  }
 
- .infoecrit {
+ .infoEcrit {
    width: 100%;
    align-items: center;
    height: 100%;
@@ -88,13 +92,13 @@
    justify-content: center;
  }
 
- .titre_recherche {
+ .titreSearch {
    text-align: center;
    font-size: 1em;
  }
 
- .champRecherche,
- .dropdown-btn {
+ .champSearch,
+ .dropDownBtn {
    text-align: center;
    border: none;
    border-radius: 2em;
@@ -106,7 +110,7 @@
    text-decoration: none;
  }
 
- .champRecherche::placeholder {
+ .champSearch::placeholder {
    color: #fff;
  }
 
@@ -114,18 +118,18 @@
    background: #4F7242;
  }
 
- .bouton_vert {
+ .boutonVert {
    text-decoration: none;
    color: #fff;
    line-height: 2em;
  }
 
- .champRecherche-label {
+ .champSearchLabel {
    position: relative;
    width: 100%;
  }
 
- .champRecherche-label input[type="date"] {
+ .champSearchLabel input[type="date"] {
    opacity: 100%;
    position: absolute;
    top: 0;
@@ -135,8 +139,8 @@
    cursor: pointer;
  }
 
- .champRecherche:focus,
- .dropdown-btn:focus {
+ .champSearch:focus,
+ .dropDownBtn:focus {
    border: 2px solid black;
  }
 
@@ -157,18 +161,18 @@
    cursor: pointer;
  }
 
- .champRecherche-label:nth-child(1) {
+ .champSearchLabel:nth-child(1) {
    margin-right: 1em;
  }
 
  /* DATE */
 
- .custom-date-input {
+ .customDate {
    position: relative;
    display: inline-block;
  }
 
- .custom-date-input label {
+ .customDate label {
    position: absolute;
    /* top: 0; */
    /* left: 0; */
@@ -181,7 +185,7 @@
    transition: all 0.3s ease;
  }
 
- .custom-date-input input[type="date"] {
+ .customDate input[type="date"] {
    /* padding: 0.5em; */
    /* font-size: 1em; */
    background: #AFA8A8;
@@ -190,12 +194,12 @@
    border-radius: 2em;
  }
 
- .custom-date-input input[type="date"]:focus+label,
- .custom-date-input input[type="date"]:valid+label {
+ .customDate input[type="date"]:focus+label,
+ .customDate input[type="date"]:valid+label {
    transform: translateX(-100%);
  }
 
- .champDate {
+ .labelDate {
    z-index: 1;
    border-radius: 2em;
    height: 2em;
@@ -217,8 +221,8 @@
    visibility: visible;
  }
 
- .cd1-hidden,
- .cd2-hidden {
+ .cd1Hidden,
+ .cd2Hidden {
    visibility: hidden;
  }
 
@@ -244,7 +248,7 @@
    transform: rotate(135deg);
  }
 
- .dropdown-btn {
+ .dropDownBtn {
    position: relative;
  }
 

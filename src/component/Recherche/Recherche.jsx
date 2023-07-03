@@ -51,37 +51,37 @@ function Recherche() {
 
 
   return (
-    <div>
-      <h1 className="titre_recherche">Trouvez votre prochaine destination!</h1>
+    <div className="searchContainer">
+      <h1 className="titreSearch">Trouvez votre prochaine destination!</h1>
 
-      <div className="infodestination">
-        <div className="infoecrit">
+      <div className="infoDestination">
+        <div className="infoEcrit">
 
-          <input className="champRecherche" type="text" name="destination" id="destination" placeholder="Où souhaitez-vous aller?" />
+          <input className="champSearch" type="text" name="destination" id="destination" placeholder="Où souhaitez-vous aller?" />
           <br />
 
-          <div className="conteneur_recherche">
+          <div className="conteneurSearch">
 
-            <div className="champRecherche-label custom-date-input">
-              <label htmlFor="arrivee" className={`champDate ${isLabelArriveeHidden ? 'cd1Hidden' : ''}`}
+            <div className="champSearchLabel customDate">
+              <label htmlFor="arrivee" className={`labelDate ${isLabelArriveeHidden ? 'cd1Hidden' : ''}`}
                 min="2023-01-01" max="2040-01-01" onClick={handleArriveeClick}>Arrivée</label>
-              <input title="Arrivée" className="champRecherche date"
+              <input title="Arrivée" className="champSearch date"
                 type="date" name="arrivee" id="arrivee" onBlur={handleArriveeBlur} />
 
             </div>
 
-            <div className="champRecherche-label custom-date-input">
-              <label htmlFor="depart" className={`champDate ${isLabelDepartHidden ? 'cd2Hidden' : ''}`}
+            <div className="champSearchLabel customDate">
+              <label htmlFor="depart" className={`labelDate ${isLabelDepartHidden ? 'cd2Hidden' : ''}`}
                 min="2023-01-01" max="2040-01-01" onClick={handleDepartClick}>Départ</label>
 
-              <input placeholder="Départ" className="champRecherche date"
+              <input placeholder="Départ" className="champSearch date"
                 type="date" name="depart" id="depart" onBlur={handleDepartBlur} />
 
             </div>
           </div>
 
           <br />
-          <select className="champRecherche" name="voyageurs" id="voyageurs">
+          <select className="champSearch" name="voyageurs" id="voyageurs">
             <div className="voyag">
               <option value="0" selected>Nombre de voyageurs</option>
               <option value="1">1 Voyageur</option>
@@ -97,9 +97,9 @@ function Recherche() {
               <option value="11+">11 et plus</option></div>
           </select>
           <br />
-          <div className="dropdown">
-            <button className="dropdown-btn" onclick="toggleDropdown()">Mots-clé<span class="chevron bottom"></span></button>
-            <div className="dropdown-content" id="dropdown-content">
+          <div className="dropDown">
+            <button className="dropDownBtn" onclick="toggleDropdown()">Mots-clé<span class="chevron bottom"></span></button>
+            <div className="dropDownContent" id="dropdown-content">
               <label><input type="checkbox" /> Option 1</label>
               <label><input type="checkbox" /> Option 2</label>
               <label><input type="checkbox" /> Option 3</label>
@@ -110,12 +110,12 @@ function Recherche() {
           </div>
           <br />
           {/* <button class="champRecherche vert"> <a class="bouton_vert" href="#">Recherche</a></button>  */}
-          <a className="champRecherche vert bouton_vert" href="#">Recherche</a>
+          <a className="champSearch vert boutonVert" href="#">Recherche</a>
 
         </div>
         {/* <!-- CARTE --> */}
 
-        <div className="map__image">
+        <div className="mapImage">
           <svg xmlns="http://www.w3.org/2000/svg" xmlnsAmcharts="http://amcharts.com/ammap" xmlnsLlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 612 685">
 
             {/* <!-- LIEN A METTRE DANS "XLINK:HREF=" --> */}
