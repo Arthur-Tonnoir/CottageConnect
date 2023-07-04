@@ -46,9 +46,9 @@ Cottage.findById = (id, result) => {
     });
 };
 
-Cottage.findByMaxPersonneAndDateCreationAndVille = (max_personnes, date_start, date_end, ville, result) => {
-    sql.query('SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress, id_picture FROM cottages WHERE max_personnes = ? AND date_creation = ?',
-    [], 
+Cottage.findByMaxPersonneAndDateStartAndDateEndAndVille = (max_personnes, date_start, date_end, ville, result) => {
+    sql.query('SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress, id_picture FROM cottages WHERE max_personnes = ? AND id = SELECT id_cottages FROM reservations WHERE (date_start <= ? AND date_end >= ?) AND id_cottages.adress.ville_name = ?',
+    [max_personnes, date_start, date_end, ville], 
     (err, res) =>{
         if (err) {
             console.log('Erreur :', err);
