@@ -8,7 +8,7 @@ const Avi = function (avi){
 }
 
 Avi.findAll = result => {
-    sql.query('SELECT * FROM avis', (err, res) => {
+    sql.query('SELECT id, text, note, id_users, id_cottages FROM avis', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(null, err);
@@ -21,7 +21,7 @@ Avi.findAll = result => {
 };
 
 Avi.findById = (id, result) => {
-    sql.query('SELECT * FROM avis WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT id, text, note, id_users, id_cottages FROM avis WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);
