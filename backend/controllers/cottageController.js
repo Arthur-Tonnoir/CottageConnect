@@ -68,12 +68,12 @@ exports.create = (req, res) => {
         content: req.body.content,
         dayprice: req.body.dayprice,
         caution: req.body.caution,
-        adress: req.body.adress,
         res_count: req.body.res_count,
-        id_city: req.body.id_city,
+        max_personnes: req.body.max_personnes,
+        id_prestation: req.body.id_prestation,
+        id_adress: req.body.id_adress,
         id_categories: req.body.id_categories,
-        id_users: req.body.id_users,
-        max_personnes: req.body.max_personnes
+        id_proprio: req.body.id_proprio,
     });
 
     Cottage.create(newCottage, (err, data) => {
@@ -103,12 +103,11 @@ exports.update = (req, res) => {
         content: req.body.content,
         dayprice: req.body.dayprice,
         caution: req.body.caution,
-        adress: req.body.adress,
         res_count: req.body.res_count,
-        id_city: req.body.id_city,
+        max_personnes: req.body.max_personnes,
+        id_adress: req.body.id_adress,
         id_categories: req.body.id_categories,
-        id_users: req.body.id_users,
-        max_personnes: req.body.max_personnes
+        id_proprio: req.body.id_proprio,
     });
 
     Cottage.update(id, updated, (err, data) => {
