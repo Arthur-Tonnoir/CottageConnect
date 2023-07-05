@@ -76,7 +76,11 @@ function Nav() {
                         </ul>
                     </li>
                     <li>
-                        <Link to="/addcottage">Publiez votre annonce</Link>
+                        {!auth ? (
+                            <Link to="/login">Publiez votre annonce</Link> 
+                        ):(
+                            <Link to="/addcottage">Publiez votre annonce</Link>
+                        )}
                     </li>
                 <li>Recherche
                     <ul className="navbarSearch">
