@@ -33,7 +33,7 @@ exports.findById = (req, res) => {
     });
 };
 
-exports.findByMaxPersonneAndDateStartAndDateEndAndVille = (req, res) => {
+exports.findByMombrePersonneAndDateStartAndDateEnd = (req, res) => {
     const max_personne = req.params.max_personne;
     const date_start = req.params.date_start;
     const date_end = req.params.date_end;
