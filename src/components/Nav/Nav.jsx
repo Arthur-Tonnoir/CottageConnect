@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Nav.scss';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Menu } from "@mui/material";
+import axios from "axios";
+import { checkAuth } from "../auth";
+import { Link } from "react-router-dom";
 
 function Nav() {
     const [selectedLangue, setSelectedLangue] = useState('France');
@@ -22,6 +24,21 @@ function Nav() {
         toggleMenu ? setToggleMenu(false) : setToggleMenu(true);
     }
 
+    const [auth, setAuth] = useState(false)
+    const [admin, setAdmin] = useState(false)
+
+    useEffect(() => {
+        checkAuth(setAuth, setAdmin)
+      }, []);
+
+      const handleDelete = () => {
+        axios
+          .get("http://localhost:3001/users/logout")
+          .then(() => {
+            window.location.reload();
+          })
+          .catch((err) => console.log(err));
+      };
 
     return (
         <header>
@@ -59,7 +76,7 @@ function Nav() {
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Publiez votre annonce</a>
+                        <Link to="/addcottage">Publiez votre annonce</Link>
                     </li>
                 <li>Recherche
                     <ul className="navbarSearch">
@@ -89,21 +106,34 @@ function Nav() {
                 <li>Compte
                     <ul className="navbarCompte">
                         <li className="vide"></li>
-                        <li>
-                            <a href="#">Connexion</a>
-                        </li>
-                        <li>
-                            <a href="#">Inscription</a>
-                        </li>
-                        <li>
-                            <a href="#">Categorie3</a>
-                        </li>
-                        <li>
-                            <a href="#">Categorie4</a>
-                        </li>
-                        <li>
-                            <a href="#">Categorie5</a>
-                        </li>
+                        {!auth ? (
+                            <>
+                                <li>
+                                    <Link to="/login">Connexion</Link>
+                                </li>
+                                <li>
+                                    <Link to="/register">Inscription</Link>
+                                </li>
+                            </>
+                        ): admin ? (
+                            <>
+                                <li>
+                                <Link to="/profil">Profil</Link>
+                                </li>
+                                <li>
+                                <Link to="/admin">Admin Board</Link>
+                                </li>
+                                <button onClick={handleDelete}>Logout</button>
+                          </>
+
+                        ) : (
+                            <>
+                                <li>
+                                <Link to="/profil">Profil</Link>
+                                </li>
+                                <button onClick={handleDelete}>Logout</button>
+                            </>
+                        )}
                     </ul>
                 </li>
                 <li>

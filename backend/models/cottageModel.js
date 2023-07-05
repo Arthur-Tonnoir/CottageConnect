@@ -7,11 +7,19 @@ const Cottage = function (cottage){
     this.dayprice = cottage.dayprice;
     this.caution = cottage.caution;
     this.adress = cottage.adress;
-    this.res_count = cottage.res_count;
-    this.id_city = cottage.id_city;
+    this.city = cottage.city;
+    this.cp = cottage.cp;
+    this.max_personnes = cottage.max_personnes
+    this.bed_count = cottage.bed_count;
+    this.room_count = cottage.room_count;
+    this.has_wifi = cottage.has_wifi;
+    this.has_parking = cottage.has_parking;
+    this.has_clim = cottage.has_clim;
+    this.has_pool = cottage.has_pool;
+    this.reservation_count = cottage.reservation_count;
+    this.id_regions = cottage.id_regions;
     this.id_categories = cottage.id_categories;
     this.id_users = cottage.id_users;
-    this.max_personnes = cottage.max_personnes
 }
 
 Cottage.findAll = result => {
@@ -63,6 +71,7 @@ Cottage.findByMaxPersonneAndDateCreationAndVille = (max_personnes, date_creation
         }
     )
 }
+
 
 Cottage.create = (newCottages, result) => {
     sql.query('INSERT INTO cottages SET ?', newCottages, (err, res) => {
