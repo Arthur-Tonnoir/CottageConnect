@@ -34,19 +34,19 @@ exports.findById = (req, res) => {
 };
 
 exports.findByMombrePersonneAndDateStartAndDateEnd = (req, res) => {
-    const max_personne = req.params.max_personne;
+    const nombre_personne = req.params.nombre_personne;
     const date_start = req.params.date_start;
     const date_end = req.params.date_end;
     
-    Cottage.findByMombrePersonneAndDateStartAndDateEnd(max_personne, date_start, date_end, (err, data) => {
+    Cottage.findByMombrePersonneAndDateStartAndDateEnd(nombre_personne, date_start, date_end, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Cottage introuvable avec comme filtre ${max_personne}, ${date_start}, ${date_end}`
+                    message: `Cottage introuvable avec comme filtre ${nombre_personne}, ${date_start}, ${date_end}`
                 });
             } else {
                 res.status(500).send({
-                    message: `Erreur lors de la récupération du cottage avec comme filtre ${max_personne}, ${date_start}, ${date_end}.`
+                    message: `Erreur lors de la récupération du cottage avec comme filtre ${nombre_personne}, ${date_start}, ${date_end}.`
                 });
             }
         } else {
