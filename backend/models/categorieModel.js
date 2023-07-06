@@ -5,7 +5,7 @@ const Categorie = function (categorie) {
 };
 
 Categorie.findAll = result => {
-    sql.query('SELECT * FROM categories ORDER BY id', (err, res) => {
+    sql.query('SELECT name FROM categories', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(null, err);
@@ -18,7 +18,7 @@ Categorie.findAll = result => {
 };
 
 Categorie.findById = (id, result) => {
-    sql.query('SELECT * FROM categories WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT name FROM categories WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);
@@ -30,7 +30,6 @@ Categorie.findById = (id, result) => {
             return;
         }
 
-        // Si la catégorie n'est pas trouvé
         result({ kind: 'not_found' }, null);
     });
 };
@@ -60,7 +59,6 @@ Categorie.update = (id, categorie, result) => {
             }
 
             if (res.affectedRows === 0) {
-                // Si la catégorie n'est pas trouvé
                 result({ kind: 'not_found' }, null);
                 return;
             }
@@ -80,7 +78,6 @@ Categorie.delete = (id, result) => {
         }
 
         if (res.affectedRows === 0) {
-            // Si la catégorie n'est pas trouvé
             result({ kind: 'not_found' }, null);
             return;
         }

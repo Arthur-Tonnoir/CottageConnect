@@ -8,7 +8,7 @@ const Picture = function (picture){
 }
 
 Picture.findAll = result => {
-    sql.query('SELECT * FROM pictures', (err, res) => {
+    sql.query('SELECT id, picture_name, picture_path FROM pictures', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(null, err);
@@ -21,7 +21,7 @@ Picture.findAll = result => {
 };
 
 Picture.findById = (id, result) => {
-    sql.query('SELECT * FROM picture WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT picture_name, picture_path FROM picture WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);

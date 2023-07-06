@@ -1,11 +1,11 @@
-const Citie = require('../models/citieModel');
+const Adress = require('../models/adressModel');
 
 exports.findAll = (req, res) => {
-    Citie.findAll((err, data) => {
+    Adress.findAll((err, data) => {
         if (err) {
             res.status(500).send({
                 message:
-                    err.message || 'Une erreur s\'est produite lors de la récupération des cities.'
+                    err.message || 'Une erreur s\'est produite lors de la récupération des adress.'
             });
         } else {
             res.send(data);
@@ -16,15 +16,15 @@ exports.findAll = (req, res) => {
 exports.findById = (req, res) => {
     const id = req.params.id;
 
-    Citie.findById(id, (err, data) => {
+    Adress.findById(id, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Citie avec l'ID ${id} non trouvé.`
+                    message: `Adress avec l'ID ${id} non trouvé.`
                 });
             } else {
                 res.status(500).send({
-                    message: `Erreur lors de la récupération de la citie avec l'ID ${id}.`
+                    message: `Erreur lors de la récupération de l'adress avec l'ID ${id}.`
                 });
             }
         } else {
@@ -40,17 +40,20 @@ exports.create = (req, res) => {
         });
     }
 
-    const newCitie = new Citie({
-        name: req.body.name,
-        cp: req.body.cp,
-        is_region: req.body.is_region
+    const newAdress = new Adress({
+        rue_number: req.body.rue_number,
+        rue_name: req.body.rue_name,
+        code_postal: req.body.code_postal,
+        ville_name: req.body.ville_name,
+        id_commodities: req.body.id_commodities,
+        id_regions: req.body.id_regions,
     });
 
-    Citie.create(newCitie, (err, data) => {
+    Adress.create(newAdress, (err, data) => {
         if (err) {
             res.status(500).send({
                 message:
-                    err.message || 'Une erreur s\'est produite lors de la création de la citie.'
+                    err.message || 'Une erreur s\'est produite lors de la création de l\'adress.'
             });
         } else {
             res.send(data);
@@ -67,22 +70,24 @@ exports.update = (req, res) => {
 
     const id = req.params.id;
 
-    const updated = new Citie({
-        name: req.body.name,
-        cp: req.body.cp,
-        is_region: req.body.is_region
+    const updated = new Adress({
+        rue_number: req.body.rue_number,
+        rue_name: req.body.rue_name,
+        code_postal: req.body.code_postal,
+        ville_name: req.body.ville_name,
+        id_commodities: req.body.id_commodities,
+        id_regions: req.body.id_regions,
     });
 
-
-    Citie.update(id, updated, (err, data) => {
+    Adress.update(id, updated, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Citie avec l'ID ${id} non trouvé.`
+                    message: `Adress avec l'ID ${id} non trouvé.`
                 });
             } else {
                 res.status(500).send({
-                    message: `Erreur lors de la mise à jour de la citie avec l'ID ${id}.`
+                    message: `Erreur lors de la mise à jour de l'adress avec l'ID ${id}.`
                 });
             }
         } else {
@@ -94,19 +99,19 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Citie.delete(id, (err, data) => {
+    Adress.delete(id, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Citie avec l'ID ${id} non trouvé.`
+                    message: `Adress avec l'ID ${id} non trouvé.`
                 });
             } else {
                 res.status(500).send({
-                    message: `Erreur lors de la suppression de la citie avec l'ID ${id}.`
+                    message: `Erreur lors de la suppression de l'adress avec l'ID ${id}.`
                 });
             }
         } else {
-            res.send({ message: 'Citie supprimé avec succès !' });
+            res.send({ message: 'Adress supprimé avec succès !' });
         }
     });
 };

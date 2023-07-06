@@ -50,9 +50,9 @@ exports.create = (req, res) => {
     lastname: req.body.lastname,
     phone: req.body.phone,
     postal: req.body.postal,
-    city: req.body.city,
     avatar: req.body.avatar,
     website: req.body.website,
+    id_adress: req.body.id_adress,
   });
 
   User.create(newUser, (err, data) => {
@@ -74,8 +74,8 @@ exports.update = (req, res) => {
       message: "Le contenu de la requête ne peut pas être vide.",
     });
   }
-
-  const id = req.params.id;
+  
+  const id = req.params.id;  
 
   const updated = new User({
     username: req.body.username,
@@ -86,9 +86,9 @@ exports.update = (req, res) => {
     lastname: req.body.lastname,
     phone: req.body.phone,
     postal: req.body.postal,
-    city: req.body.city,
     avatar: req.body.avatar,
     website: req.body.website,
+    id_adress: req.body.id_adress,
   });
 
   User.update(id, updated, (err, data) => {

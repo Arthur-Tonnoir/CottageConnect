@@ -43,6 +43,8 @@ exports.create = (req, res) => {
     const newFacture = new Facture({
 
         date_start: req.body.date_start,
+        date_end: req.body.date_end,
+        cottage_id: req.body.cottage_id,
         cottage_name: req.body.cottage_name,
         cottage_adress: req.body.cottage_adress,
         client_id: req.body.client_id,
@@ -52,7 +54,7 @@ exports.create = (req, res) => {
         client_email: req.body.client_email,
         client_phone: req.body.client_phone,
         client_postal: req.body.client_postal,
-        client_city: req.body.client_city,
+        client_adress: req.body.client_adress,
         proprio_id: req.body.proprio_id,
         proprio_firstname: req.body.proprio_firstname,
         proprio_username: req.body.proprio_username,
@@ -60,11 +62,11 @@ exports.create = (req, res) => {
         proprio_email: req.body.proprio_email,
         proprio_phone: req.body.proprio_phone,
         proprio_postal: req.body.proprio_postal,
-        nombre_personnes: req.body.nombre_personnes,
-        proprio_city: req.body.proprio_city,
+        proprio_adress: req.body.proprio_adress,
         duration: req.body.duration,
-        total: req.body.total,
-        cottage_id: req.body.cottage_id,
+        price: req.body.price,
+        nombre_personnes: req.body.nombre_personnes,
+        
 
     });
 
@@ -91,6 +93,8 @@ exports.update = (req, res) => {
 
     const updated = new Facture({
         date_start: req.body.date_start,
+        date_end: req.body.date_end,
+        cottage_id: req.body.cottage_id,
         cottage_name: req.body.cottage_name,
         cottage_adress: req.body.cottage_adress,
         client_id: req.body.client_id,
@@ -100,7 +104,7 @@ exports.update = (req, res) => {
         client_email: req.body.client_email,
         client_phone: req.body.client_phone,
         client_postal: req.body.client_postal,
-        client_city: req.body.client_city,
+        client_adress: req.body.client_adress,
         proprio_id: req.body.proprio_id,
         proprio_firstname: req.body.proprio_firstname,
         proprio_username: req.body.proprio_username,
@@ -108,11 +112,12 @@ exports.update = (req, res) => {
         proprio_email: req.body.proprio_email,
         proprio_phone: req.body.proprio_phone,
         proprio_postal: req.body.proprio_postal,
-        nombre_personnes: req.body.nombre_personnes,
-        proprio_city: req.body.proprio_city,
+        proprio_adress: req.body.proprio_adress,
         duration: req.body.duration,
-        total: req.body.total,
-        cottage_id: req.body.cottage_id,
+        price: req.body.price,
+        nombre_personnes: req.body.nombre_personnes,
+        
+
     });
 
     Facture.update(id, updated, (err, data) => {

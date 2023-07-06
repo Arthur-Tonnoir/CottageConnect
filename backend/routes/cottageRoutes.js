@@ -4,7 +4,7 @@ const cottageController = require('../controllers/cottageController');
 
 router.get('/', cottageController.findAll);
 router.get('/cottage/:id', cottageController.findById);
-router.get('/cottage/:max_personne/:date_creation/:ville', cottageController.findByMaxPersonneAndDateCreationAndVille)
+router.get('/cottage/:nombre_personne/:date_start/:date_end/', cottageController.findByMombrePersonneAndDateStartAndDateEnd);
 router.post('/cottage/', cottageController.create);
 router.put('/cottage/:id', cottageController.update);
 router.delete('/cottage/:id', cottageController.delete);

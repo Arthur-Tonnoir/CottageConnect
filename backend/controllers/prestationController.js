@@ -1,11 +1,11 @@
-const Linktable = require('../models/linktableModel');
+const Prestation = require('../models/prestationModel');
 
 exports.findAll = (req, res) => {
-    Linktable.findAll((err, data) => {
+    Prestation.findAll((err, data) => {
         if (err) {
             res.status(500).send({
                 message:
-                    err.message || 'Une erreur s\'est produite lors de la récupération des linktable.'
+                    err.message || 'Une erreur s\'est produite lors de la récupération des prestations.'
             });
         } else {
             res.send(data);
@@ -16,15 +16,15 @@ exports.findAll = (req, res) => {
 exports.findById = (req, res) => {
     const id = req.params.id;
 
-    Linktable.findById(id, (err, data) => {
+    Prestation.findById(id, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Linktable avec l'ID ${id} non trouvé.`
+                    message: `Prestations avec l'ID ${id} non trouvé.`
                 });
             } else {
                 res.status(500).send({
-                    message: `Erreur lors de la récupération de la linktable avec l'ID ${id}.`
+                    message: `Erreur lors de la récupération de la prestations avec l'ID ${id}.`
                 });
             }
         } else {
@@ -40,16 +40,15 @@ exports.create = (req, res) => {
         });
     }
 
-    const newLinktable = new Linktable({
-        id_cities: req.body.id_cities,
-        id_commodities: req.body.id_commodities
+    const newPrestation = new Prestation({
+        name: req.body.name
     });
 
-    Linktable.create(newLinktable, (err, data) => {
+    Prestation.create(newPrestation, (err, data) => {
         if (err) {
             res.status(500).send({
                 message:
-                    err.message || 'Une erreur s\'est produite lors de la création de la linktable.'
+                    err.message || 'Une erreur s\'est produite lors de la création de l\'a prestation.'
             });
         } else {
             res.send(data);
@@ -66,20 +65,19 @@ exports.update = (req, res) => {
 
     const id = req.params.id;
 
-    const updated = new Linktable({
-        id_cities: req.body.id_cities,
-        id_commodities: req.body.id_commodities
+    const newPrestation = new Prestation({
+        name: req.body.name
     });
 
-    Linktable.update(id, updated, (err, data) => {
+    Prestation.update(id, newPrestation, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Linktable avec l'ID ${id} non trouvé.`
+                    message: `Prestation avec l'ID ${id} non trouvé.`
                 });
             } else {
                 res.status(500).send({
-                    message: `Erreur lors de la mise à jour de la linktable avec l'ID ${id}.`
+                    message: `Erreur lors de la mise à jour de l'a prestation avec l'ID ${id}.`
                 });
             }
         } else {
@@ -91,19 +89,19 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Linktable.delete(id, (err, data) => {
+    Prestation.delete(id, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Linktable avec l'ID ${id} non trouvé.`
+                    message: `Prestation avec l'ID ${id} non trouvé.`
                 });
             } else {
                 res.status(500).send({
-                    message: `Erreur lors de la suppression de la linktable avec l'ID ${id}.`
+                    message: `Erreur lors de la suppression de l'a prestation avec l'ID ${id}.`
                 });
             }
         } else {
-            res.send({ message: 'Linktable supprimé avec succès !' });
+            res.send({ message: 'Prestation supprimé avec succès !' });
         }
     });
 };

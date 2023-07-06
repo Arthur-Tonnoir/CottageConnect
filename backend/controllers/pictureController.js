@@ -71,8 +71,7 @@ exports.update = (req, res) => {
 
     const updated = new Picture({
         picture_name: req.body.picture_name,
-        picture_path: req.body.picture_path,
-        id_cottages: req.body.id_cottages
+        picture_path: req.body.picture_path
     });
 
     Picture.update(id, updated, (err, data) => {
