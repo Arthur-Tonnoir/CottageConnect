@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import './Nav.scss';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Menu } from "@mui/material";
 
 function Nav() {
+
+    /* Permet l'affichage du drapeau Français dès le lancement du site et de le changer via le clic */
     const [selectedLangue, setSelectedLangue] = useState('France');
     const handleLangueClick = (langue) => {
         setSelectedLangue(langue);
@@ -22,6 +23,37 @@ function Nav() {
         toggleMenu ? setToggleMenu(false) : setToggleMenu(true);
     }
 
+    /* Permet de modifier le placeholder de l'input date pour Arrivee et Depart */
+    const [showPlaceholder1, setShowPlaceholder1] = useState(true);
+    const [showPlaceholder2, setShowPlaceholder2] = useState(true);
+
+    const handleInputFocus1 = () => {
+        setShowPlaceholder1(false);
+    };
+
+    const handleInputBlur1 = (event) => {
+        if (event.target.value === '') {
+            setShowPlaceholder1(true);
+        }
+    };
+    const handleInputFocus2 = () => {
+        setShowPlaceholder2(false);
+    };
+
+    const handleInputBlur2 = (event) => {
+        if (event.target.value === '') {
+            setShowPlaceholder2(true);
+        }
+    };
+
+    /* Permet de gérer le changement de statut du menu déroulant en bloquant comme choix "Nombre de voyageur"*/
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('');
+
+    const handleDropdownChange = (event) => {
+        setSelectedOption(event.target.value);
+        setIsOpen(event.target.value === 'open');
+    };
 
     return (
         <header>
@@ -30,47 +62,93 @@ function Nav() {
                 <button className="navbarBurger" onClick={handleClick}>
                     <MenuIcon />
                 </button>
-                <li>
-                    <a href="#" className="logo">Logo</a>
+                <li className="logoNav">
+                    <img src="./img/logo1.png" alt="img" />
                 </li>
-                    <li>Destinations
-                        <ul className="navbarDestination">
-                            <li className="vide"></li>
-                            <li>
-                                <a href="#">Cat1</a>
-                            </li>
-                            <li>
-                                <a href="#">Cat2</a>
-                            </li>
-                            <li>
-                                <a href="#">Cat3</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Nos offres spéciales
-                        <ul className="navbarOffer">
-                            <li className="vide"></li>
-                            <li>
-                                <a href="#">Categorie1</a>
-                            </li>
-                            <li>
-                                <a href="#">Categorie2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Publiez votre annonce</a>
-                    </li>
-                <li>Recherche
-                    <ul className="navbarSearch">
+                <li className="destinationNav" >Destinations
+                    <ul className="navbarDestination">
                         <li className="vide"></li>
+                        <li>
+                            <a href="./">Categorie1</a>
+                        </li>
+                        <li>
+                            <a href="./">Categorie2</a>
+                        </li>
+                        <li>
+                            <a href="./">Categorie3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li className="offreNav">Nos offres spéciales
+                    <ul className="navbarOffer">
+                        <li className="vide"></li>
+                        <li>
+                            <a href="./">Categorie1</a>
+                        </li>
+                        <li>
+                            <a href="./">Categorie2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./" className="annonceNav">Publiez votre annonce</a>
+                </li>
+                <li className="rechercheNav">
+                    <a href="">
+                        <img src='./img/loupe.png' alt="loupe" className="imgRecherche" />
+                    </a>
+                    <ul className="navbarSearch">
                         <li className="recherche">
                             <input className="inputDestination" type="text" name="destination" id="destination" placeholder="Ou souhaitez-vous aller?" />
                             <br />
-                            <input type="date" name="arrivee" id="arrivee" />
-                            <input type="date" name="depart" id="depart" />
+                            <div className="conteneurRecherche">
+                                {showPlaceholder1 ? (
+                                    <input
+                                        className="champDate"
+                                        type="text"
+                                        placeholder="Arrivée"
+                                        onFocus={handleInputFocus1}
+                                    />
+                                ) : (
+                                    <input
+                                        className="champDate"
+                                        type="date"
+                                        onFocus={handleInputFocus1}
+                                        onBlur={handleInputBlur1}
+                                    />
+                                )}
+                            </div>
+                            <div>
+                                {showPlaceholder2 ? (
+                                    <input
+                                        className="champDate"
+                                        type="text"
+                                        placeholder="Départ"
+                                        onFocus={handleInputFocus2}
+                                    />
+                                ) : (
+                                    <input
+                                        className="champDate"
+                                        type="date"
+                                        onFocus={handleInputFocus2}
+                                        onBlur={handleInputBlur2}
+                                    />
+                                )}
+                            </div>
+
                             <br />
-                            <select name="voyageurs" id="voyageurs">
+                            <select
+                                name="voyageurs"
+                                id="voyageurs"
+                                className="voyageurSelect"
+                                onChange={handleDropdownChange}
+                                value={selectedOption}
+                            >
+                                {!isOpen && selectedOption === '' && (
+                                    <option value="" disabled>
+                                        Nombre de Voyageur
+                                    </option>
+                                )}
                                 <option value="1">1 Voyageur</option>
                                 <option value="2">2 Voyageurs</option>
                                 <option value="3">3 Voyageurs</option>
@@ -83,35 +161,40 @@ function Nav() {
                                 <option value="10">10 Voyageurs</option>
                                 <option value="11+">11 et plus</option>
                             </select>
+                            <button className="btnRecherche"><span className="spanBtnRecherche">Recherche</span></button>
                         </li>
                     </ul>
                 </li>
-                <li>Compte
+                <li className="compteNav">
+                    <a href="">
+                        <img src="./img/compte.png" alt="compte" />
+                    </a>
+
                     <ul className="navbarCompte">
                         <li className="vide"></li>
                         <li>
-                            <a href="#">Connexion</a>
+                            <a href="./">Connexion</a>
                         </li>
                         <li>
-                            <a href="#">Inscription</a>
+                            <a href="./">Inscription</a>
                         </li>
                         <li>
-                            <a href="#">Categorie3</a>
+                            <a href="./">Categorie3</a>
                         </li>
                         <li>
-                            <a href="#">Categorie4</a>
+                            <a href="./">Categorie4</a>
                         </li>
                         <li>
-                            <a href="#">Categorie5</a>
+                            <a href="./">Categorie5</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li className="langueNav">
                     <a href="#" className="langue">
                         <img id="nomLangue" src={`./img/icons8-${selectedLangue.toLowerCase()}-20.png`} alt={selectedLangue} />
-                        <span className="langue__arrow"><KeyboardArrowDownIcon /></span>
                     </a>
                     <ul className="navbarLangue">
+                        <li className="vide"></li>
                         <li className="vide"></li>
                         <li>
                             <a
