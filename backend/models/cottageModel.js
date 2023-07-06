@@ -13,7 +13,6 @@ const Cottage = function (cottage){
     this.id_proprio = cottage.id_proprio;
     this.id_adress = cottage.id_adress;
     this.id_picture = cottage.id_picture;
-    
 }
 
 Cottage.findAll = result => {
@@ -65,6 +64,7 @@ Cottage.findByMombrePersonneAndDateStartAndDateEnd = (nombre_personne, date_star
         }
     )
 }
+
 
 Cottage.create = (newCottages, result) => {
     sql.query('INSERT INTO cottages SET ?', newCottages, (err, res) => {

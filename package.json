@@ -24,7 +24,9 @@
     "eject": "react-scripts eject"
   },
   "options": {
-    "allowedHosts": ["localhost"],
+    "allowedHosts": [
+      "localhost"
+    ],
     "proxy": "https://localhost:3001/"
   },
   "eslintConfig": {
@@ -46,6 +48,6 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.63.5"
+    "sass": "^1.63.6"
   }
 }
