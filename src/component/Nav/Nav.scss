@@ -5,7 +5,7 @@ header {
     height: 10.25em;
     background-color: #E6E6E6;
     align-items: center;
-    font-size: 1.3em;
+    font-size: 1em;
     font-family: Helvetica;
     // position: fixed;
     // top: 0;
@@ -17,21 +17,22 @@ header {
     list-style: none;
     width: 100%;
     height: 100%;
-    margin-right: 1em;
-    margin-left: 1em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    transition: background-color .3s ease-in-out;
+    // transition: background-color .3s ease-in-out;
 }
 
-.navbarGreen {
-    background-color: #4cc785;
-}
+// .navbarGreen {
+//     background-color: #4cc785;
+// }
 
 .navbarBurger {
     cursor: pointer;
-    background: #4cc785;
+    // background: #4cc785;
     color: aliceblue;
     margin-right: 1em;
 
@@ -40,12 +41,8 @@ header {
     }
 }
 
-.logoNav {
-    margin-right: 1.5em;
-}
-
 .destinationNav {
-    margin: 0 3em;
+    // margin: 0 3em;
     padding-top: 5.6em;
     height: 100%;
     font-size: 1.5em;
@@ -58,18 +55,22 @@ header {
 }
 
 .rechercheNav {
-    margin-left: 4.313em;
-    font-size: 1.5em;
-    height: 100%;
-    padding-top: 5.20em;
+    // margin-left: 4.313em;
+    // font-size: 1.5em;
+    // height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 1em;
+    // padding-top: 5.20em;
 }
 
 .compteNav {
-    margin-left: 4.125em;
-    font-size: 1.5em;
-    font-weight: bold;
-    padding-top: 4.6em;
+    // margin-left: 4.125em;
+    // font-size: 1.5em;
+    // font-weight: bold;
+    // padding-top: 4.6em;
     height: 100%;
+    margin-left: 2em;
 }
 
 .compteNav li a {
@@ -78,13 +79,24 @@ header {
 }
 
 .langueNav {
-    margin-left: 5.25em;
-    padding-top: 7em;
-    height: 100%;
+    // margin-left: 5.25em;
+    // padding-top: 7em;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 2em;
+    text-align: center;
+    // display: flex;
+    align-items: center;
+    // height: 100%;
+}
+
+.navnav {
+    display:flex;
+    flex-direction: row;
 }
 
 .offreNav {
-    margin: 0 3em;
+    // margin: 0 3em;
     font-size: 1.5em;
     font-weight: bold;
     padding-top: 5.7em;
@@ -126,8 +138,15 @@ li:nth-child(5) {
     list-style: none;
     padding: 0;
 }
-
+                                            // ICI
 .navbar li:hover ul {
+    display: block;
+}
+
+.destinationNav:hover ul,
+.offreNav:hover ul,
+.compteNav:hover ul,
+.langueNav:hover ul {
     display: block;
 }
 
@@ -148,43 +167,49 @@ li:nth-child(5) {
     position: absolute;
     display: block;
     text-align: center;
-    width: 82.5em;
-    transform: translateX(-78%);
+    // width: 82.5em;
+    width: 100%;
+    margin-top: 0;
+    transform: translateX(-50%);
     background-color: #E6E6E6;
 }
 
 .navbarCompte {
-    z-index: 2;
+    // z-index: 2;
+    font-weight: bold;
     width: 6.5em;
     position: absolute;
     border-radius: 0.5em;
-    display: block;
+    font-size: 1.5em;
+    // display: block;
     text-align: center;
     left: 50%;
     transform: translateX(-50%);
     background-color: #E6E6E6;
+    margin-top: 0;
+}
+.navbarLangue {
+    margin-top: 0;
+    position: absolute;
+    border-radius: 0.5em;
+    display: block;
+    text-align: center;
+    background-color: #E6E6E6;
+    // right: 6.5em;
+    width: 4em;
 }
 
 .navbarOffer {
-    width: 11em;
+    width: 10em;
     position: absolute;
     border-radius: 0.5em;
     display: block;
     text-align: center;
-    left: 43%;
-    transform: translateX(-50%);
+    // left: 43%;
+    // transform: translateX(-50%);
     background-color: #E6E6E6;
 }
 
-.navbarLangue {
-    position: absolute;
-    border-radius: 0.5em;
-    display: block;
-    text-align: center;
-    background-color: #E6E6E6;
-    left: 95.3%;
-    width: 4em;
-}
 
 .navbarCompte a,
 .navbarLangue a,
@@ -194,8 +219,8 @@ li:nth-child(5) {
     text-align: center;
 }
 
-.langue {
-    padding-left: 1.02rem;
+.tailleLangue {
+    width: 50%;
 }
 
 

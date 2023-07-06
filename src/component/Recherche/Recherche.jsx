@@ -109,7 +109,6 @@ function Recherche() {
             </div>
           </div>
           <br />
-          {/* <button class="champRecherche vert"> <a class="bouton_vert" href="#">Recherche</a></button>  */}
           <a className="champSearch vert boutonVert" href="#">Recherche</a>
 
         </div>

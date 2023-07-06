@@ -11,6 +11,25 @@ function Nav() {
         setSelectedLangue(langue);
     };
 
+    // const [rechercheBar, setRechercheBar] = useState();
+    // const handleBarreRecherche = () => {
+    //     setRechercheBar();
+    // };
+    // useState(() => {
+    //     const rechercheBar = document.getElementsByClassName('navbarSearch');
+    //     if(rechercheBar.style.display.value == "none"){
+    //         rechercheBar.style.display.value = 'block';
+    //     }else{
+    //         rechercheBar.style.display.value = 'none'
+    //     }
+    // })
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const handleSearchClick = () => {
+        setIsSearchOpen(!isSearchOpen);
+      };
+      
+
+
     const [toggleMenu, setToggleMenu] = useState(false);
     const [navGreen, setNavGreen] = useState(false);
     const transitionNav = () => {
@@ -93,15 +112,19 @@ function Nav() {
                 <li>
                     <a href="./" className="annonceNav">Publiez votre annonce</a>
                 </li>
-                <li className="rechercheNav">
-                    <a href="">
+
+            <div class="navnav">
+                <li className="rechercheNav" >
+                    <a href="" onClick={handleSearchClick}>
                         <img src='./img/loupe.png' alt="loupe" className="imgRecherche" />
                     </a>
-                    <ul className="navbarSearch">
+                    <ul className={`navbarSearch ${isSearchOpen ? 'show' : ''}`}>
                         <li className="recherche">
                             <input className="inputDestination" type="text" name="destination" id="destination" placeholder="Ou souhaitez-vous aller?" />
                             <br />
+                            
                             <div className="conteneurRecherche">
+                                
                                 {showPlaceholder1 ? (
                                     <input
                                         className="champDate"
@@ -191,9 +214,10 @@ function Nav() {
                 </li>
                 <li className="langueNav">
                     <a href="#" className="langue">
-                        <img id="nomLangue" src={`./img/icons8-${selectedLangue.toLowerCase()}-20.png`} alt={selectedLangue} />
+                        <img id="nomLangue" class="tailleLangue" src={`./img/icons8-${selectedLangue.toLowerCase()}-20.png`} alt={selectedLangue} />
                     </a>
                     <ul className="navbarLangue">
+                        <li className="vide"></li>
                         <li className="vide"></li>
                         <li className="vide"></li>
                         <li>
@@ -202,7 +226,7 @@ function Nav() {
                                 onClick={() => handleLangueClick('France')}
                                 className={selectedLangue === 'France' ? 'hide' : ''}
                             >
-                                <img id="France" src="./img/icons8-france-20.png" alt="France" />
+                                <img id="France" class="tailleLangue" src="./img/icons8-france-20.png" alt="France" />
                             </a>
                         </li>
                         <li>
@@ -211,7 +235,7 @@ function Nav() {
                                 onClick={() => handleLangueClick('USA')}
                                 className={selectedLangue === 'USA' ? 'hide' : ''}
                             >
-                                <img id="USA" src="./img/icons8-usa-20.png" alt="USA" />
+                                <img id="USA" class="tailleLangue" src="./img/icons8-usa-20.png" alt="USA" />
                             </a>
                         </li>
                         <li>
@@ -220,7 +244,7 @@ function Nav() {
                                 onClick={() => handleLangueClick('Spain')}
                                 className={selectedLangue === 'Spain' ? 'hide' : ''}
                             >
-                                <img id="Spain" src="./img/icons8-spain-20.png" alt="Spain" />
+                                <img id="Spain" class="tailleLangue" src="./img/icons8-spain-20.png" alt="Spain" />
                             </a>
                         </li>
                         <li>
@@ -229,11 +253,12 @@ function Nav() {
                                 onClick={() => handleLangueClick('Germany')}
                                 className={selectedLangue === 'Germany' ? 'hide' : ''}
                             >
-                                <img id="Germany" src="./img/icons8-germany-20.png" alt="Germany" />
+                                <img id="Germany" class="tailleLangue" src="./img/icons8-germany-20.png" alt="Germany" />
                             </a>
                         </li>
                     </ul>
                 </li>
+            </div>
             </div>
         </header>
     );
