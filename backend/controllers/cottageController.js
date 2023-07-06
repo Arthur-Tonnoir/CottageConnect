@@ -33,20 +33,20 @@ exports.findById = (req, res) => {
     });
 };
 
-exports.findByMaxPersonneAndDateCreationAndVille = (req, res) => {
-    const max_personne = req.params.max_personne;
-    const date_creation = req.params.date_creation;
-    const ville = req.params.ville;
+exports.findByMombrePersonneAndDateStartAndDateEnd = (req, res) => {
+    const nombre_personne = req.params.nombre_personne;
+    const date_start = req.params.date_start;
+    const date_end = req.params.date_end;
     
-    Cottage.findByMaxPersonneAndDateCreationAndVille(max_personne, date_creation, ville, (err, data) => {
+    Cottage.findByMombrePersonneAndDateStartAndDateEnd(nombre_personne, date_start, date_end, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Cottage introuvable avec comme filtre ${max_personne}, ${date_creation}, ${ville}`
+                    message: `Cottage introuvable avec comme filtre ${nombre_personne}, ${date_start}, ${date_end}`
                 });
             } else {
                 res.status(500).send({
-                    message: `Erreur lors de la récupération du cottage avec comme filtre ${max_personne}, ${date_creation}, ${ville}.`
+                    message: `Erreur lors de la récupération du cottage avec comme filtre ${nombre_personne}, ${date_start}, ${date_end}.`
                 });
             }
         } else {
@@ -68,12 +68,12 @@ exports.create = (req, res) => {
         content: req.body.content,
         dayprice: req.body.dayprice,
         caution: req.body.caution,
-        adress: req.body.adress,
         res_count: req.body.res_count,
-        id_city: req.body.id_city,
+        max_personnes: req.body.max_personnes,
+        id_prestation: req.body.id_prestation,
+        id_adress: req.body.id_adress,
         id_categories: req.body.id_categories,
-        id_users: req.body.id_users,
-        max_personnes: req.body.max_personnes
+        id_proprio: req.body.id_proprio,
     });
 
     Cottage.create(newCottage, (err, data) => {
@@ -103,12 +103,11 @@ exports.update = (req, res) => {
         content: req.body.content,
         dayprice: req.body.dayprice,
         caution: req.body.caution,
-        adress: req.body.adress,
         res_count: req.body.res_count,
-        id_city: req.body.id_city,
+        max_personnes: req.body.max_personnes,
+        id_adress: req.body.id_adress,
         id_categories: req.body.id_categories,
-        id_users: req.body.id_users,
-        max_personnes: req.body.max_personnes
+        id_proprio: req.body.id_proprio,
     });
 
     Cottage.update(id, updated, (err, data) => {

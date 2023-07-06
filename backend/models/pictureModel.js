@@ -2,12 +2,11 @@ const sql = require('../config/db.config');
 
 const Picture = function (picture){
     this.picture_name = picture.picture_name;
-    this.picurre_path = picture.picurre_path;
-    this.id_cottages = picture.id_cottages;
+    this.picture_path = picture.picture_path;
 }
 
 Picture.findAll = result => {
-    sql.query('SELECT * FROM pictures', (err, res) => {
+    sql.query('SELECT id, picture_name, picture_path FROM pictures', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(null, err);
@@ -20,7 +19,7 @@ Picture.findAll = result => {
 };
 
 Picture.findById = (id, result) => {
-    sql.query('SELECT * FROM picture WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT picture_name, picture_path FROM picture WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);
@@ -51,8 +50,8 @@ Picture.create = (newPicture, result) => {
 
 Picture.update = (id, picture, result) => {
     sql.query(
-        'UPDATE pictures SET picture_name = ?, picurre_path = ? , id_cottages = ? WHERE id = ?',
-        [picture.picture_name, picture.picurre_path, picture.id_cottages, id],
+        'UPDATE pictures SET picture_name = ?, picture_path = ? WHERE id = ?',
+        [picture.picture_name, picture.picture_path, picture.id_cottages, id],
         (err, res) => {
             if (err) {
                 console.log('Erreur :', err);

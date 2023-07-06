@@ -51,7 +51,7 @@ exports.create = (req, res) => {
     nombre_personnes: req.body.nombre_personnes,
     total: req.body.total,
     id_cottages: req.body.id_cottages,
-    id_users: req.body.id_users,
+    id_client: req.body.id_client,
   });
 
   Reservation.create(newReservation, (err, data) => {
@@ -75,15 +75,16 @@ exports.update = (req, res) => {
   }
 
   const id = req.params.id;
-
+  let date = req.body.created_at;
   const updated = new Reservation({
-    create_at: req.body.create_at,
+    created_at: date,
     date_start: req.body.date_start,
+    date_end: req.body.date_end,
     duration: req.body.duration,
     nombre_personnes: req.body.nombre_personnes,
     total: req.body.total,
     id_cottages: req.body.id_cottages,
-    id_users: req.body.id_users,
+    id_client: req.body.id_client,
   });
 
   Reservation.update(id, updated, (err, data) => {

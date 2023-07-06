@@ -1,0 +1,70 @@
+.containerForm {
+    width: 100%;
+
+    .formTitle {
+        text-align: center;
+        margin-bottom: 2em;
+    }
+}
+
+.inputFormulaires {
+    display: flex;
+    justify-content: center;
+    margin-bottom: em;
+}
+
+.inputFormulaire {
+    font-weight: bold;
+    width: 20%;
+    color: azure;
+    background-color: #57a77c;
+    text-align: center;
+    height: 4.5em;
+    border: none;
+    border-radius: 0.8em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 2em;
+}
+
+.inputFormulaire::placeholder {
+    color: azure;
+}
+
+
+.textMessages {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.message {
+    color: azure;
+    background-color: #57a77c;
+    width: 65.5%;
+    height: 10em;
+    border-radius: 10px;
+    border: none;
+    resize: vertical;
+    margin-bottom: 2em;
+}
+.message::placeholder {
+    padding-top: 3em;
+    text-align: center;
+    font-weight: bold;
+    color: azure;
+    font-size: 1.3em;
+}
+
+.buttonSubmits {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonSubmit {
+    width: 15%;
+    height: 4.5em;
+    border-radius: 0.8em;
+    color: azure;
+    background-color: #57a77c;
+}

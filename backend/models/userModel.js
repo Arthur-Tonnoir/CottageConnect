@@ -11,13 +11,13 @@ const User = function (user) {
   this.lastname = user.lastname;
   this.phone = user.phone;
   this.postal = user.postal;
-  this.city = user.city;
   this.avatar = user.avatar;
   this.website = user.website;
+  this.id_adress = user.id_adress;
 };
 
 User.findAll = (result) => {
-  sql.query("SELECT * FROM users", (err, res) => {
+  sql.query("SELECT id, username, password, email, is_admin, firstname, lastname, phone, postal, avatar, website, id_adress FROM users", (err, res) => {
     if (err) {
       console.log("Erreur :", err);
       result(null, err);
@@ -30,7 +30,7 @@ User.findAll = (result) => {
 };
 
 User.findById = (id, result) => {
-  sql.query("SELECT * FROM users WHERE id = ?", id, (err, res) => {
+  sql.query("SELECT username, password, email, is_admin, firstname, lastname, phone, postal, avatar, website, id_adress FROM users WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("Erreur :", err);
       result(err, null);
@@ -90,7 +90,7 @@ User.update = (id, user, result) => {
     }
     user.password = hash;
     sql.query(
-      "UPDATE users SET username = ?, password = ? , email = ?, is_admin = ?, firstname = ?, lastname = ?, phone = ?, postal = ?, city = ?, avatar = ?, website = ?  WHERE id = ?",
+      "UPDATE users SET username = ?, password = ? , email = ?, is_admin = ?, firstname = ?, lastname = ?, phone = ?, postal = ?, avatar = ?, website = ?, id_adress = ?  WHERE id = ?",
       [
         user.username,
         user.password,
@@ -100,9 +100,9 @@ User.update = (id, user, result) => {
         user.lastname,
         user.phone,
         user.postal,
-        user.city,
         user.avatar,
         user.website,
+        user.id_adress,
         id,
       ],
       (err, res) => {
@@ -141,7 +141,7 @@ User.delete = (id, result) => {
 };
 
 User.login = (username, password, result) => {
-  sql.query("SELECT * FROM users WHERE username = ?", username, (err, res) => {
+  sql.query("SELECT password, email, is_admin, firstname, lastname, phone, postal, avatar, website, id_adress FROM users WHERE username = ?", username, (err, res) => {
     if (err) {
       result(err, null);
       return;
