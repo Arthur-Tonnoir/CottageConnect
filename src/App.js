@@ -2,12 +2,15 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Login from "./components/Login";
+// import Login from "./components/Login";
 import Register from "./components/Register";
 import Profil from "./components/Profil";
 import Home from "./components/Home";
 import Admin from "./components/Admin";
-import HomePage from "./Views/HomePage/HomePage";
+import Login from './Views/Login/Login';
+import PageProfil from './Views/PageProfil/PageProfil'
+
+
 function App() {
   return (
 
@@ -22,7 +25,8 @@ function App() {
           <Route path="/admin" Component={Admin} />
         </Routes>
       </Router> */}
-      <HomePage />
+      {/* <Login/> */}
+      <PageProfil/>
     </div>
   );
 }
