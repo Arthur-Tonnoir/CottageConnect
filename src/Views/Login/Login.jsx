@@ -6,11 +6,11 @@ import Connexion from "../../component/Connexion/Connexion";
 
 function Login() {
     return (
-        <body>
+        <div>
             <Nav />
             <Connexion />
             <Footer />
-        </body>
+        </div>
     )
 }
 export default Login;

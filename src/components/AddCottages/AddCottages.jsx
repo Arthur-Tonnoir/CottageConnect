@@ -16,7 +16,7 @@ export default class AddCottages extends Component {
     this.state = {
       auth: false,
       id_cottages: "",
-      step: 5,
+      step: 1,
       name: "",
       content: "",
       dayprice: "",
