@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CottageInfos = ({nextStep, handleChange, values, regions}) => {
+const CottageInfos = ({nextStep, handleChange, values, prestations, regions}) => {
   const Continue = e => {
     e.preventDefault();
     nextStep();
@@ -54,7 +54,7 @@ const CottageInfos = ({nextStep, handleChange, values, regions}) => {
           value={values.max_personnes} 
           onChange={handleChange('max_personnes')}
         />
-      </label>
+      </label>{/* 
       <label>Chambres
         <input 
           type="number"
@@ -68,41 +68,23 @@ const CottageInfos = ({nextStep, handleChange, values, regions}) => {
           value={values.bed_count} 
           onChange={handleChange('bed_count')}
         />
-      </label>
+      </label> */}
       </div>
       <div>
-      <label>Wifi
-        <input 
-          type="checkbox"
-          value="true"
-          checked={values.has_wifi} 
-          onChange={handleChange('has_wifi')}
-        />
-      </label>
-      <label>Parking gratuit
-        <input 
-          type="checkbox"
-          value="true"
-          checked={values.has_parking} 
-          onChange={handleChange('has_parking')}
-        />
-      </label>
-      <label>Climatisation
-        <input 
-          type="checkbox"
-          value="true"
-          checked={values.has_clim} 
-          onChange={handleChange('has_clim')}
-        />
-      </label>
-      <label>Piscine
-        <input 
-          type="checkbox"
-          value="true"
-          checked={values.has_pool} 
-          onChange={handleChange('has_pool')}
-        />
-      </label>
+      <label>
+              Choix d'une prestation
+              <select
+                name="categorie"
+                onChange={handleChange('id_prestation')}
+                value={values.id_prestation}
+              >
+                {prestations.map(prestation => (
+                  <option key={prestation.id} value={prestation.id}>
+                    {prestation.name}
+                  </option>
+                ))}
+              </select>
+            </label>
       </div>
 
       <button onClick={ Continue }>Suivant</button>
