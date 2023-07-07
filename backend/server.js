@@ -25,7 +25,7 @@ const categorieRoutes = require("./routes/categorieRoutes");
 app.use("/categories", categorieRoutes);
 
 const prestationRoutes = require("./routes/prestationRoutes");
-app.use("/cities", prestationRoutes);
+app.use("/prestations", prestationRoutes);
 
 const commoditieRoutes = require("./routes/commoditieRoutes");
 app.use("/commodities", commoditieRoutes);

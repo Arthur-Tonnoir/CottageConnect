@@ -12,11 +12,10 @@ const Cottage = function (cottage){
     this.id_categories = cottage.id_categories;
     this.id_proprio = cottage.id_proprio;
     this.id_adress = cottage.id_adress;
-    this.id_picture = cottage.id_picture;
 }
 
 Cottage.findAll = result => {
-    sql.query('SELECT id, name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress, id_picture  FROM cottages', (err, res) => {
+    sql.query('SELECT * FROM cottages', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(null, err);
@@ -29,7 +28,7 @@ Cottage.findAll = result => {
 };
 
 Cottage.findById = (id, result) => {
-    sql.query('SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress, id_picture FROM cottages WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress FROM cottages WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);
@@ -46,7 +45,7 @@ Cottage.findById = (id, result) => {
 };
 
 Cottage.findByMombrePersonneAndDateStartAndDateEnd = (nombre_personne, date_start, date_end, result) => {
-    sql.query('SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress, id_picture FROM cottages WHERE max_personnes = ? AND id = (SELECT id_cottages FROM reservation rs WHERE (date_start <= ? AND date_end >= ?))',
+    sql.query('SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress FROM cottages WHERE max_personnes = ? AND id = (SELECT id_cottages FROM reservation rs WHERE (date_start <= ? AND date_end >= ?))',
     [nombre_personne, date_start, date_end], 
     (err, res) =>{
         if (err) {
@@ -81,8 +80,8 @@ Cottage.create = (newCottages, result) => {
 
 Cottage.update = (id, cottage, result) => {
     sql.query(
-        'UPDATE cottages SET name = ?, date_creation = ? , content = ?, dayprice = ?, caution = ?, res_count = ?, max_personnes = ?, id_categories = ?, id_proprio = ?, id_adress = ?, id_picture = ?  WHERE id = ?',
-        [cottage.name, cottage.date_creation, cottage.content, cottage.dayprice, cottage.caution, cottage.res_count, cottage.max_personnes,cottage.id_categories, cottage.id_proprio, cottage.id_adress, cottage.id_picture, id],
+        'UPDATE cottages SET name = ?, date_creation = ? , content = ?, dayprice = ?, caution = ?, res_count = ?, max_personnes = ?, id_categories = ?, id_proprio = ?, id_adress = ?  WHERE id = ?',
+        [cottage.name, cottage.date_creation, cottage.content, cottage.dayprice, cottage.caution, cottage.res_count, cottage.max_personnes,cottage.id_categories, cottage.id_proprio, cottage.id_adress, id],
         (err, res) => {
             if (err) {
                 console.log('Erreur :', err);

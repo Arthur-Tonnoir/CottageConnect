@@ -108,7 +108,7 @@ exports.createWithPhotos = (req, res) => {
         caution: req.body.caution,
         adress: req.body.adress,
         city: req.body.city,
-        cp: req.body.cp,
+        code_postal: req.body.code_postal,
         max_personnes: req.body.max_personnes,
         bed_count: req.body.bed_count,
         room_count: req.body.room_count,
@@ -118,7 +118,7 @@ exports.createWithPhotos = (req, res) => {
         has_pool: req.body.has_pool,
         reservation_count: 0,
         id_regions: req.body.id_regions,
-        id_categories: 1,
+        id_categories: req.body.id_categories,
         id_users: req.body.id_users,
     });
     
