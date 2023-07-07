@@ -41,11 +41,9 @@ exports.create = (req, res) => {
     }
 
     const newAdress = new Adress({
-        rue_number: req.body.rue_number,
-        rue_name: req.body.rue_name,
+        adress: req.body.adress,
         code_postal: req.body.code_postal,
-        ville_name: req.body.ville_name,
-        id_commodities: req.body.id_commodities,
+        city: req.body.city,
         id_regions: req.body.id_regions,
     });
 
@@ -71,11 +69,9 @@ exports.update = (req, res) => {
     const id = req.params.id;
 
     const updated = new Adress({
-        rue_number: req.body.rue_number,
-        rue_name: req.body.rue_name,
+        adress: req.body.adress,
         code_postal: req.body.code_postal,
-        ville_name: req.body.ville_name,
-        id_commodities: req.body.id_commodities,
+        city: req.body.city,
         id_regions: req.body.id_regions,
     });
 

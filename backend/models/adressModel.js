@@ -1,16 +1,14 @@
 const sql = require('../config/db.config');
 
 const Adress = function (adress) {
-    this.rue_number = adress.rue_number;
-    this.rue_name = adress.rue_name;
+    this.adress = adress.adress
     this.code_postal = adress.code_postal;
-    this.ville_name = adress.ville_name;
-    this.id_commodities = adress.id_commodities;
+    this.city = adress.city;
     this.id_regions = adress.id_regions;
 }
 
 Adress.findAll = result => {
-    sql.query('SELECT id, rue_number, rue_name, code_postal, ville_name, id_commodities, id_regions FROM adress', (err, res) => {
+    sql.query('SELECT id, adress, code_postal, city, id_regions FROM adress', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(null, err);
@@ -23,7 +21,7 @@ Adress.findAll = result => {
 };
 
 Adress.findById = (id, result) => {
-    sql.query('SELECT rue_number, rue_name, code_postal, ville_name, id_commodities, id_regions FROM adress WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT  adress, code_postal, city, id_regions FROM adress WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);
@@ -54,8 +52,8 @@ Adress.create = (newAdress, result) => {
 
 Adress.update = (id, adress, result) => {
     sql.query(
-        'UPDATE adress SET rue_number = ?, rue_name = ? , code_postal = ?, ville_name = ?, id_commodities = ?, id_regions WHERE id = ?',
-        [adress.rue_number, adress.rue_name, adress.code_postal, adress.ville_name,  adress.id_commodities, adress.id_regions, id],
+        'UPDATE adress SET adress = ? , code_postal = ?, city = ?, id_regions WHERE id = ?',
+        [ adress.adress, adress.code_postal, adress.city, adress.id_regions, id],
         (err, res) => {
             if (err) {
                 console.log('Erreur :', err);

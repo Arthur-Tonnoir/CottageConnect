@@ -5,7 +5,7 @@ const Categorie = function (categorie) {
 };
 
 Categorie.findAll = result => {
-    sql.query('SELECT name FROM categories', (err, res) => {
+    sql.query('SELECT * FROM categories', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(null, err);
@@ -18,7 +18,7 @@ Categorie.findAll = result => {
 };
 
 Categorie.findById = (id, result) => {
-    sql.query('SELECT name FROM categories WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT * FROM categories WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);

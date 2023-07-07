@@ -35,7 +35,6 @@ exports.findById = (req, res) => {
 
 exports.create = (req, res) => {
     if (!req.file) {
-        console.log(req.body);
         res.status(400).send({
             message: 'Aucun fichier séléctionner.'
         });
@@ -71,7 +70,8 @@ exports.update = (req, res) => {
 
     const updated = new Picture({
         picture_name: req.body.picture_name,
-        picture_path: req.body.picture_path
+        picture_path: req.body.picture_path,
+        id_cottages: req.body.id_cottages
     });
 
     Picture.update(id, updated, (err, data) => {

@@ -23,19 +23,16 @@ export default class AddCottages extends Component {
       caution: "",
       adress: "",
       city: "",
-      cp: "",
+      code_postal: "",
       max_personnes: "",
-      bed_count: "",
-      room_count: "",
-      has_wifi: false,
-      has_parking: false,
-      has_clim: false,
-      has_pool: false,
+      id_prestation: "1",
       id_categories: "1",
       id_regions: "1",
+      id_adress: "1",
       id_users: "",
       categories: [],
       regions: [],
+      prestations: [],
       file: '',
     };
   }
@@ -46,15 +43,27 @@ export default class AddCottages extends Component {
 
   componentDidMount() {
     checkAuth(this.setAuth);
-    this.fetchCategories();
-    this.fetchUserId();
+    this.fetchPrestations();
     this.fetchRegions();
+    this.fetchUserId();
+    this.fetchCategories();
   }
   componentDidUpdate(prevProps, prevState) {
     if (!prevState.auth && !this.state.auth) {
       window.location.href = "/login";
     }
   }
+
+  fetchPrestations = () => {
+    axios
+      .get("http://localhost:3001/prestations")
+      .then((res) => {
+        this.setState({ prestations: res.data });
+      })
+      .catch((err) => {
+        console.error("Erreur lors de la récupération des prestations :", err);
+      });
+  };
 
   fetchRegions = () => {
     axios
@@ -115,11 +124,8 @@ export default class AddCottages extends Component {
     e.preventDefault();
 
     const formData = new FormData();
-    console.log(this.state.id_cottages, this.state.file);
     formData.append('id_cottages', this.state.id_cottages);
     formData.append('photo', this.state.file);
-    console.log(formData);
-    console.log(this.state);
     axios
       .post("http://localhost:3001/pictures/", formData)
       .then(() => {
@@ -146,6 +152,7 @@ export default class AddCottages extends Component {
         step,
         categories,
         regions,
+        prestations,
         name,
         content,
         dayprice,
@@ -154,12 +161,7 @@ export default class AddCottages extends Component {
         city,
         cp,
         max_personnes,
-        bed_count,
-        room_count,
-        has_wifi,
-        has_parking,
-        has_clim,
-        has_pool,
+        id_prestation,
         id_regions,
         id_categories,
         id_users,
@@ -176,12 +178,7 @@ export default class AddCottages extends Component {
         city,
         cp,
         max_personnes,
-        bed_count,
-        room_count,
-        has_wifi,
-        has_parking,
-        has_clim,
-        has_pool,
+        id_prestation,
         id_regions,
         id_categories,
         id_users,
@@ -197,6 +194,7 @@ export default class AddCottages extends Component {
               handleChange={this.handleChange}
               values={values}
               regions={regions}
+              prestations={prestations}
             />
           );
         case 2:
