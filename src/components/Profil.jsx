@@ -1,11 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 function Profil() {
-  const [auth, setAuth] = useState(false);
   const [message, setMessage] = useState("");
   const [username, setUsername] = useState("");
+  const [auth, setAuth] = useState(false);
   const [data, setData] = useState("");
   axios.defaults.withCredentials = true;
 

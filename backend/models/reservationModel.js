@@ -51,7 +51,6 @@ Reservation.create = (newReservation, result) => {
         console.log(err);
       }
       if (res.length === 0) {
-        console.log(newReservation);
         sql.query(
           "INSERT INTO reservations SET ?",
           newReservation,

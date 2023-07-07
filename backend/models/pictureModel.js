@@ -1,8 +1,10 @@
 const sql = require('../config/db.config');
 
+
 const Picture = function (picture){
     this.picture_name = picture.picture_name;
     this.picture_path = picture.picture_path;
+    this.id_cottages = picture.id_cottages;
 }
 
 Picture.findAll = result => {
@@ -38,7 +40,8 @@ Picture.findById = (id, result) => {
 Picture.create = (newPicture, result) => {
     sql.query('INSERT INTO pictures SET ?', newPicture, (err, res) => {
         if (err) {
-            console.log('Erreur :', err);
+            console.log('Erreur :', err);  
+            console.log("np :::", newPicture)
             result(err, null);
             return;
         }
@@ -50,7 +53,7 @@ Picture.create = (newPicture, result) => {
 
 Picture.update = (id, picture, result) => {
     sql.query(
-        'UPDATE pictures SET picture_name = ?, picture_path = ? WHERE id = ?',
+        'UPDATE pictures SET picture_name = ?, picture_path = ? , id_cottages = ? WHERE id = ?',
         [picture.picture_name, picture.picture_path, picture.id_cottages, id],
         (err, res) => {
             if (err) {

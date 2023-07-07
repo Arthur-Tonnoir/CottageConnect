@@ -34,15 +34,17 @@ exports.findById = (req, res) => {
 };
 
 exports.create = (req, res) => {
-    if (!req.body) {
+    if (!req.file) {
         res.status(400).send({
-            message: 'Le contenu de la requête ne peut pas être vide.'
+            message: 'Aucun fichier séléctionner.'
         });
+        return;
     }
 
     const newPicture = new Picture({
-        picture_name: req.body.picture_name,
-        picture_path: req.body.picture_path
+        picture_name: req.file.originalname,
+        picture_path: req.file.path,
+        id_cottages: req.body.id_cottages
     });
 
     Picture.create(newPicture, (err, data) => {
@@ -68,7 +70,8 @@ exports.update = (req, res) => {
 
     const updated = new Picture({
         picture_name: req.body.picture_name,
-        picture_path: req.body.picture_path
+        picture_path: req.body.picture_path,
+        id_cottages: req.body.id_cottages
     });
 
     Picture.update(id, updated, (err, data) => {
