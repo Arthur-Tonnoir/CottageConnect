@@ -36,20 +36,21 @@ exports.findById = (req, res) => {
     });
 };
 
-exports.findByMombrePersonneAndDateStartAndDateEnd = (req, res) => {
-    const nombre_personne = req.params.nombre_personne;
+exports.findByMombrePersonneAndDateStartAndDateEndAndVille = (req, res) => {
+    const nombre_personnes = req.params.nombre_personnes;
     const date_start = req.params.date_start;
     const date_end = req.params.date_end;
+    const city = req.params.city;
     
-    Cottage.findByMombrePersonneAndDateStartAndDateEnd(nombre_personne, date_start, date_end, (err, data) => {
+    Cottage.findByMombrePersonneAndDateStartAndDateEndAndVille(nombre_personnes, date_start, date_end, city, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Cottage introuvable avec comme filtre ${nombre_personne}, ${date_start}, ${date_end}`
+                    message: `Cottage introuvable avec comme filtre ${nombre_personnes}, ${date_start}, ${date_end}`
                 });
             } else {
                 res.status(500).send({
-                    message: `Erreur lors de la récupération du cottage avec comme filtre ${nombre_personne}, ${date_start}, ${date_end}.`
+                    message: `Erreur lors de la récupération du cottage avec comme filtre ${nombre_personnes}, ${date_start}, ${date_end}.`
                 });
             }
         } else {
@@ -57,7 +58,6 @@ exports.findByMombrePersonneAndDateStartAndDateEnd = (req, res) => {
         }
     })
 }
-
 exports.create = (req, res) => {
     if (!req.body) {
         res.status(400).send({

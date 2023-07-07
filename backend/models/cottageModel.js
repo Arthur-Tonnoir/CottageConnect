@@ -44,24 +44,36 @@ Cottage.findById = (id, result) => {
     });
 };
 
-Cottage.findByMombrePersonneAndDateStartAndDateEnd = (nombre_personne, date_start, date_end, result) => {
-    sql.query('SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress FROM cottages WHERE max_personnes = ? AND id = (SELECT id_cottages FROM reservation rs WHERE (date_start <= ? AND date_end >= ?))',
-    [nombre_personne, date_start, date_end], 
-    (err, res) =>{
-        if (err) {
-            console.log('Erreur :', err);
-            result(err, null);
-            return;
+Cottage.findByMombrePersonneAndDateStartAndDateEndAndVille = (nombre_personnes, date_start, date_end, city, result) => {
+    sql.query('SELECT id FROM adress WHERE city = ?', 
+    [city], 
+    (errAdress, resAdress) => {
+        if(errAdress){
+            console.log('Erreur :', errAdress);
         }
-        if (res.length) {
-            console.log('Cottages trouvé :', res[0]);
-            result(null, res[0]);
-            return;
-        }
-
-        result({ kind: 'not_found' }, null);
+        if(resAdress.length)
+        {
+            console.log('Adresse trouvé :', resAdress[0]);
+            const id_adress = (resAdress[0].id);
+            sql.query('SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress FROM cottages WHERE id = (SELECT id_cottages FROM reservation AS rs, cottages as co WHERE (rs.date_start <= ? AND rs.date_end >= ?) AND co.id_adress = ? AND rs.nombre_personnes = ?  ) ',
+            [date_start, date_end, id_adress, nombre_personnes ], 
+            (err, res) =>{
+            if (err) {
+                console.log('Erreur :', err);
+                result(err, null);
+                return;
+            }
+            if (res.length) {
+                console.log('Cottages trouvé :', res[0]);
+                result(null, res[0]);
+                return;
+            }
+            result({ kind: 'not_found' }, null);
         }
     )
+        }
+    })
+    
 }
 
 
