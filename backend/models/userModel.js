@@ -141,7 +141,7 @@ User.delete = (id, result) => {
 };
 
 User.login = (username, password, result) => {
-  sql.query("SELECT password, email, is_admin, firstname, lastname, phone, postal, avatar, website, id_adress FROM users WHERE username = ?", username, (err, res) => {
+  sql.query("SELECT * FROM users WHERE username = ?", username, (err, res) => {
     if (err) {
       result(err, null);
       return;
