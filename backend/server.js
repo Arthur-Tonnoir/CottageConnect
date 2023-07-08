@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
-dotenv.config(__dirname + "/.env");
+dotenv.config(__dirname + "/.env2");
 const app = express();
 const port = 3001;
 
@@ -25,7 +25,7 @@ const categorieRoutes = require("./routes/categorieRoutes");
 app.use("/categories", categorieRoutes);
 
 const prestationRoutes = require("./routes/prestationRoutes");
-app.use("/prestations", prestationRoutes);
+app.use("/prestations", prestationRoutes); 
 
 const commoditieRoutes = require("./routes/commoditieRoutes");
 app.use("/commodities", commoditieRoutes);

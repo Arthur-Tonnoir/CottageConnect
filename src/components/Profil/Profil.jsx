@@ -1,14 +1,130 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Profil.scss";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Profil() {
     const [activeContent, setActiveContent] = useState("#Ip");
+    const [message, setMessage] = useState("");
+    const [auth, setAuth] = useState(false);
+    const [data, setData] = useState("");
+    const [email, setEmail] = useState("");
+    const [telephone, setTelephone] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [password, setPassword] = useState("");
+    const [password2, setPassword2] = useState("");
+    axios.defaults.withCredentials = true;
 
     const handleLinkClick = (event, target) => {
         event.preventDefault();
         setActiveContent(target);
     };
+
+    useEffect(() => {
+        const axioFetch = async () => {
+            axios
+                .get("http://localhost:3001/users/")
+                .then((res) => {
+                    if (res.data.Status === "Success") {
+                        setAuth(true);
+                        return axios.get(`http://localhost:3001/users/user/${res.data.id}`);
+                    } else {
+                        setAuth(false);
+                        setMessage(res.data.Error);
+                    }
+                })
+                .then((res) => {
+                    if (res) {
+                        setData(res.data);
+                        setEmail(res.data.email);
+                        setTelephone(res.data.phone);
+                        setFirstname(res.data.firstname);
+                        setLastname(res.data.lastname);
+                    } else {
+                        return console.log("Not Auth");
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+        }
+
+        axioFetch();
+    }, []);
+    function SendInfo(e) {
+        e.preventDefault();
+        const CurrentData = {
+            email: email ? email : null,
+            phone: telephone ? telephone : null,
+            firstname: firstname ? firstname : null,
+            lastname: lastname ? lastname : null,
+        }
+        JSON.stringify(CurrentData)
+        axios
+            .put("http://localhost:3001/users/user/info/" + data.id, CurrentData)
+            .then((res) => {
+                console.log(res.data)
+                if (res.data.Status === "OK") {
+                    window.location.replace('/PageProfil');
+                } else {
+                    alert(res.data.message);
+                    console.log(res);
+                }
+            })
+            .catch((err) => console.log(err));
+    };
+
+    function SendPassword(e) {
+        if (password === password2) {
+            e.preventDefault();
+            const CurrentData = {
+                password: password
+            }
+            JSON.stringify(CurrentData)
+            axios
+                .put("http://localhost:3001/users/user/pass/" + data.id, CurrentData)
+                .then((res) => {
+                    console.log(res.data)
+                    if (res.data.Status === "OK") {
+                        window.location.replace('/PageProfil');
+                    } else {
+                        alert(res.data.message);
+                        console.log(res);
+                    }
+                })
+                .catch((err) => console.log(err));
+        } else {
+            window.alert('Les mots de passes ne correspondent pas.')
+        }
+
+    };
+
+    function DelAccount() {
+        if (window.confirm('Voulez-vous vraiment supprimer votre compte?')) {
+            axios
+            .delete("http://localhost:3001/users/user/" + data.id)
+            .then((res) => {
+                console.log(res.data)
+                if (res.data.Status === "OK") {
+                    window.location.replace('/PageProfil');
+                } else {
+                    alert(res.data.message);
+                    console.log(res);
+                }
+            })
+            .catch((err) => console.log(err));
+
+            axios
+            .get("http://localhost:3001/users/logout")
+            .then(() => {
+              window.location.reload();
+            })
+            .catch((err) => console.log(err));
+        }
+    }
+
 
     return (
         <div class="containerProfil">
@@ -20,102 +136,106 @@ function Profil() {
                     <li><a href="#Smc" onClick={(event) => handleLinkClick(event, "#Smc")}>Supprimer mon compte</a></li>
                 </ul>
             </div>
-            <div class="contentProfil">
-                <div id="Ip" style={{ display: activeContent === "#Ip" ? "block" : "none" }}>
-                    <form className="formProfil">
-                        <ul>
-                            <li>
-                                <label for="texte1">Adresse mail</label><br />
-                                <input type="text" id="texte1" name="texte1" />
-                            </li>
-                            <li>
-                                <label for="texte2">Téléphone</label><br />
-                                <input type="text" id="texte2" name="texte2" />
-                            </li>
-                            <li>
-                                <label for="texte3">Civilité</label><br />
-                                <input type="text" id="texte3" name="texte3" />
-                            </li>
-                            <li>
-                                <label for="texte4">Nom</label><br />
-                                <input type="text" id="texte4" name="texte4" />
-                            </li>
-                            <li>
-                                <label for="texte5">Prenom</label><br />
-                                <input type="text" id="texte5" name="texte5" />
-                            </li>
-                            <li>
-                                <label for="texte6">Adresse</label><br />
-                                <input type="text" id="texte6" name="texte6" />
-                            </li>
-                            <li>
-                                <label for="texte7">Code postal</label><br />
-                                <input type="text" id="texte7" name="texte7" />
-                            </li>
-                            <li>
-                                <label for="texte8">Ville</label><br />
-                                <input type="text" id="texte8" name="texte8" />
-                            </li>
-                            <li>
-                                <label for="texte9">Pays</label><br />
-                                <input type="text" id="texte9" name="texte9" />
-                            </li>
-                        </ul>
+            {auth ? (
+                <div class="contentProfil">
+                    <div id="Ip" style={{ display: activeContent === "#Ip" ? "block" : "none" }}>
+                        <form onSubmit={SendInfo} className="formProfil">
 
-                        <button type="submit" className="buttonProfil">Confirmer</button>
-                    </form>
-                </div>
-                <div id="Mdp" style={{ display: activeContent === "#Mdp" ? "block" : "none" }}>
-                    <form className="formProfil">
-                        <ul>
-                            <li>
-                                <label for="texte1">Nouveau mot de passe</label><br />
-                                <input type="text" id="texte1" name="texte1" />
-                            </li>
-                            <li>
-                                <label for="texte2">Confirmer votre nouveau mot de passe</label><br />
-                                <input type="text" id="texte2" name="texte2" />
-                            </li>
-                        </ul>
+                            <ul>
+                                <li>
+                                    <label htmlFor="texte1">Adresse mail</label><br />
+                                    <input type="text" id="texte1" name="texte1" required value={email} onChange={(e) => setEmail(e.target.value)} />
+                                </li>
+                                <li>
+                                    <label htmlFor="texte2">Téléphone</label><br />
+                                    <input type="text" id="texte2" name="texte2" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+                                </li>
+                                <li>
+                                    <label htmlFor="texte4">Nom</label><br />
+                                    <input type="text" id="texte4" name="texte4" value={lastname} onChange={(e) => setLastname(e.target.value)} />
+                                </li>
+                                <li>
+                                    <label htmlFor="texte5">Prenom</label><br />
+                                    <input type="text" id="texte5" name="texte5" value={firstname} onChange={(e) => setFirstname(e.target.value)} />
+                                </li>
+                                <li>
+                                    <label htmlFor="texte6">Adresse</label><br />
+                                    <input type="text" id="texte6" name="texte6" />
+                                </li>
+                                <li>
+                                    <label htmlFor="texte7">Code postal</label><br />
+                                    <input type="text" id="texte7" name="texte7" />
+                                </li>
+                                <li>
+                                    <label htmlFor="texte8">Ville</label><br />
+                                    <input type="text" id="texte8" name="texte8" />
+                                </li>
+                            </ul>
 
-                        <button className="buttonProfil" type="submit">Confirmer</button>
-                    </form>
-                </div>
-                <div id="Idp" style={{ display: activeContent === "#Idp" ? "block" : "none" }}>
-                    <form className="formProfil">
-                        <ul>
-                            <li>
-                                <label for="card-number">Numéro de carte :</label><br />
-                                <input type="text" id="card-number" name="card-number" placeholder="Numéro de carte" />
-                                <br />
-                            </li>
-                            <li>
-                                <label for="card-holder">Nom du titulaire :</label><br />
-                                <input type="text" id="card-holder" name="card-holder" placeholder="Nom du titulaire" />
-                                <br />
-                            </li>
-                            <li>
-                                <label for="expiry-date">Date d'expiration :</label><br />
-                                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" />
-                                <br />
-                            </li>
+                            <button type="submit" className="buttonProfil">Confirmer</button>
+                        </form>
+                    </div>
+                    <div id="Mdp" style={{ display: activeContent === "#Mdp" ? "block" : "none" }}>
+                        <form onSubmit={SendPassword} className="formProfil">
+                            <ul>
+                                <li>
+                                    <label htmlFor="texte1">Nouveau mot de passe</label><br />
+                                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="texte1" name="texte1" />
+                                </li>
+                                <li>
+                                    <label htmlFor="texte2">Confirmer votre nouveau mot de passe</label><br />
+                                    <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} id="texte2" name="texte2" />
+                                </li>
+                            </ul>
 
-                            <li>
-                                <label for="cvv">CVV :</label><br />
-                                <input type="number" id="cvv" name="cvv" placeholder="CVV" />
-                                <br />
-                            </li>
-                        </ul>
-                        <button type="submit" className="buttonProfil" value="Valider">Valider</button>
-                    </form>
+                            <button className="buttonProfil" type="submit">Confirmer</button>
+                        </form>
+                    </div>
+                    <div id="Idp" style={{ display: activeContent === "#Idp" ? "block" : "none" }}>
+                        <form className="formProfil">
+                            <ul>
+                                <li>
+                                    <label htmlFor="card-number">Numéro de carte :</label><br />
+                                    <input type="text" id="card-number" name="card-number" placeholder="Numéro de carte" />
+                                    <br />
+                                </li>
+                                <li>
+                                    <label htmlFor="card-holder">Nom du titulaire :</label><br />
+                                    <input type="text" id="card-holder" name="card-holder" placeholder="Nom du titulaire" />
+                                    <br />
+                                </li>
+                                <li>
+                                    <label htmlFor="expiry-date">Date d'expiration :</label><br />
+                                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" />
+                                    <br />
+                                </li>
+
+                                <li>
+                                    <label htmlFor="cvv">CVV :</label><br />
+                                    <input type="number" id="cvv" name="cvv" placeholder="CVV" />
+                                    <br />
+                                </li>
+                            </ul>
+                            <button type="submit" className="buttonProfil" value="Valider">Valider</button>
+                        </form>
+                    </div>
+                    <div id="Smc" style={{ display: activeContent === "#Smc" ? "block" : "none" }}>
+                        <p className="deleteTxt">Une fois votre compte supprimé, vos données personnelles,vos réservations <br />ainsi que toutes vos
+                            factures seront définitivement perdues.</p>
+                        <button className="buttonProfilDelete" type="button" onClick={DelAccount}>Supprimer mon compte</button>
+                    </div>
+
                 </div>
-                <div id="Smc" style={{ display: activeContent === "#Smc" ? "block" : "none" }}>
-                    <p className="deleteTxt">Une fois votre compte supprimé, vos données personnelles,vos réservations <br />ainsi que toutes vos
-                        factures seront définitivement perdues.</p>
-                    <button className="buttonProfilDelete" type="submit">Supprimer mon compte</button>
+            ) : (
+                <div>
+                    <h3> {message}</h3>
+
+                    <Link to="/login">
+                        <h3> Login Now</h3>
+                    </Link>
                 </div>
-            </div>
-        </div >
+            )}
+        </div>
     )
 }
 export default Profil;

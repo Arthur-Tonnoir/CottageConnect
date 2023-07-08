@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import Nav from "./components/Nav/Nav";
 import Contact from "./components/Formulaire/Formulaire";
 import AddCottages from "./components/AddCottages/AddCottages";
+import PageProfil from "./Views/PageProfil/PageProfil";
 function App() {
   return (
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/profil" Component={Profil} />
           <Route path="/admin" Component={Admin} />
           <Route path="/contact" Component={Contact} />
+          <Route path="/PageProfil" Component={PageProfil} />
         </Routes>
         <Footer/>
       </Router>
