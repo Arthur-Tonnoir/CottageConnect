@@ -11,6 +11,22 @@ function Nav() {
   const handleLangueClick = (langue) => {
     setSelectedLangue(langue);
   };
+  // const [rechercheBar, setRechercheBar] = useState();
+  // const handleBarreRecherche = () => {
+  //     setRechercheBar();
+  // };
+  // useState(() => {
+  //     const rechercheBar = document.getElementsByClassName('navbarSearch');
+  //     if(rechercheBar.style.display.value == "none"){
+  //         rechercheBar.style.display.value = 'block';
+  //     }else{
+  //         rechercheBar.style.display.value = 'none'
+  //     }
+  // })
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const handleSearchClick = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
 
   const [toggleMenu, setToggleMenu] = useState(false);
   const [navGreen, setNavGreen] = useState(false);
@@ -124,179 +140,182 @@ function Nav() {
             </Link>
           )}
         </li>
-        <li className="rechercheNav">
-          <a href="./">
-            <img src="./img/loupe.png" alt="loupe" className="imgRecherche" />
-          </a>
-          <ul className="navbarSearch">
-            <li className="recherche">
-              <input
-                className="inputDestination"
-                type="text"
-                name="destination"
-                id="destination"
-                placeholder="Ou souhaitez-vous aller?"
+
+        <div class="navnav">
+          <li className="rechercheNav">
+            <a href="" onClick={handleSearchClick}>
+              <img src="./img/loupe.png" alt="loupe" className="imgRecherche" />
+            </a>
+            <ul className={`navbarSearch ${isSearchOpen ? "show" : ""}`}>
+              <li className="recherche">
+                <input
+                  className="inputDestination"
+                  type="text"
+                  name="destination"
+                  id="destination"
+                  placeholder="Ou souhaitez-vous aller?"
+                />
+                <br />
+
+                <div className="conteneurRecherche">
+                  {showPlaceholder1 ? (
+                    <input
+                      className="champDate"
+                      type="text"
+                      placeholder="Arrivée"
+                      onFocus={handleInputFocus1}
+                    />
+                  ) : (
+                    <input
+                      className="champDate"
+                      type="date"
+                      onFocus={handleInputFocus1}
+                      onBlur={handleInputBlur1}
+                    />
+                  )}
+                </div>
+                <div>
+                  {showPlaceholder2 ? (
+                    <input
+                      className="champDate"
+                      type="text"
+                      placeholder="Départ"
+                      onFocus={handleInputFocus2}
+                    />
+                  ) : (
+                    <input
+                      className="champDate"
+                      type="date"
+                      onFocus={handleInputFocus2}
+                      onBlur={handleInputBlur2}
+                    />
+                  )}
+                </div>
+
+                <br />
+                <select
+                  name="voyageurs"
+                  id="voyageurs"
+                  className="voyageurSelect"
+                  onChange={handleDropdownChange}
+                  value={selectedOption}
+                >
+                  {!isOpen && selectedOption === "" && (
+                    <option value="" disabled>
+                      Nombre de Voyageur
+                    </option>
+                  )}
+                  <option value="1">1 Voyageur</option>
+                  <option value="2">2 Voyageurs</option>
+                  <option value="3">3 Voyageurs</option>
+                  <option value="4">4 Voyageurs</option>
+                  <option value="5">5 Voyageurs</option>
+                  <option value="6">6 Voyageurs</option>
+                  <option value="7">7 Voyageurs</option>
+                  <option value="8">8 Voyageurs</option>
+                  <option value="9">9 Voyageurs</option>
+                  <option value="10">10 Voyageurs</option>
+                  <option value="11+">11 et plus</option>
+                </select>
+                <button className="btnRecherche">
+                  <span className="spanBtnRecherche">Recherche</span>
+                </button>
+              </li>
+            </ul>
+          </li>
+          <li className="compteNav">
+            <a href="">
+              <img src="./img/compte.png" alt="compte" />
+            </a>
+            <ul className="navbarCompte">
+              <li className="vide"></li>
+              {!auth ? (
+                <>
+                  <li>
+                    <Link to="/login">Connexion</Link>
+                  </li>
+                  <li>
+                    <Link to="/register">Inscription</Link>
+                  </li>
+                </>
+              ) : admin ? (
+                <>
+                  <li>
+                    <Link to="/profil">Profil</Link>
+                  </li>
+                  <li>
+                    <Link to="/admin">Admin Board</Link>
+                  </li>
+                  <button onClick={handleDelete}>Logout</button>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/PageProfil">Profil</Link>
+                  </li>
+                  <button onClick={handleDelete}>Logout</button>
+                </>
+              )}
+            </ul>
+          </li>
+          <li className="langueNav">
+            <a href="./" className="langue">
+              <img
+                id="nomLangue"
+                src={`./img/icons8-${selectedLangue.toLowerCase()}-20.png`}
+                alt={selectedLangue}
               />
-              <br />
-              <div className="conteneurRecherche">
-                {showPlaceholder1 ? (
-                  <input
-                    className="champDate"
-                    type="text"
-                    placeholder="Arrivée"
-                    onFocus={handleInputFocus1}
+            </a>
+            <ul className="navbarLangue">
+              <li className="vide"></li>
+              <li className="vide"></li>
+              <li>
+                <a
+                  href="./"
+                  onClick={() => handleLangueClick("France")}
+                  className={selectedLangue === "France" ? "hide" : ""}
+                >
+                  <img
+                    id="France"
+                    src="./img/icons8-france-20.png"
+                    alt="France"
                   />
-                ) : (
-                  <input
-                    className="champDate"
-                    type="date"
-                    onFocus={handleInputFocus1}
-                    onBlur={handleInputBlur1}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="./"
+                  onClick={() => handleLangueClick("USA")}
+                  className={selectedLangue === "USA" ? "hide" : ""}
+                >
+                  <img id="USA" src="./img/icons8-usa-20.png" alt="USA" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="./"
+                  onClick={() => handleLangueClick("Spain")}
+                  className={selectedLangue === "Spain" ? "hide" : ""}
+                >
+                  <img id="Spain" src="./img/icons8-spain-20.png" alt="Spain" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="./"
+                  onClick={() => handleLangueClick("Germany")}
+                  className={selectedLangue === "Germany" ? "hide" : ""}
+                >
+                  <img
+                    id="Germany"
+                    src="./img/icons8-germany-20.png"
+                    alt="Germany"
                   />
-                )}
-              </div>
-              <div>
-                {showPlaceholder2 ? (
-                  <input
-                    className="champDate"
-                    type="text"
-                    placeholder="Départ"
-                    onFocus={handleInputFocus2}
-                  />
-                ) : (
-                  <input
-                    className="champDate"
-                    type="date"
-                    onFocus={handleInputFocus2}
-                    onBlur={handleInputBlur2}
-                  />
-                )}
-              </div>
-
-              <br />
-              <select
-                name="voyageurs"
-                id="voyageurs"
-                className="voyageurSelect"
-                onChange={handleDropdownChange}
-                value={selectedOption}
-              >
-                {!isOpen && selectedOption === "" && (
-                  <option value="" disabled>
-                    Nombre de Voyageur
-                  </option>
-                )}
-                <option value="1">1 Voyageur</option>
-                <option value="2">2 Voyageurs</option>
-                <option value="3">3 Voyageurs</option>
-                <option value="4">4 Voyageurs</option>
-                <option value="5">5 Voyageurs</option>
-                <option value="6">6 Voyageurs</option>
-                <option value="7">7 Voyageurs</option>
-                <option value="8">8 Voyageurs</option>
-                <option value="9">9 Voyageurs</option>
-                <option value="10">10 Voyageurs</option>
-                <option value="11+">11 et plus</option>
-              </select>
-              <button className="btnRecherche">
-                <span className="spanBtnRecherche">Recherche</span>
-              </button>
-            </li>
-          </ul>
-        </li>
-        <li className="compteNav">
-          <a href="./">
-            <img src="./img/compte.png" alt="compte" />
-          </a>
-
-          <ul className="navbarCompte">
-            <li className="vide"></li>
-            {!auth ? (
-              <>
-                <li>
-                  <Link to="/login">Connexion</Link>
-                </li>
-                <li>
-                  <Link to="/register">Inscription</Link>
-                </li>
-              </>
-            ) : admin ? (
-              <>
-                <li>
-                  <Link to="/profil">Profil</Link>
-                </li>
-                <li>
-                  <Link to="/admin">Admin Board</Link>
-                </li>
-                <button onClick={handleDelete}>Logout</button>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/PageProfil">Profil</Link>
-                </li>
-                <button onClick={handleDelete}>Logout</button>
-              </>
-            )}
-          </ul>
-        </li>
-        <li className="langueNav">
-          <a href="./" className="langue">
-            <img
-              id="nomLangue"
-              src={`./img/icons8-${selectedLangue.toLowerCase()}-20.png`}
-              alt={selectedLangue}
-            />
-          </a>
-          <ul className="navbarLangue">
-            <li className="vide"></li>
-            <li className="vide"></li>
-            <li>
-              <a
-                href="./"
-                onClick={() => handleLangueClick("France")}
-                className={selectedLangue === "France" ? "hide" : ""}
-              >
-                <img
-                  id="France"
-                  src="./img/icons8-france-20.png"
-                  alt="France"
-                />
-              </a>
-            </li>
-            <li>
-              <a
-                href="./"
-                onClick={() => handleLangueClick("USA")}
-                className={selectedLangue === "USA" ? "hide" : ""}
-              >
-                <img id="USA" src="./img/icons8-usa-20.png" alt="USA" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="./"
-                onClick={() => handleLangueClick("Spain")}
-                className={selectedLangue === "Spain" ? "hide" : ""}
-              >
-                <img id="Spain" src="./img/icons8-spain-20.png" alt="Spain" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="./"
-                onClick={() => handleLangueClick("Germany")}
-                className={selectedLangue === "Germany" ? "hide" : ""}
-              >
-                <img
-                  id="Germany"
-                  src="./img/icons8-germany-20.png"
-                  alt="Germany"
-                />
-              </a>
-            </li>
-          </ul>
-        </li>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </div>
       </div>
     </header>
   );

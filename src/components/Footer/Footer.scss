@@ -2,7 +2,7 @@
   overflow-x: hidden;
   overflow-y: hidden;
   color: azure;
-  background-color: #004f7b;
+  background-color: #004F7B;
   text-align: center;
   width: 100%;
   height: 100%;
@@ -13,6 +13,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 
 .footerSection {
   flex: 1;
@@ -27,9 +28,10 @@
   justify-content: center;
 
   .newsletterTitle {
-    font-size: 2.5em;
+      font-size: 2.5em;
   }
 }
+
 
 .formNewsletter {
   display: flex;
@@ -37,20 +39,20 @@
   flex-direction: row;
 
   .footerInput {
-    font-family: Inter;
-    margin-bottom: 2em;
-    color: #000;
-    background-color: #e7e7e7;
-    width: 60%;
-    padding: 1.5em;
-    border-radius: 1em;
-    border-color: azure;
+      font-family: Inter;
+      margin-bottom: 2em;
+      color: #000;
+      background-color: #E7E7E7;
+      width: 60%;
+      padding: 1.5em;
+      border-radius: 1em;
+      border-color: azure;
   }
 
   .footerInput::placeholder {
-    color: #000;
-    font-size: 1.5em;
-    padding-left: 1.5em;
+      color: #000;
+      font-size: 1.5em;
+      padding-left: 1.5em;
   }
 }
 
@@ -66,7 +68,7 @@
   border-right: solid azure;
 
   .proposTitle {
-    font-size: 2.5em;
+      font-size: 2.5em;
   }
 }
 
@@ -77,13 +79,14 @@
   flex-direction: column;
 
   .contactTitle {
-    .contactLink {
-      cursor: pointer;
-      font-size: 2.5em;
-      color: azure;
-      text-decoration: none;
-    }
+      .contactLink {
+          cursor: pointer;
+          font-size: 2.5em;
+          color: azure;
+          text-decoration: none;
+      }
   }
+
 }
 
 .footerSocials {
@@ -93,55 +96,59 @@
   justify-content: flex-end;
 
   .footerSocial {
-    padding-left: 2em;
+      padding-left: 2em;
   }
+
 }
 
 @media screen and (max-width: 768px) {
   .footerRow {
-    flex-direction: column;
+      flex-direction: column;
   }
 
   .footerSection {
-    margin: 1em 0;
+      margin: 1em 0;
+
   }
 
   .footerPropos {
-    padding: 1em;
-    border: none;
-    border-top: solid azure;
+      padding: 1em;
+      border: none;
+      border-top: solid azure;
   }
 
   .footerContact {
-    border-top: solid azure;
+      border-top: solid azure;
   }
 
   .footerSocials {
-    margin-top: 1em;
-    justify-content: center;
+      margin-top: 1em;
+      justify-content: center;
   }
 }
 
+
 @media only screen and (max-width: 425px) {
   .footerRow {
-    flex-direction: column;
+      flex-direction: column;
   }
 
   .footerSection {
-    margin: 1em 0;
+      margin: 1em 0;
+
   }
 
   .footerPropos {
-    border: none;
-    border-top: solid azure;
+      border: none;
+      border-top: solid azure;
   }
 
   .footerContact {
-    border-top: solid azure;
+      border-top: solid azure;
   }
 
   .footerSocials {
-    margin-top: 1em;
-    justify-content: center;
+      margin-top: 1em;
+      justify-content: center;
   }
 }
