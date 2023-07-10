@@ -41,7 +41,8 @@ exports.create = (req, res) => {
     }
 
     const newRegion = new Region({
-        name: req.body.name
+        name: req.body.name,
+        description: req.body.description,
     });
 
     Region.create(newRegion, (err, data) => {
@@ -66,7 +67,8 @@ exports.update = (req, res) => {
     const id = req.params.id;
 
     const updated = new Region({
-        username: req.body.username
+        name: req.body.name,
+        description: req.body.description,
         
     });
 

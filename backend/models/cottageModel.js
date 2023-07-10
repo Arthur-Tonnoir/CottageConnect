@@ -6,12 +6,12 @@ const Cottage = function (cottage){
     this.content = cottage.content;
     this.dayprice = cottage.dayprice;
     this.caution = cottage.caution;
-    this.adress = cottage.adress;
     this.res_count = cottage.res_count;
-    this.id_city = cottage.id_city;
+    this.max_personnes = cottage.max_personnes;
+    this.id_prestation = cottage.id_prestation;
     this.id_categories = cottage.id_categories;
-    this.id_users = cottage.id_users;
-    this.max_personnes = cottage.max_personnes
+    this.id_proprio = cottage.id_proprio;
+    this.id_adress = cottage.id_adress;
 }
 
 Cottage.findAll = result => {
@@ -28,7 +28,7 @@ Cottage.findAll = result => {
 };
 
 Cottage.findById = (id, result) => {
-    sql.query('SELECT * FROM cottages WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress FROM cottages WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);
@@ -44,25 +44,51 @@ Cottage.findById = (id, result) => {
     });
 };
 
-Cottage.findByMaxPersonneAndDateCreationAndVille = (max_personnes, date_creation, ville, result) => {
-    sql.query('SELECT id, name, date_creation, content, dayprice, caution, adress, res_count, id_city, id_categories, id_users, max_personnes FROM cottages WHERE max_personnes = ? AND id_city = ? AND date_creation = ?',
-    [max_personnes, ville, date_creation], 
-    (err, res) =>{
-        if (err) {
-            console.log('Erreur :', err);
-            result(err, null);
-            return;
+Cottage.findByMombrePersonneAndDateStartAndDateEndAndVille = (nombre_personnes, date_start, date_end, city, result) => {
+    sql.query(
+      'SELECT id FROM adress WHERE city = ?',
+      [city],
+      (errAdress, resAdress) => {
+        if (errAdress) {
+          console.log('Erreur:', errAdress);
+          result(errAdress, null);
+          return;
         }
-        if (res.length) {
-            console.log('Cottages trouvé :', res[0]);
-            result(null, res[0]);
-            return;
+  
+        if (resAdress.length > 0) {
+          const id_addresses = resAdress.map((row) => row.id);
+          console.log(id_addresses);
+          
+          sql.query(
+            'SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress ' +
+            'FROM cottages ' +
+            'WHERE id_adress IN (?) ' +
+            'AND max_personnes >= ? ' +
+            'AND id NOT IN (SELECT id_cottages FROM reservation WHERE date_start <= ? AND date_end >= ?)',
+            [id_addresses, nombre_personnes, date_end, date_start],
+            (err, res) => {
+              if (err) {
+                console.log('Erreur:', err);
+                result(err, null);
+                return;
+              }
+  
+              if (res.length > 0) {
+                console.log('Cottages trouvé:', res);
+                result(null, res);
+                return;
+              }
+  
+              result({ kind: 'not_found' }, null);
+            }
+          );
+        } else {
+          result({ kind: 'not_found' }, null);
         }
+      }
+    );
+  };
 
-        result({ kind: 'not_found' }, null);
-        }
-    )
-}
 
 Cottage.create = (newCottages, result) => {
     sql.query('INSERT INTO cottages SET ?', newCottages, (err, res) => {
@@ -79,8 +105,8 @@ Cottage.create = (newCottages, result) => {
 
 Cottage.update = (id, cottage, result) => {
     sql.query(
-        'UPDATE cottages SET name = ?, date_creation = ? , content = ?, dayprice = ?, caution = ?, adress = ?, res_count = ?, id_city = ?, id_categories = ?, id_users = ?, max_personnes = ?  WHERE id = ?',
-        [cottage.name, cottage.date_creation, cottage.content, cottage.dayprice, cottage.caution, cottage.adress, cottage.res_count, cottage.id_city, cottage.id_categories, cottage.id_users, cottage.max_personnes, id],
+        'UPDATE cottages SET name = ?, date_creation = ? , content = ?, dayprice = ?, caution = ?, res_count = ?, max_personnes = ?, id_categories = ?, id_proprio = ?, id_adress = ?  WHERE id = ?',
+        [cottage.name, cottage.date_creation, cottage.content, cottage.dayprice, cottage.caution, cottage.res_count, cottage.max_personnes,cottage.id_categories, cottage.id_proprio, cottage.id_adress, id],
         (err, res) => {
             if (err) {
                 console.log('Erreur :', err);

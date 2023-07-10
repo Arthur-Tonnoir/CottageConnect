@@ -1,4 +1,7 @@
-const Cottage = require('../models/cottageModel')
+const Cottage = require('../models/cottageModel');
+const Picture = require('../models/pictureModel');
+const Adress = require('../models/adressModel');
+
 
 exports.findAll = (req, res) => {
     Cottage.findAll((err, data) => {
@@ -33,20 +36,21 @@ exports.findById = (req, res) => {
     });
 };
 
-exports.findByMaxPersonneAndDateCreationAndVille = (req, res) => {
-    const max_personne = req.params.max_personne;
-    const date_creation = req.params.date_creation;
-    const ville = req.params.ville;
+exports.findByMombrePersonneAndDateStartAndDateEndAndVille = (req, res) => {
+    const nombre_personnes = req.params.nombre_personnes;
+    const date_start = req.params.date_start;
+    const date_end = req.params.date_end;
+    const city = req.params.city;
     
-    Cottage.findByMaxPersonneAndDateCreationAndVille(max_personne, date_creation, ville, (err, data) => {
+    Cottage.findByMombrePersonneAndDateStartAndDateEndAndVille(nombre_personnes, date_start, date_end, city, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Cottage introuvable avec comme filtre ${max_personne}, ${date_creation}, ${ville}`
+                    message: `Cottage introuvable avec comme filtre ${nombre_personnes}, ${date_start}, ${date_end}`
                 });
             } else {
                 res.status(500).send({
-                    message: `Erreur lors de la récupération du cottage avec comme filtre ${max_personne}, ${date_creation}, ${ville}.`
+                    message: `Erreur lors de la récupération du cottage avec comme filtre ${nombre_personnes}, ${date_start}, ${date_end}.`
                 });
             }
         } else {
@@ -54,26 +58,26 @@ exports.findByMaxPersonneAndDateCreationAndVille = (req, res) => {
         }
     })
 }
-
 exports.create = (req, res) => {
     if (!req.body) {
         res.status(400).send({
             message: 'Le contenu de la requête ne peut pas être vide.'
         });
     }
-
+    let date = new Date()
+    date = date.toISOString().split('T')[0];
     const newCottage = new Cottage({
         name: req.body.name,
-        date_creation: req.body.date_creation,
+        date_creation: date,
         content: req.body.content,
         dayprice: req.body.dayprice,
         caution: req.body.caution,
-        adress: req.body.adress,
-        res_count: req.body.res_count,
-        id_city: req.body.id_city,
+        res_count: 0,
+        max_personnes: req.body.max_personnes,
+        id_prestation: req.body.id_prestation,
+        id_adress: req.body.id_adress,
         id_categories: req.body.id_categories,
-        id_users: req.body.id_users,
-        max_personnes: req.body.max_personnes
+        id_proprio: req.body.id_proprio,
     });
 
     Cottage.create(newCottage, (err, data) => {
@@ -87,6 +91,59 @@ exports.create = (req, res) => {
         }
     });
 };
+
+exports.createWithAdress = (req, res) => {
+    if (!req.body) {
+        res.status(400).send({
+            message: 'Le contenu de la requête ne peut pas être vide.'
+        });
+    }
+    console.log(req.body);
+    const newAdress = new Adress({
+        adress: req.body.adress,
+        code_postal: req.body.code_postal,
+        city: req.body.city,
+        id_regions: req.body.id_regions,
+    });
+    
+    let date = new Date()
+    date = date.toISOString().split('T')[0];
+    
+    Adress.create(newAdress, (err, data) => {
+        if (err) {
+            res.status(500).send({
+                message:
+                err.message || 'Une erreur s\'est produite lors de la création de l\'adress.'
+            });
+        } else {
+            const newCottage = new Cottage({
+                name: req.body.name,
+                date_creation: date,
+                content: req.body.content,
+                dayprice: req.body.dayprice,
+                caution: req.body.caution,
+                res_count: 0,
+                max_personnes: req.body.max_personnes,
+                id_prestation: req.body.id_prestation,
+                id_adress: data.id,
+                id_categories: req.body.id_categories,
+                id_proprio: req.body.id_proprio,
+            });
+            Cottage.create(newCottage, (err, data) => {
+                if (err) {
+                    res.status(500).send({
+                        message:
+                            err.message || 'Une erreur s\'est produite lors de la création du cottage.'
+                    });
+                } else {
+                    res.send(data);
+                }
+            });
+        }
+    });
+
+};
+
 
 exports.update = (req, res) => {
     if (!req.body) {
@@ -103,12 +160,11 @@ exports.update = (req, res) => {
         content: req.body.content,
         dayprice: req.body.dayprice,
         caution: req.body.caution,
-        adress: req.body.adress,
         res_count: req.body.res_count,
-        id_city: req.body.id_city,
+        max_personnes: req.body.max_personnes,
+        id_adress: req.body.id_adress,
         id_categories: req.body.id_categories,
-        id_users: req.body.id_users,
-        max_personnes: req.body.max_personnes
+        id_proprio: req.body.id_proprio,
     });
 
     Cottage.update(id, updated, (err, data) => {

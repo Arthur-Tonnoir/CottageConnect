@@ -8,7 +8,7 @@ const Avi = function (avi){
 }
 
 Avi.findAll = result => {
-    sql.query('SELECT * FROM avis', (err, res) => {
+    sql.query('SELECT id, text, note, id_users, id_cottages FROM avis', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(null, err);
@@ -21,7 +21,7 @@ Avi.findAll = result => {
 };
 
 Avi.findById = (id, result) => {
-    sql.query('SELECT * FROM avis WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT text, note, id_users, id_cottages FROM avis WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);
@@ -33,13 +33,12 @@ Avi.findById = (id, result) => {
             return;
         }
 
-        // Si l'avi n'est pas trouvé
         result({ kind: 'not_found' }, null);
     });
 };
 
 Avi.create = (newAvi, result) => {
-    sql.query('INSERT INTO users SET ?', newAvi, (err, res) => {
+    sql.query('INSERT INTO avis SET ?', newAvi, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);
@@ -63,7 +62,6 @@ Avi.update = (id, avi, result) => {
             }
 
             if (res.affectedRows === 0) {
-                // Si l'avi n'est pas trouvé
                 result({ kind: 'not_found' }, null);
                 return;
             }
