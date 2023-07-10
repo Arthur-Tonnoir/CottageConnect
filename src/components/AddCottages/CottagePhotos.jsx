@@ -2,14 +2,13 @@ import React from 'react'
 
 const CottagePhotos = ({handleSubmit, handleFile}) => {
   
-/*   const img = document.querySelector("img");
+  const img = document.querySelector("img");
   document.querySelector("input").addEventListener("change", (e) => {
     const form = e.target.files[0];
     const data = new FormData();
     data.append(form.name, form);
     img.src = URL.createObjectURL(form);
-    console.log(data);
-  }); */
+  });
   
   return (
     <div>
