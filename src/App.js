@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Connexion/Connexion";
 import Register from "./components/Inscription/Inscription";
-import Profil from "./components/Profil";
+import Profil from "./components/Profil/Profil";
 import HomePage from "./Views/HomePage/HomePage";
 import Admin from "./components/Admin";
 import Footer from "./components/Footer/Footer";
@@ -15,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+      <Nav/>
         <Routes>
           <Route path="/addcottage" Component={AddCottages} />
           <Route path="/HomePage" Component={HomePage} />
