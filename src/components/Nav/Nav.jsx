@@ -125,7 +125,7 @@ function Nav() {
           )}
         </li>
         <li className="rechercheNav">
-          <a href="">
+          <a href="./">
             <img src="./img/loupe.png" alt="loupe" className="imgRecherche" />
           </a>
           <ul className="navbarSearch">
@@ -205,7 +205,7 @@ function Nav() {
           </ul>
         </li>
         <li className="compteNav">
-          <a href="">
+          <a href="./">
             <img src="./img/compte.png" alt="compte" />
           </a>
 
@@ -233,7 +233,7 @@ function Nav() {
             ) : (
               <>
                 <li>
-                  <Link to="/profil">Profil</Link>
+                  <Link to="/PageProfil">Profil</Link>
                 </li>
                 <button onClick={handleDelete}>Logout</button>
               </>
@@ -241,7 +241,7 @@ function Nav() {
           </ul>
         </li>
         <li className="langueNav">
-          <a href="#" className="langue">
+          <a href="./" className="langue">
             <img
               id="nomLangue"
               src={`./img/icons8-${selectedLangue.toLowerCase()}-20.png`}
@@ -253,7 +253,7 @@ function Nav() {
             <li className="vide"></li>
             <li>
               <a
-                href="#"
+                href="./"
                 onClick={() => handleLangueClick("France")}
                 className={selectedLangue === "France" ? "hide" : ""}
               >
@@ -266,7 +266,7 @@ function Nav() {
             </li>
             <li>
               <a
-                href="#"
+                href="./"
                 onClick={() => handleLangueClick("USA")}
                 className={selectedLangue === "USA" ? "hide" : ""}
               >
@@ -275,7 +275,7 @@ function Nav() {
             </li>
             <li>
               <a
-                href="#"
+                href="./"
                 onClick={() => handleLangueClick("Spain")}
                 className={selectedLangue === "Spain" ? "hide" : ""}
               >
@@ -284,7 +284,7 @@ function Nav() {
             </li>
             <li>
               <a
-                href="#"
+                href="./"
                 onClick={() => handleLangueClick("Germany")}
                 className={selectedLangue === "Germany" ? "hide" : ""}
               >

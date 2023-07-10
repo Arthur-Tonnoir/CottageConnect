@@ -30,7 +30,7 @@ User.findAll = (result) => {
 };
 
 User.findById = (id, result) => {
-  sql.query("SELECT username, password, email, is_admin, firstname, lastname, phone, postal, avatar, website, id_adress FROM users WHERE id = ?", id, (err, res) => {
+  sql.query("SELECT id, username, password, email, is_admin, firstname, lastname, phone, postal, avatar, website, id_adress FROM users WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("Erreur :", err);
       result(err, null);
@@ -120,6 +120,45 @@ User.update = (id, user, result) => {
       }
     );
   });
+};
+
+User.updateInfo = (id, user, result) => {
+    sql.query(
+      "UPDATE users SET email = ?, firstname = ?, lastname = ?, phone = ?  WHERE id = ?",
+      [
+        user.email,
+        user.firstname,
+        user.lastname,
+        user.phone,
+        id,
+      ],
+      (err, res) => {
+        if (err) {
+          console.log("Erreur :", err);
+          result(err, null);
+          return;
+        }
+        if (res.affectedRows === 0) {
+          result({ kind: "not_found" }, null);
+          return;
+        }
+        console.log("Utilisateur mis à jour :", { id: id, ...user });
+        result(null, { id: id, ...user });
+      }
+    );
+};
+
+User.updatePass = (id, newUser, result) => {
+    sql.query("UPDATE users SET password = ?  WHERE id = ?", [newUser.password, id], (err, res) => {
+      if (err) {
+        console.log("Error :", err);
+        result(err, null);
+        return;
+      }
+
+      console.log("Utilisateur mise à jour :", { id: res.insertId, ...newUser });
+      result(null, { id: res.insertId, ...newUser });
+    });
 };
 
 User.delete = (id, result) => {
