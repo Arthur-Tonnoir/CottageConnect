@@ -154,7 +154,7 @@ exports.updatePass = async (req, res) => {
         message: "Le mot de passe est trop court.",
       });
     } else {
-       
+    
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const updated = new User({
         password: hashedPassword
