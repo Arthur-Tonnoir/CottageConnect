@@ -9,69 +9,35 @@ function Footer() {
       <div className="footerRow">
         <div className="footerSection">
           <div className="footerNewsletter">
-            <h3>Abonnez-vous à notre Newsletter</h3>
+            <h3 className='newsletterTitle'>Abonnez-vous à notre Newsletter</h3>
             <form className='formNewsletter'>
               <input type="email" name="email" placeholder="Adresse e-mail" className='footerInput' />
-              <button className='footerButton'>S'inscrire</button>
             </form>
           </div>
         </div>
 
         <div className="footerSection">
           <div className='footerPropos'>
-            <h3>A propos de Casa Mea</h3>
-            <ul>
-              <li>
-                <button className='footerButton'>
-                  <a href="./">Lorem</a>
-                </button>
-              </li>
-              <li>
-                <button className='footerButton'>
-                  <a href="./">Lorem</a>
-                </button>
-              </li>
-              <li>
-                <button className='footerButton'>
-                  <a href="./">Lorem</a>
-                </button>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <button className='footerButton'>
-                  <a href="./">Lorem</a>
-                </button>
-              </li>
-              <li>
-                <button className='footerButton'>
-                  <a href="./">Lorem</a>
-                </button>
-              </li>
-              <li>
-                <button className='footerButton'>
-                  <a href="./">Lorem</a>
-                </button>
-              </li>
-            </ul>
+            <h3 className='proposTitle'>Nos destinations favorites</h3>
           </div>
-
         </div>
 
         <div className="footerSection">
           <div className="footerContact">
-            <button className='footerButton'>
-              <a href="">FAQ</a>
-            </button>
-            <button className='footerButton'>
-              <a href="">Nous contacter</a>
-            </button>
+            <h3 className='contactTitle'>
+              <a className="contactLink" href="">Nous contacter</a>
+            </h3>
+            <h3 className='contactTitle'>
+              <a className="contactLink" href="">FAQ</a>
+            </h3>
+
             <div className='footerSocials'>
+
               <a href="./" className='footerSocial'>
-                <FacebookIcon />
+                <img src="./img/facebook.png" alt="Facebook" />
               </a>
               <a href="./" className='footerSocial'>
-                <InstagramIcon />
+                <img src="./img/instagram.png" alt="Instagram" />
               </a>
             </div>
           </div>
