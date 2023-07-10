@@ -49,6 +49,26 @@ function Recherche() {
     }
   };
 
+// DROPDOWN BOUTON
+
+function toggleDropdown() {
+  var dropdownContent = document.getElementById("dropdown-content");
+  dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropDownBtn')) {
+    var dropdowns = document.getElementsByClassName("dropDownContent");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.style.display === "block") {
+        openDropdown.style.display = "none";
+      }
+    }
+  }
+};
+
+
 
   return (
     <div className="searchContainer">
@@ -73,7 +93,7 @@ function Recherche() {
             <div className="champSearchLabel customDate">
               <label htmlFor="depart" className={`labelDate ${isLabelDepartHidden ? 'cd2Hidden' : ''}`}
                 min="2023-01-01" max="2040-01-01" onClick={handleDepartClick}>Départ</label>
-
+              
               <input placeholder="Départ" className="champSearch date"
                 type="date" name="depart" id="depart" onBlur={handleDepartBlur} />
 
@@ -81,8 +101,8 @@ function Recherche() {
           </div>
 
           <br />
-          <select className="champSearch" name="voyageurs" id="voyageurs">
             <div className="voyag">
+          <select className="champSearch" name="voyageurs" id="voyageurs">
               <option value="0" selected>Nombre de voyageurs</option>
               <option value="1">1 Voyageur</option>
               <option value="2">2 Voyageurs</option>
@@ -94,13 +114,13 @@ function Recherche() {
               <option value="8">8 Voyageurs</option>
               <option value="9">9 Voyageurs</option>
               <option value="10">10 Voyageurs</option>
-              <option value="11+">11 et plus</option></div>
-          </select>
+              <option value="11+">11 et plus</option>
+          </select></div>
           <br />
           <div className="dropDown">
-            <button className="dropDownBtn" onclick="toggleDropdown()">Mots-clé<span class="chevron bottom"></span></button>
+            <button className="dropDownBtn" onClick={toggleDropdown}>Mots-clé<span class="chevron bottom"></span></button>
             <div className="dropDownContent" id="dropdown-content">
-              <label><input type="checkbox" /> Option 1</label>
+              <label><input type="checkbox"/> Option 1</label>
               <label><input type="checkbox" /> Option 2</label>
               <label><input type="checkbox" /> Option 3</label>
               <label><input type="checkbox" /> Option 4</label>
@@ -109,7 +129,6 @@ function Recherche() {
             </div>
           </div>
           <br />
-          {/* <button class="champRecherche vert"> <a class="bouton_vert" href="#">Recherche</a></button>  */}
           <a className="champSearch vert boutonVert" href="#">Recherche</a>
 
         </div>
