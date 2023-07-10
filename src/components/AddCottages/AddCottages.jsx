@@ -28,8 +28,7 @@ export default class AddCottages extends Component {
       id_prestation: "1",
       id_categories: "1",
       id_regions: "1",
-      id_adress: "1",
-      id_users: "",
+      id_proprio: "",
       categories: [],
       regions: [],
       prestations: [],
@@ -91,7 +90,7 @@ export default class AddCottages extends Component {
     axios
       .get("http://localhost:3001/users/")
       .then((res) => {
-        this.setState({ id_users: res.data.id });
+        this.setState({ id_proprio: res.data.id });
       })
       .catch((err) => {
         console.error(err);
@@ -111,10 +110,10 @@ export default class AddCottages extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/cottages/cottage", this.state)
+      .post("http://localhost:3001/cottages/withAdress", this.state)
       .then((res) => {
         this.setState({id_cottages: res.data.id})
-        this.setState({ step: 5 });
+        this.setState({ step: 4 });
       })
       .catch((err) => {
         console.log(err);
@@ -159,7 +158,7 @@ export default class AddCottages extends Component {
         caution,
         adress,
         city,
-        cp,
+        code_postal,
         max_personnes,
         id_prestation,
         id_regions,
@@ -176,7 +175,7 @@ export default class AddCottages extends Component {
         caution,
         adress,
         city,
-        cp,
+        code_postal,
         max_personnes,
         id_prestation,
         id_regions,

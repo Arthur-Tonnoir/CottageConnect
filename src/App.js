@@ -12,10 +12,8 @@ import Contact from "./components/Formulaire/Formulaire";
 import AddCottages from "./components/AddCottages/AddCottages";
 function App() {
   return (
-
     <div className="App">
       <Router>
-        <Nav />
         <Routes>
           <Route path="/addcottage" Component={AddCottages} />
           <Route path="/" Component={Home} />
@@ -25,7 +23,7 @@ function App() {
           <Route path="/admin" Component={Admin} />
           <Route path="/contact" Component={Contact} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );
