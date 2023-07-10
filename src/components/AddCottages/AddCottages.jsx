@@ -8,6 +8,8 @@ import CottageConfirm from "./CottageConfirm";
 import axios from "axios";
 import { checkAuth } from "../auth";
 
+import './AddCottages.scss'
+
 
 export default class AddCottages extends Component {
   constructor(props) {
