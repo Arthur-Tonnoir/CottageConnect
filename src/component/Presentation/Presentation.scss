@@ -1,26 +1,22 @@
 .containerPresentation {
-    height: 45vh;
-    background-color: grey;
+    height: auto;
     text-align: center;
     padding-top: 0.5em;
+    margin-bottom: 2em;
+        h3 {
+            color: #004F7B;
+        }
 }
 
 .containerPresent {
     display: flex;
-    justify-content: center;
-}
-
-.presentationImg {
-    margin: 0 1em;
-    width: 40%;
-    border: solid 0.1em black;
-    border-radius: 1em;
 }
 
 .presentationText {
-    margin: 0 1em;
-    width: 40%;
-    border: solid 0.1em black;
-    border-radius: 1em;
-    padding: 1em;
+    margin-left: 10em;
+}
+
+.qsn {
+    width: 70%;
+    border-radius: 15px;
 }

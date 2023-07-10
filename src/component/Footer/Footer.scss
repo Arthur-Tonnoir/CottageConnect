@@ -6,6 +6,9 @@
     text-align: center;
     width: 100%;
     height: 100%;
+    .contactTitle {
+        padding-right: 8em;
+    }
 }
 
 .footerRow {
@@ -28,7 +31,7 @@
     justify-content: center;
 
     .newsletterTitle {
-        font-size: 2.5em;
+        font-size: 2em;
     }
 }
 
@@ -62,13 +65,13 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    padding-left: 5em;
-    padding-right: 5em;
+    // padding-left: 5em;
+    // padding-right: 5em;
     border-left: solid azure;
     border-right: solid azure;
 
     .proposTitle {
-        font-size: 2.5em;
+        font-size: 2em;
     }
 }
 
@@ -81,7 +84,7 @@
     .contactTitle {
         .contactLink {
             cursor: pointer;
-            font-size: 2.5em;
+            font-size: 2em;
             color: azure;
             text-decoration: none;
         }
