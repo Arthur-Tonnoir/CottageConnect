@@ -5,7 +5,7 @@ const Commoditie = function (commoditie){
 }
 
 Commoditie.findAll = result => {
-    sql.query('SELECT * FROM commodities', (err, res) => {
+    sql.query('SELECT name FROM commodities', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(null, err);
@@ -18,7 +18,7 @@ Commoditie.findAll = result => {
 };
 
 Commoditie.findById = (id, result) => {
-    sql.query('SELECT * FROM commodities WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT name FROM commodities WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);
@@ -59,7 +59,6 @@ Commoditie.update = (id, commoditie, result) => {
             }
 
             if (res.affectedRows === 0) {
-                // Si l'utilisateur n'est pas trouvé
                 result({ kind: 'not_found' }, null);
                 return;
             }

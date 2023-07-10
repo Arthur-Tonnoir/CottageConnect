@@ -1,0 +1,147 @@
+.filterContainer {
+  height: 130vh;
+  // background-color: green;
+}
+
+
+
+.filters {
+  background-color: #fff;
+  text-align: center;
+  padding-top: 1em;
+  // margin-top: 2em;
+  // margin-bottom: 2em;
+}
+
+
+.filterTitle {
+  color: #004F7B;
+}
+
+.filterFilter {
+  display: flex;
+  margin: auto 2em;
+  font-weight: bold;
+}
+
+.filterCity {
+  display: flex;
+  margin: auto 2em;
+  font-weight: bold;
+}
+
+.filterGite {
+  display: flex;
+  margin: auto 2em;
+}
+
+
+.mer,
+.montagne,
+.ville,
+.campagne,
+.autres,
+.premier,
+.deuxieme,
+.troisieme,
+.quatrieme,
+.cinquieme {
+  align-items: center;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.imgFilter {
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  margin: auto 1em;
+  width: 75%;
+}
+
+.mer a,
+.montagne a,
+.ville a,
+.campagne a,
+.autres a {
+  margin: auto 1em;
+  justify-content: center;
+  width: 75%;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  margin-bottom: 2em;
+  background-color: #E6E6E6;
+  text-decoration: none;
+  color: #004F7B;
+  font-size: 1.2em;
+}
+
+.premier a,
+.deuxieme a,
+.troisieme a,
+.quatrieme a,
+.cinquieme a {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  width: 75%;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  margin-top: -0.3em;
+  // margin-bottom: 2em;
+  background-color: #E6E6E6;
+  text-decoration: none;
+}
+
+
+.premier a span,
+.deuxieme a span,
+.troisieme a span,
+.quatrieme a span,
+.cinquieme a span {
+  margin: 0.5em 0;
+  color: black;
+  border-radius: 1em;
+  // background-color: greenyellow;
+  margin-left: 0.2em;
+  color: #004F7B;
+  font-weight: bold;
+
+}
+
+.imgCarou {
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  height: 23.5vh;
+}
+
+.nomGite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+  width: 90%;
+}
+
+.meaPrix {
+  
+}
+
+.comoditeGite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.5em;
+  width: 80%;
+}
+.prixGite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.5em;
+  width: 50%;
+}
