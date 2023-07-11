@@ -2,10 +2,11 @@ const sql = require('../config/db.config');
 
 const Region = function (region){
     this.name = region.name;
+    this.description = region.description;
 }
 
 Region.findAll = result => {
-    sql.query('SELECT * FROM regions', (err, res) => {
+    sql.query('SELECT id, name, description FROM regions', (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(null, err);
@@ -18,7 +19,7 @@ Region.findAll = result => {
 };
 
 Region.findById = (id, result) => {
-    sql.query('SELECT * FROM regions WHERE id = ?', id, (err, res) => {
+    sql.query('SELECT name, description FROM regions WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erreur :', err);
             result(err, null);
@@ -49,8 +50,8 @@ Region.create = (newRegion, result) => {
 
 Region.update = (id, region, result) => {
     sql.query(
-        'UPDATE regions SET name = ? WHERE id = ?',
-        [region.name, id],
+        'UPDATE regions SET name = ?, description = ? WHERE id = ?',
+        [region.name, region.description, id],
         (err, res) => {
             if (err) {
                 console.log('Erreur :', err);
@@ -59,7 +60,6 @@ Region.update = (id, region, result) => {
             }
 
             if (res.affectedRows === 0) {
-                // Si l'utilisateur n'est pas trouvé
                 result({ kind: 'not_found' }, null);
                 return;
             }

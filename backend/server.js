@@ -1,9 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
-dotenv.config(__dirname + "/.env");
+dotenv.config(__dirname + "/.env2");
 const app = express();
 const port = 3001;
 
@@ -19,47 +18,17 @@ app.use(cookieParser());
 const userRoutes = require("./routes/userRoutes");
 app.use("/users", userRoutes);
 
-const verifyUser = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.json({ Error: "You are not authentificated" });
-  } else {
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      if (err) {
-        return res.json({ Error: "Token error" });
-      } else {
-        req.id = decoded.id;
-        req.username = decoded.username;
-        req.role = decoded.role;
-        next();
-      }
-    });
-  }
-};
-
-app.get("/", verifyUser, (req, res) => {
-  return res.json({
-    Status: "Success",
-    username: req.username,
-    role: req.role,
-    id: req.id,
-  });
-});
-
 const aviRoutes = require("./routes/aviRoutes");
 app.use("/avis", aviRoutes);
 
 const categorieRoutes = require("./routes/categorieRoutes");
 app.use("/categories", categorieRoutes);
 
-const citieRoutes = require("./routes/citieRoutes");
-app.use("/cities", citieRoutes);
+const prestationRoutes = require("./routes/prestationRoutes");
+app.use("/prestations", prestationRoutes); 
 
 const commoditieRoutes = require("./routes/commoditieRoutes");
-app.use("/cities", commoditieRoutes);
-
-const linktableRoutes = require("./routes/linktableRoutes");
-app.use("/linktables", linktableRoutes);
+app.use("/commodities", commoditieRoutes);
 
 const pictureRoutes = require("./routes/pictureRoutes");
 app.use("/pictures", pictureRoutes);
@@ -75,6 +44,9 @@ app.use("/cottages", cottageRoutes);
 
 const factureRoutes = require("./routes/factureRoutes");
 app.use("/factures", factureRoutes);
+
+const adressRoutes = require("./routes/adressRoutes");
+app.use("/adress", adressRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

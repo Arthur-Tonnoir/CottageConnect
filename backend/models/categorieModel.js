@@ -30,7 +30,6 @@ Categorie.findById = (id, result) => {
             return;
         }
 
-        // Si la catégorie n'est pas trouvé
         result({ kind: 'not_found' }, null);
     });
 };
@@ -60,7 +59,6 @@ Categorie.update = (id, categorie, result) => {
             }
 
             if (res.affectedRows === 0) {
-                // Si la catégorie n'est pas trouvé
                 result({ kind: 'not_found' }, null);
                 return;
             }
@@ -80,7 +78,6 @@ Categorie.delete = (id, result) => {
         }
 
         if (res.affectedRows === 0) {
-            // Si la catégorie n'est pas trouvé
             result({ kind: 'not_found' }, null);
             return;
         }
