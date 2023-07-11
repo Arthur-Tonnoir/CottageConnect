@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { ResultsContext } from '../Result/ResultContext';
+import { useNavigate } from 'react-router-dom';
 import "./Recherche.scss";
-import { useState } from "react";
+import axios from "axios";
 
 
 function Recherche() {
@@ -68,16 +70,54 @@ window.onclick = function(event) {
   }
 };
 
+  const [start, setDateStart] = useState('2000-01-01')
+  const [end, setDateEnd] = useState('2050-01-01')
+  const [city, setCity] = useState('0')
+  const [voyageurs, setVoyageurs] = useState('1')
 
+  const navigate = useNavigate();
+  const { setResults } = useContext(ResultsContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const data = {}
+    data.date_start = start
+    if (start === ''){
+      data.date_start = '2000-01-01'
+    }
+    data.date_end = end
+    if (end === ''){
+      data.date_end = '2000-01-01'
+    }
+    data.city = city
+    if (city === ''){
+      data.city = '0'
+    }
+    data.nombre_personnes = voyageurs
+    if (voyageurs === ''){
+      data.nombre_personnes = '0'
+    }
+    try {
+      const response = await axios.get(`http://localhost:3001/cottages/cottage/${data.nombre_personnes}/${data.date_start}/${data.date_end}/${data.city}`)
+
+      setResults(response.data);
+      navigate('/results');
+      
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  }
+
+  
 
   return (
     <div className="searchContainer">
       <h1 className="titreSearch">Trouvez votre prochaine destination!</h1>
 
       <div className="infoDestination">
-        <div className="infoEcrit">
+        <form className="infoEcrit" onSubmit={handleSubmit}>
 
-          <input className="champSearch" type="text" name="destination" id="destination" placeholder="Où souhaitez-vous aller?" />
+          <input onChange={(event) => setCity(event.target.value)} className="champSearch" type="text" name="destination" id="destination" placeholder="Où souhaitez-vous aller?" />
           <br />
 
           <div className="conteneurSearch">
@@ -86,7 +126,7 @@ window.onclick = function(event) {
               <label htmlFor="arrivee" className={`labelDate ${isLabelArriveeHidden ? 'cd1Hidden' : ''}`}
                 min="2023-01-01" max="2040-01-01" onClick={handleArriveeClick}>Arrivée</label>
               <input title="Arrivée" className="champSearch date"
-                type="date" name="arrivee" id="arrivee" onBlur={handleArriveeBlur} />
+                type="date" name="arrivee" id="arrivee" onChange={(event) => setDateStart(event.target.value)} onBlur={handleArriveeBlur} />
 
             </div>
 
@@ -95,14 +135,14 @@ window.onclick = function(event) {
                 min="2023-01-01" max="2040-01-01" onClick={handleDepartClick}>Départ</label>
               
               <input placeholder="Départ" className="champSearch date"
-                type="date" name="depart" id="depart" onBlur={handleDepartBlur} />
+                type="date" name="depart" id="depart" onChange={(event) => setDateEnd(event.target.value)} onBlur={handleDepartBlur} />
 
             </div>
           </div>
 
           <br />
             <div className="voyag">
-          <select className="champSearch" name="voyageurs" id="voyageurs">
+          <select className="champSearch" name="voyageurs" id="voyageurs" onChange={(event) => setVoyageurs(event.target.value)}>
               <option value="0" selected>Nombre de voyageurs</option>
               <option value="1">1 Voyageur</option>
               <option value="2">2 Voyageurs</option>
@@ -117,21 +157,9 @@ window.onclick = function(event) {
               <option value="11+">11 et plus</option>
           </select></div>
           <br />
-          <div className="dropDown">
-            <button className="dropDownBtn" onClick={toggleDropdown}>Mots-clé<span class="chevron bottom"></span></button>
-            <div className="dropDownContent" id="dropdown-content">
-              <label><input type="checkbox"/> Option 1</label>
-              <label><input type="checkbox" /> Option 2</label>
-              <label><input type="checkbox" /> Option 3</label>
-              <label><input type="checkbox" /> Option 4</label>
-              <label><input type="checkbox" /> Option 5</label>
-              <label><input type="checkbox" /> Option 6</label>
-            </div>
-          </div>
-          <br />
-          <a className="champSearch vert boutonVert" href="#">Recherche</a>
+          <button className="champSearch vert boutonVert" type="submit">Recherche</button>
 
-        </div>
+        </form>
         {/* <!-- CARTE --> */}
 
         <div className="mapImage">

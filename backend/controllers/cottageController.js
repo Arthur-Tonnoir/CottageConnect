@@ -15,7 +15,25 @@ exports.findAll = (req, res) => {
         }
     });
 };
+exports.findByCategoryId = (req, res) => {
+    const id = req.params.id;
 
+    Cottage.findByCategoryId(id, (err, data) => {
+        if (err) {
+            if (err.kind === 'not_found') {
+                res.status(404).send({
+                    message: `Cottage avec la category ID ${id} non trouvé.`
+                });
+            } else {
+                res.status(500).send({
+                    message: `Erreur lors de la récupération du cottage avec la category ID ${id}.`
+                });
+            }
+        } else {
+            res.send(data);
+        }
+    });
+};
 exports.findById = (req, res) => {
     const id = req.params.id;
 

@@ -114,7 +114,7 @@ export default class AddCottages extends Component {
       .post("http://localhost:3001/cottages/withAdress", this.state)
       .then((res) => {
         this.setState({ id_cottages: res.data.id });
-        this.setState({ step: 4 });
+        this.setState({ step: 5 });
       })
       .catch((err) => {
         console.log(err);

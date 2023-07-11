@@ -31,15 +31,6 @@ export default function Cottage() {
     const total =
       duration * cottageData.dayprice * voyageurs + cottageData.caution;
 
-    const formData = new FormData();
-    formData.append('date_start', arrivee);
-    formData.append('date_end', depart);
-    formData.append('duration', duration);
-    formData.append('nombre_personnes', voyageurs);
-    formData.append('total', total);
-    formData.append('id_cottages', id);
-    formData.append('id_client', userId);
-
     const data = {}
     data.date_start = arrivee
     data.date_end = depart

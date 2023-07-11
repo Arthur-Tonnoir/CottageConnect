@@ -27,6 +27,18 @@ Cottage.findAll = result => {
     });
 };
 
+Cottage.findByCategoryId = (id, result) => {
+    sql.query('SELECT * FROM cottages WHERE id_categories = ?', id, (err, res) => {
+        if (err) {
+            console.log('Erreur :', err);
+            result(null, err);
+            return;
+        }
+
+        console.log('Cottages :', res);
+        result(null, res);
+    });
+};
 Cottage.findById = (id, result) => {
     sql.query('SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress FROM cottages WHERE id = ?', id, (err, res) => {
         if (err) {
@@ -45,48 +57,60 @@ Cottage.findById = (id, result) => {
 };
 
 Cottage.findByMombrePersonneAndDateStartAndDateEndAndVille = (nombre_personnes, date_start, date_end, city, result) => {
-    sql.query(
-      'SELECT id FROM adress WHERE city = ?',
-      [city],
-      (errAdress, resAdress) => {
-        if (errAdress) {
-          console.log('Erreur:', errAdress);
-          result(errAdress, null);
-          return;
-        }
+    let addressQuery = 'SELECT DISTINCT id FROM adress';
+    let addressParams = [];
   
-        if (resAdress.length > 0) {
-          const id_addresses = resAdress.map((row) => row.id);
-          console.log(id_addresses);
-          
-          sql.query(
-            'SELECT name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress ' +
-            'FROM cottages ' +
-            'WHERE id_adress IN (?) ' +
-            'AND max_personnes >= ? ' +
-            'AND id NOT IN (SELECT id_cottages FROM reservation WHERE date_start <= ? AND date_end >= ?)',
-            [id_addresses, nombre_personnes, date_end, date_start],
-            (err, res) => {
-              if (err) {
-                console.log('Erreur:', err);
-                result(err, null);
-                return;
-              }
+    if (city !== '0') {
+      addressQuery = 'SELECT id FROM adress WHERE city = ?';
+      addressParams = [city];
+    }
   
-              if (res.length > 0) {
-                console.log('Cottages trouvé:', res);
-                result(null, res);
-                return;
-              }
-  
-              result({ kind: 'not_found' }, null);
-            }
-          );
-        } else {
-          result({ kind: 'not_found' }, null);
-        }
+    sql.query(addressQuery, addressParams, (errAdress, resAdress) => {
+      if (errAdress) {
+        console.log('Erreur:', errAdress);
+        result(errAdress, null);
+        return;
       }
-    );
+  
+      if (resAdress.length > 0) {
+          const id_addresses = resAdress.map((row) => row.id);
+          
+  
+        const cottageQuery = `
+          SELECT id, name, date_creation, content, dayprice, caution, res_count, max_personnes, id_categories, id_prestation, id_proprio, id_adress
+          FROM cottages
+          WHERE id_adress IN (?)
+          AND max_personnes >= ?
+          AND id NOT IN (
+            SELECT id_cottages
+            FROM reservation
+            WHERE date_start <= ?
+            AND date_end >= ?
+          )
+        `;
+  
+        const cottageParams = [id_addresses, nombre_personnes, date_end, date_start];
+        
+  
+        sql.query(cottageQuery, cottageParams, (err, res) => {
+          if (err) {
+            console.log('Erreur:', err);
+            result(err, null);
+            return;
+          }
+  
+          if (res.length > 0) {
+            console.log('Cottages trouvé:', res);
+            result(null, res);
+            return;
+          }
+  
+          result({ kind: 'not_found' }, null);
+        });
+      } else {
+        result({ kind: 'not_found' }, null);
+      }
+    });
   };
 
 
