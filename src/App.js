@@ -11,18 +11,20 @@ import Contact from "./Views/FormContact/FormContact";
 import AddCottages from "./components/AddCottages/AddCottages";
 import PageProfil from "./Views/PageProfil/PageProfil";
 import Faq from "./Views/FAQ/Faq";
+import Cottage from "./components/Cottage/Cottage";
 function App() {
   return (
     <div className="App">
       <Router>
-      <Nav/>
+        <Nav />
         <Routes>
           <Route path="/addcottage" Component={AddCottages} />
           <Route path="/" Component={HomePage} />
           <Route path="/login" Component={Login} />
+          <Route path="/cottage/:id" Component={Cottage} />
           <Route path="/register" Component={Register} />
           <Route path="/admin" Component={Admin} />
-          <Route path="/faq" Component={Faq}/>
+          <Route path="/faq" Component={Faq} />
           <Route path="/contact" Component={Contact} />
           <Route path="/profil" Component={PageProfil} />
         </Routes>

@@ -100,7 +100,7 @@ function Nav() {
           <MenuIcon />
         </button>
         <li className="logoNav">
-          <img src="./img/logo1.png" alt="img" />
+          <img src="http://localhost:3000/img/logo1.png" alt="img" />
         </li>
         <li className="destinationNav">
           Destinations
@@ -144,7 +144,11 @@ function Nav() {
         <div class="navnav">
           <li className="rechercheNav">
             <a href="" onClick={handleSearchClick}>
-              <img src="./img/loupe.png" alt="loupe" className="imgRecherche" />
+              <img
+                src="http://localhost:3000/img/loupe.png"
+                alt="loupe"
+                className="imgRecherche"
+              />
             </a>
             <ul className={`navbarSearch ${isSearchOpen ? "show" : ""}`}>
               <li className="recherche">
@@ -225,7 +229,7 @@ function Nav() {
           </li>
           <li className="compteNav">
             <a href="">
-              <img src="./img/compte.png" alt="compte" />
+              <img src="http://localhost:3000/img/compte.png" alt="compte" />
             </a>
             <ul className="navbarCompte">
               <li className="vide"></li>
@@ -262,7 +266,7 @@ function Nav() {
             <a href="./" className="langue">
               <img
                 id="nomLangue"
-                src={`./img/icons8-${selectedLangue.toLowerCase()}-20.png`}
+                src={`http://localhost:3000/img/icons8-${selectedLangue.toLowerCase()}-20.png`}
                 alt={selectedLangue}
               />
             </a>
@@ -277,7 +281,7 @@ function Nav() {
                 >
                   <img
                     id="France"
-                    src="./img/icons8-france-20.png"
+                    src="http://localhost:3000/img/icons8-france-20.png"
                     alt="France"
                   />
                 </a>
@@ -288,7 +292,11 @@ function Nav() {
                   onClick={() => handleLangueClick("USA")}
                   className={selectedLangue === "USA" ? "hide" : ""}
                 >
-                  <img id="USA" src="./img/icons8-usa-20.png" alt="USA" />
+                  <img
+                    id="USA"
+                    src="http://localhost:3000/img/icons8-usa-20.png"
+                    alt="USA"
+                  />
                 </a>
               </li>
               <li>
@@ -297,7 +305,11 @@ function Nav() {
                   onClick={() => handleLangueClick("Spain")}
                   className={selectedLangue === "Spain" ? "hide" : ""}
                 >
-                  <img id="Spain" src="./img/icons8-spain-20.png" alt="Spain" />
+                  <img
+                    id="Spain"
+                    src="http://localhost:3000/img/icons8-spain-20.png"
+                    alt="Spain"
+                  />
                 </a>
               </li>
               <li>
@@ -308,7 +320,7 @@ function Nav() {
                 >
                   <img
                     id="Germany"
-                    src="./img/icons8-germany-20.png"
+                    src="http://localhost:3000/img/icons8-germany-20.png"
                     alt="Germany"
                   />
                 </a>
