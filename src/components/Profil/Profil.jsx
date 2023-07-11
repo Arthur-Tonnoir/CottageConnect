@@ -88,7 +88,7 @@ function Profil() {
                 .then((res) => {
                     console.log(res.data)
                     if (res.data.Status === "OK") {
-                        window.location.replace('/PageProfil');
+                        window.location.replace('/profil');
                     } else {
                         alert(res.data.message);
                         console.log(res);
@@ -108,7 +108,7 @@ function Profil() {
             .then((res) => {
                 console.log(res.data)
                 if (res.data.Status === "OK") {
-                    window.location.replace('/PageProfil');
+                    window.location.replace('/profil');
                 } else {
                     alert(res.data.message);
                     console.log(res);

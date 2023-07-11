@@ -1,18 +1,12 @@
 import React from "react";
 import './FormContact.scss';
-import Nav from "../../component/Nav/Nav";
-import Footer from "../../component/Footer/Footer";
-import Formulaire from "../../component/Formulaire/Formulaire";
+import Formulaire from "../../components/Formulaire/Formulaire";
 
 function FormContact() {
     return (
-        <div>
-            <Nav />
             <div className="containerormulaire">
                 <Formulaire />
             </div>
-            <Footer />
-        </div>
     )
 }
 

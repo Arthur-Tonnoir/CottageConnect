@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Inscription.scss";
 import GoogleIcon from "@mui/icons-material/Google";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Inscription() {
@@ -67,7 +67,7 @@ function Inscription() {
               className={(nav) => (nav.isActive ? "lien Active" : "lien")}
             >
               <span className="linkLogin">
-                <a href="#">Connectez vous ici</a>
+                <Link to={'/login'}>Connectez vous ici</Link>
               </span>
             </div>
           </div>

@@ -1,6 +1,9 @@
 import React from "react";
 import './Filter.scss';
 import Carousel from "../Carrousel/Carousel";
+import Carousel2 from "../Carrousel/Carousel2"
+import axios from "axios";
+import ByCategories from "./ByCategories/ByCategories";
 
 function Filter() {
     const images = [
@@ -38,57 +41,63 @@ function Filter() {
         './img/Caroussel/gite54.jpg'
     ]
 
+    const [categories, setCategories] = React.useState([])
+    const [city, setCity] = React.useState([])
+
+    function fetchCategories() {
+        axios.get("http://localhost:3001/categories")
+        .then((res) => {
+            setCategories(res.data)
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+    }
+
+    function fetchCity() {
+        axios.get("http://localhost:3001/adress")
+        .then((res) => {
+            setCity(res.data)
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+    }
+    React.useEffect(() => {
+        fetchCategories()
+        fetchCity()
+    }, []) 
+    console.log(city);
     
     return (
         <div className="filterContainer">
             <div className="filters">
                 <h3 className="filterTitle">Filtres</h3>
                 <div className="filterFilter">
-                    <div className="mer">
-                        <a href="./"><img className="imgFilter" src="./img/MerPlage.jpg" alt="mer" /></a>
-                        <p>Mer</p>
-                    </div>
-                    <div className="montagne">
-                        <a href="./"><img className="imgFilter" src="./img/Montagne.jpg" alt="montagne" /></a>
-                        <p>Montagne</p>
-                    </div>
-                    <div className="ville">
-                        <a href="./"><img className="imgFilter" src="./img/Ville.jpg" alt="ville" /></a>
-                        <p>Ville</p>
-                    </div>
-                    <div className="campagne">
-                        <a href="./"><img className="imgFilter" src="./img/Campagne.jpg" alt="campagne" /></a>
-                        <p>Campagne</p>
-                    </div>
-                    <div className="autres">
-                        <a href="./"><img className="imgFilter" src="./img/Plus.png" alt="autres" /></a>
-                        <p>Plus de filtres</p>
-                    </div>
+                <Carousel2 show={4}>
+
+                    {!categories ? (
+                        <p>En Chargement</p>
+                    ) : (
+                        categories.map((category, index) => (
+                        <ByCategories key={index} name={category.name} />
+                        ))
+                    )}
+                </Carousel2>
                 </div>
             </div>
             <div className="filters">
                 <h3 className="filterTitle">Destinations</h3>
                 <div className="filterCity">
-                    <div className="mer">
-                        <a href="./"><img className="imgFilter" src="./img/Paris.jpg" alt="paris" /></a>
-                        <p>Paris</p>
-                    </div>
-                    <div className="montagne">
-                        <a href="./"><img className="imgFilter" src="./img/Marseille.jpg" alt="marseille" /></a>
-                        <p>Marseille</p>
-                    </div>
-                    <div className="ville">
-                        <a href="./"><img className="imgFilter" src="./img/Bretagne.jpg" alt="bretagne" /></a>
-                        <p>Saint Malo</p>
-                    </div>
-                    <div className="campagne">
-                        <a href="./"><img className="imgFilter" src="./img/Lille.jpg" alt="lille" /></a>
-                        <p>Lille</p>
-                    </div>
-                    <div className="autres">
-                        <a href="./"><img className="imgFilter" src="./img/Plus.jpg" alt="autres" /></a>
-                        <p>Plus de destinations</p>
-                    </div>
+                <Carousel2 show={4}>
+                    {!city ? (
+                        <p>En Chargement</p>
+                    ) : (
+                        city.map((city, index) => (
+                        <ByCategories key={index} name={city.city} />
+                        ))
+                    )}
+                </Carousel2>
                 </div>
             </div>
             <div className="filters">
