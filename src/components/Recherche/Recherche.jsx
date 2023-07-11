@@ -1,6 +1,7 @@
 import React from "react";
 import "./Recherche.scss";
 import { useState } from "react";
+import axios from 'axios';
 
 
 function Recherche() {
@@ -25,6 +26,41 @@ function Recherche() {
     }
   }
 
+
+  //Recherche
+
+  const [data_voyageur, setVoyageur] = useState();
+  const [ville, setVille] = useState();
+
+  let result = {};
+
+  const handleRechercheClick = () => {
+    const date_start = document.getElementById('arrivee').value;
+    const date_end = document.getElementById('depart').value;
+    
+    
+    const formData = new FormData();
+    formData.append('nombre_personnes', data_voyageur);
+    formData.append('date_start', date_start);
+    formData.append('date_end', date_end);
+    formData.append('city', ville);
+    axios
+      .get(`http://localhost:3001/cottages/cottage/${formData.get("nombre_personnes")}/${formData.get("date_start")}/${formData.get("date_end")}/${formData.get("city")}`)
+      .then((res) => {
+        result = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const handleVille = (e) => {
+    setVille(e.target.value);
+  }
+
+  const handleVoyageur = (e) => {
+    setVoyageur(e.target.value);
+  }
   // CACHE DES DATES DISPARAISSANT AU CLIC ET REAPARAISSANT EN CLIQUANT AILLEURS
   const [isLabelArriveeHidden, setLabelArriveeHidden] = useState(false);
   const [isLabelDepartHidden, setLabelDepartHidden] = useState(false);
@@ -49,27 +85,6 @@ function Recherche() {
     }
   };
 
-// DROPDOWN BOUTON
-
-function toggleDropdown() {
-  var dropdownContent = document.getElementById("dropdown-content");
-  dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
-}
-
-window.onclick = function(event) {
-  if (!event.target.matches('.dropDownBtn')) {
-    var dropdowns = document.getElementsByClassName("dropDownContent");
-    for (var i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.style.display === "block") {
-        openDropdown.style.display = "none";
-      }
-    }
-  }
-};
-
-
-
   return (
     <div className="searchContainer">
       <h1 className="titreSearch">Trouvez votre prochaine destination!</h1>
@@ -77,7 +92,7 @@ window.onclick = function(event) {
       <div className="infoDestination">
         <div className="infoEcrit">
 
-          <input className="champSearch" type="text" name="destination" id="destination" placeholder="Où souhaitez-vous aller?" />
+          <input className="champSearch" type="text" name="destination" id="destination" placeholder="Où souhaitez-vous aller?" onChange={handleVille} />
           <br />
 
           <div className="conteneurSearch">
@@ -102,7 +117,7 @@ window.onclick = function(event) {
 
           <br />
             <div className="voyag">
-          <select className="champSearch" name="voyageurs" id="voyageurs">
+          <select className="champSearch" name="voyageurs" id="voyageurs" onChange={handleVoyageur}>
               <option value="0" selected>Nombre de voyageurs</option>
               <option value="1">1 Voyageur</option>
               <option value="2">2 Voyageurs</option>
@@ -117,19 +132,7 @@ window.onclick = function(event) {
               <option value="11+">11 et plus</option>
           </select></div>
           <br />
-          <div className="dropDown">
-            <button className="dropDownBtn" onClick={toggleDropdown}>Mots-clé<span class="chevron bottom"></span></button>
-            <div className="dropDownContent" id="dropdown-content">
-              <label><input type="checkbox"/> Option 1</label>
-              <label><input type="checkbox" /> Option 2</label>
-              <label><input type="checkbox" /> Option 3</label>
-              <label><input type="checkbox" /> Option 4</label>
-              <label><input type="checkbox" /> Option 5</label>
-              <label><input type="checkbox" /> Option 6</label>
-            </div>
-          </div>
-          <br />
-          <a className="champSearch vert boutonVert" href="#">Recherche</a>
+          <a className="champSearch vert boutonVert" href="#" onClick={handleRechercheClick}>Recherche</a>
 
         </div>
         {/* <!-- CARTE --> */}
