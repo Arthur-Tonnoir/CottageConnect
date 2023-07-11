@@ -12,7 +12,7 @@ const Reservation = function (reservation) {
 };
 
 Reservation.findAll = (result) => {
-  sql.query("SELECT id, created_at, date_start, date_end, duration, nombre_personnes, total, id_cottages, id_client FROM reservations", (err, res) => {
+  sql.query("SELECT id, created_at, date_start, date_end, duration, nombre_personnes, total, id_cottages, id_client FROM reservation", (err, res) => {
     if (err) {
       console.log("Erreur :", err);
       result(null, err);
@@ -25,7 +25,7 @@ Reservation.findAll = (result) => {
 };
 
 Reservation.findById = (id, result) => {
-  sql.query("SELECT created_at, date_start, date_end, duration, nombre_personnes, total, id_cottages, id_client FROM reservations WHERE id = ?", id, (err, res) => {
+  sql.query("SELECT created_at, date_start, date_end, duration, nombre_personnes, total, id_cottages, id_client FROM reservation WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("Erreur :", err);
       result(err, null);
@@ -41,9 +41,26 @@ Reservation.findById = (id, result) => {
   });
 };
 
+Reservation.findByUser = (id_client, result) => {
+  sql.query("SELECT id, created_at, date_start, date_end, duration, nombre_personnes, total, id_cottages FROM reservation WHERE id_client = ?", id_client, (err, res) => {
+    if (err) {
+      console.log("Erreur :", err);
+      result(err, null);
+      return;
+    }
+    if (res.length) {
+      console.log("Reservation(s) de l'utilisateur trouvé :", res);
+      result(null, res);
+      return;
+    }
+
+    result({ kind: "not_found" }, null);
+  });
+};
+
 Reservation.create = (newReservation, result) => {
   sql.query(
-    `SELECT id, created_at duration, nombre_personnes, total, id_client FROM reservations WHERE id_cottages = ? AND
+    `SELECT id, created_at duration, nombre_personnes, total, id_client FROM reservation WHERE id_cottages = ? AND
     (date_start <= ? AND date_end >= ?)`,
     [newReservation.id_cottages, newReservation.date_end, newReservation.date_start],
     (err, res) => {
@@ -77,7 +94,7 @@ Reservation.create = (newReservation, result) => {
 
 Reservation.update = (id, reservation, result) => {
   sql.query(
-    "UPDATE reservations SET created_at = ?, date_start = ? , date_end = ?, duration = ?, nombre_personnes = ?, total = ?, id_cottages = ?, id_client = ?  WHERE id = ?",
+    "UPDATE reservation SET created_at = ?, date_start = ? , date_end = ?, duration = ?, nombre_personnes = ?, total = ?, id_cottages = ?, id_client = ?  WHERE id = ?",
     [
       reservation.created_at,
       reservation.date_start,
@@ -108,7 +125,7 @@ Reservation.update = (id, reservation, result) => {
 };
 
 Reservation.delete = (id, result) => {
-  sql.query("DELETE FROM reservations WHERE id = ?", id, (err, res) => {
+  sql.query("DELETE FROM reservation WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("Erreur :", err);
       result(err, null);

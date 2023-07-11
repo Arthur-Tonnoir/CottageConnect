@@ -35,6 +35,26 @@ exports.findById = (req, res) => {
   });
 };
 
+exports.findByUser = (req, res) => {
+  const id_user = req.params.id_user;
+
+  Reservation.findByUser(id_user, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Reservation(s) de l'utilisateur avec son ID ${id_user} non trouvé.`,
+        });
+      } else {
+        res.status(500).send({
+          message: `Erreur lors de la récupération de(s) reservation(s) de l'utilisateur avec son l'ID ${id_user}.`,
+        });
+      }
+    } else {
+      res.send(data);
+    }
+  });
+}
+
 exports.create = (req, res) => {
   if (!req.body) {
     res.status(400).send({
