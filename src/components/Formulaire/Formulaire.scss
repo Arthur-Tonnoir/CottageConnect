@@ -1,69 +1,82 @@
 .containerForm {
-  width: 100%;
+    width: 100%;
 
-  .formTitle {
-    text-align: center;
-    margin-bottom: 2em;
-  }
+    .formTitle {
+        text-align: center;
+        // margin-bottom: 2em;
+        color: white;
+        padding-bottom: 1em;
+        font-size: 1.5em;
+    }
+}
+
+body {
+    background-image: url(./img-page-contact.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% ;
 }
 
 .inputFormulaires {
-  display: flex;
-  justify-content: center;
-  margin-bottom: em;
+    display: flex;
+    justify-content: center;
+    // margin-bottom: em;
 }
 
 .inputFormulaire {
-  font-weight: bold;
-  width: 20%;
-  color: azure;
-  background-color: #004F7B;
-  text-align: center;
-  height: 4.5em;
-  border: none;
-  border-radius: 0.8em;
-  margin-left: 2em;
-  margin-right: 2em;
-  margin-bottom: 2em;
+    font-weight: bold;
+    width: 20%;
+    background-color: rgba(230, 230, 230, 0.9);
+    text-align: center;
+    height: 4.5em;
+    border: none;
+    border-radius: 0.8em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 2em;
 }
 
 .inputFormulaire::placeholder {
-  color: azure;
+    color: black;
 }
 
+
 .textMessages {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2em;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
 }
 
 .message {
-  color: azure;
-  background-color: #004F7B;
-  width: 65.5%;
-  height: 10em;
-  border-radius: 10px;
-  border: none;
-  resize: vertical;
-  margin-bottom: 2em;
+    background-color: rgba(230, 230, 230, 0.9);
+    width: 65.5%;
+    min-height: 20em;
+    border-radius: 10px;
+    border: none;
+    resize: both;
+
 }
 .message::placeholder {
-  padding-top: 3em;
-  text-align: center;
-  font-weight: bold;
-  color: azure;
-  font-size: 1.3em;
+    padding-top: 3em;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    font-size: 1.3em;
 }
 
 .buttonSubmits {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    margin-top: -1em;
 }
 
 .buttonSubmit {
-  width: 15%;
-  height: 4.5em;
-  border-radius: 0.8em;
-  color: azure;
-  background-color: #004F7B;
+    width: 15%;
+    height: 3em;
+    border-radius: 0.8em;
+    font-size: 1.3em;
+    border: none;
+    font-weight: bold;
+    color: azure;
+    background-color: #004F7B;
 }

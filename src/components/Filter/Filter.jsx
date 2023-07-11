@@ -106,41 +106,77 @@ function Filter() {
                     <div className="premier">
                         <Carousel className="imgGite" images={images} />
                         <a href="./">
-                            <span className="nomGite">Gite la Valeria</span>
-                            <span className="comoditeGite">Comodité</span>
-                            <span className="prixGite">Prix</span>
+                            <span className="nomGite">Gite La Valeria
+                                <img className="badge" src="./img/badge-promo.png" alt="badge" />
+                            </span>
+                            <span className="comoditeGite">
+                                <img className="imgIcone" src="./img/icons8-lit-20.png" alt="icone lit" />
+                                    <p className="nbLit">2</p>
+                                    <img className="imgIcone grp" src="./img/groupe.png" alt="icone personnes" />
+                                    <p className="nbGens">3</p>
+                            </span>
+                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix/nuit</span>
                         </a>
                     </div>
+
                     <div className="deuxieme">
                         <Carousel className="imgGite" images={images2} />
                         <a href="./">
-                            <span className="nomGite">Nom du gîte</span>
-                            <span className="comoditeGite">Comodité</span>
-                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix</span>
+                            <span className="nomGite">Logis en forêt
+                            <img className="badge" src="./img/badge-eco.png" alt="badge" />
+                            </span>
+                            <span className="comoditeGite">
+                                <img className="imgIcone" src="./img/icons8-lit-20.png" alt="icone lit" />
+                                    <p className="nbLit">1</p>
+                                <img className="imgIcone grp" src="./img/groupe.png" alt="icone personnes" />
+                                    <p className="nbGens">2</p>
+                            </span>
+                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix/nuit</span>
                         </a>
                     </div>
                     <div className="troisieme">
                         <Carousel className="imgGite" images={images3} />
                         <a href="./">
-                            <span className="nomGite">Nom du gîte</span>
-                            <span className="comoditeGite">Comodité</span>
-                            <span className="prixGite">Prix</span>
+                            <span className="nomGite">Gite Le Repos
+                                <img className="badge" src="./img/badge-culinaire.png" alt="badge" />
+                            </span>
+                            <span className="comoditeGite">
+                                <img className="imgIcone" src="./img/icons8-lit-20.png" alt="icone lit" />
+                                    <p className="nbLit">3</p>
+                                <img className="imgIcone grp" src="./img/groupe.png" alt="icone personnes" />
+                                    <p className="nbGens">6</p>
+                            </span>
+                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix/nuit</span>
                         </a>
                     </div>
                     <div className="quatrieme" >
                         <Carousel images={images4} className="imgGite" />
                         <a href="./">
-                            <span className="nomGite">Nom du gîte</span>
-                            <span className="comoditeGite">Comodité</span>
-                            <span className="prixGite">Prix</span>
+                            <span className="nomGite">Appartement vue mer
+                                <img className="badge" src="./img/badge-promo.png" alt="badge" />
+                            </span>
+                            <span className="comoditeGite">
+                                <img className="imgIcone" src="./img/icons8-lit-20.png" alt="icone lit" />
+                                    <p className="nbLit">2</p>
+                                <img className="imgIcone grp" src="./img/groupe.png" alt="icone personnes" />
+                                    <p className="nbGens">4</p>
+                            </span>
+                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix/nuit</span>
                         </a>
                     </div>
                     <div className="cinquieme">
                         <Carousel images={images5} className="imgGite" />
                         <a href="./">
-                            <span className="nomGite">Nom du gîte</span>
-                            <span className="comoditeGite">Comodité</span>
-                            <span className="prixGite">Prix</span>
+                            <span className="nomGite">Nom du gîte
+                                <img className="badge" src="./img/badge-super-hote.PNG" alt="badge"/>
+                            </span>
+                            <span className="comoditeGite">
+                                <img className="imgIcone" src="./img/icons8-lit-20.png" alt="icone lit" />
+                                    <p className="nbLit">3</p>
+                                <img className="imgIcone grp" src="./img/groupe.png" alt="icone personnes" />
+                                    <p className="nbGens">5</p>
+                            </span>
+                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix/nuit</span>
                         </a>
                     </div>
                 </div>
