@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Connexion.scss";
 import GoogleIcon from "@mui/icons-material/Google";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Connexion() {
   const [values, setValues] = useState({
@@ -69,7 +69,7 @@ function Connexion() {
               className={(nav) => (nav.isActive ? "lien Active" : "lien")}
             >
               <span className="linkSignIn">
-                <a href="#">Inscrivez-vous ici</a>
+                <Link to={'/register'}>Inscrivez-vous ici</Link>
               </span>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React from "react";
 import "./Footer.scss";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -30,14 +31,14 @@ function Footer() {
         <div className="footerSection">
           <div className="footerContact">
             <h3 className="contactTitle">
-              <a className="contactLink" href="#">
+              <Link to={'/contact'} className="contactLink">
                 Nous contacter
-              </a>
+              </Link>
             </h3>
             <h3 className="contactTitle">
-              <a className="contactLink" href="#">
+              <Link className="contactLink" to={'/faq'}>
                 FAQ
-              </a>
+              </Link>
             </h3>
 
             <div className="footerSocials">

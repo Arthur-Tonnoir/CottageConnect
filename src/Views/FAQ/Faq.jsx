@@ -1,14 +1,10 @@
 import React from "react";
 import './Faq.scss';
-import Accordion from '../../component/Accordion/Accordion';
-import Footer from '../../component/Footer/Footer'
-import Nav from '../../component/Nav/Nav'
-
+import Accordion from '../../components/Accordion/Accordion';
 
 function Faq() {
     return (
         <div className="backgroundAccordion">
-            <Nav />
             <div className="containerAccordion">
                 <h3>Titre de la catégorie FAQ</h3>
                 <div className="accordion">
@@ -19,7 +15,6 @@ function Faq() {
                     <button className="containerMore">Plus de question</button>
                 </div>
             </div>
-            <Footer />
         </div>
     )
 }
