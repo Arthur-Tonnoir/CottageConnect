@@ -45,24 +45,24 @@ function Filter() {
                 <h3 className="filterTitle">Filtres</h3>
                 <div className="filterFilter">
                     <div className="mer">
-                        <img className="imgFilter" src="./img/MerPlage.jpg" alt="mer" />
-                        <a href="./">Mer</a>
+                        <a href="./"><img className="imgFilter" src="./img/MerPlage.jpg" alt="mer" /></a>
+                        <p>Mer</p>
                     </div>
                     <div className="montagne">
-                        <img className="imgFilter" src="./img/Montagnes.jpg" alt="montagne" />
-                        <a href="./">Montagne</a>
+                        <a href="./"><img className="imgFilter" src="./img/Montagne.jpg" alt="montagne" /></a>
+                        <p>Montagne</p>
                     </div>
                     <div className="ville">
-                        <img className="imgFilter" src="./img/Ville.jpg" alt="ville" />
-                        <a href="./">Ville</a>
+                        <a href="./"><img className="imgFilter" src="./img/Ville.jpg" alt="ville" /></a>
+                        <p>Ville</p>
                     </div>
                     <div className="campagne">
-                        <img className="imgFilter" src="./img/Campagne.jpg" alt="campagne" />
-                        <a href="./">Campagne</a>
+                        <a href="./"><img className="imgFilter" src="./img/Campagne.jpg" alt="campagne" /></a>
+                        <p>Campagne</p>
                     </div>
                     <div className="autres">
-                        <img className="imgFilter" src="./img/Plus.jpg" alt="autres" />
-                        <a href="./">Plus de filtres</a>
+                        <a href="./"><img className="imgFilter" src="./img/Plus.png" alt="autres" /></a>
+                        <p>Plus de filtres</p>
                     </div>
                 </div>
             </div>
@@ -70,24 +70,24 @@ function Filter() {
                 <h3 className="filterTitle">Destinations</h3>
                 <div className="filterCity">
                     <div className="mer">
-                        <img className="imgFilter" src="./img/Paris.jpg" alt="paris" />
-                        <a href="./">Paris</a>
+                        <a href="./"><img className="imgFilter" src="./img/Paris.jpg" alt="paris" /></a>
+                        <p>Paris</p>
                     </div>
                     <div className="montagne">
-                        <img className="imgFilter" src="./img/Marseille.jpg" alt="marseille" />
-                        <a href="./">Marseille</a>
+                        <a href="./"><img className="imgFilter" src="./img/Marseille.jpg" alt="marseille" /></a>
+                        <p>Marseille</p>
                     </div>
                     <div className="ville">
-                        <img className="imgFilter" src="./img/Bretagne.jpg" alt="bretagne" />
-                        <a href="./">Saint Malo</a>
+                        <a href="./"><img className="imgFilter" src="./img/Bretagne.jpg" alt="bretagne" /></a>
+                        <p>Saint Malo</p>
                     </div>
                     <div className="campagne">
-                        <img className="imgFilter" src="./img/Lille.jpg" alt="lille" />
-                        <a href="./">Lille</a>
+                        <a href="./"><img className="imgFilter" src="./img/Lille.jpg" alt="lille" /></a>
+                        <p>Lille</p>
                     </div>
                     <div className="autres">
-                        <img className="imgFilter" src="./img/Plus.jpg" alt="autres" />
-                        <a href="./">Plus de destinations</a>
+                        <a href="./"><img className="imgFilter" src="./img/Plus.jpg" alt="autres" /></a>
+                        <p>Plus de destinations</p>
                     </div>
                 </div>
             </div>
@@ -97,41 +97,77 @@ function Filter() {
                     <div className="premier">
                         <Carousel className="imgGite" images={images} />
                         <a href="./">
-                            <span className="nomGite">Gite la Valeria</span>
-                            <span className="comoditeGite">Comodité</span>
-                            <span className="prixGite">Prix</span>
+                            <span className="nomGite">Gite La Valeria
+                                <img className="badge" src="./img/badge-promo.png" alt="badge" />
+                            </span>
+                            <span className="comoditeGite">
+                                <img className="imgIcone" src="./img/icons8-lit-20.png" alt="icone lit" />
+                                    <p className="nbLit">2</p>
+                                    <img className="imgIcone grp" src="./img/groupe.png" alt="icone personnes" />
+                                    <p className="nbGens">3</p>
+                            </span>
+                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix/nuit</span>
                         </a>
                     </div>
+
                     <div className="deuxieme">
                         <Carousel className="imgGite" images={images2} />
                         <a href="./">
-                            <span className="nomGite">Nom du gîte</span>
-                            <span className="comoditeGite">Comodité</span>
-                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix</span>
+                            <span className="nomGite">Logis en forêt
+                            <img className="badge" src="./img/badge-eco.png" alt="badge" />
+                            </span>
+                            <span className="comoditeGite">
+                                <img className="imgIcone" src="./img/icons8-lit-20.png" alt="icone lit" />
+                                    <p className="nbLit">1</p>
+                                <img className="imgIcone grp" src="./img/groupe.png" alt="icone personnes" />
+                                    <p className="nbGens">2</p>
+                            </span>
+                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix/nuit</span>
                         </a>
                     </div>
                     <div className="troisieme">
                         <Carousel className="imgGite" images={images3} />
                         <a href="./">
-                            <span className="nomGite">Nom du gîte</span>
-                            <span className="comoditeGite">Comodité</span>
-                            <span className="prixGite">Prix</span>
+                            <span className="nomGite">Gite Le Repos
+                                <img className="badge" src="./img/badge-culinaire.png" alt="badge" />
+                            </span>
+                            <span className="comoditeGite">
+                                <img className="imgIcone" src="./img/icons8-lit-20.png" alt="icone lit" />
+                                    <p className="nbLit">3</p>
+                                <img className="imgIcone grp" src="./img/groupe.png" alt="icone personnes" />
+                                    <p className="nbGens">6</p>
+                            </span>
+                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix/nuit</span>
                         </a>
                     </div>
                     <div className="quatrieme" >
                         <Carousel images={images4} className="imgGite" />
                         <a href="./">
-                            <span className="nomGite">Nom du gîte</span>
-                            <span className="comoditeGite">Comodité</span>
-                            <span className="prixGite">Prix</span>
+                            <span className="nomGite">Appartement vue mer
+                                <img className="badge" src="./img/badge-promo.png" alt="badge" />
+                            </span>
+                            <span className="comoditeGite">
+                                <img className="imgIcone" src="./img/icons8-lit-20.png" alt="icone lit" />
+                                    <p className="nbLit">2</p>
+                                <img className="imgIcone grp" src="./img/groupe.png" alt="icone personnes" />
+                                    <p className="nbGens">4</p>
+                            </span>
+                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix/nuit</span>
                         </a>
                     </div>
                     <div className="cinquieme">
                         <Carousel images={images5} className="imgGite" />
                         <a href="./">
-                            <span className="nomGite">Nom du gîte</span>
-                            <span className="comoditeGite">Comodité</span>
-                            <span className="prixGite">Prix</span>
+                            <span className="nomGite">Nom du gîte
+                                <img className="badge" src="./img/badge-super-hote.PNG" alt="badge"/>
+                            </span>
+                            <span className="comoditeGite">
+                                <img className="imgIcone" src="./img/icons8-lit-20.png" alt="icone lit" />
+                                    <p className="nbLit">3</p>
+                                <img className="imgIcone grp" src="./img/groupe.png" alt="icone personnes" />
+                                    <p className="nbGens">5</p>
+                            </span>
+                            <span className="prixGite"><p className="meaPrix">à partir de</p>Prix/nuit</span>
                         </a>
                     </div>
                 </div>
