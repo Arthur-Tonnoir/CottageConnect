@@ -49,7 +49,7 @@ function Filter() {
                         <p>Mer</p>
                     </div>
                     <div className="montagne">
-                        <a href="./"><img className="imgFilter" src="./img/Montagne.jpg" alt="montagne" /></a>
+                        <a href="./"><img className="imgFilter" src="./img/montagnesnew.jpg" alt="montagne" /></a>
                         <p>Montagne</p>
                     </div>
                     <div className="ville">
@@ -61,33 +61,33 @@ function Filter() {
                         <p>Campagne</p>
                     </div>
                     <div className="autres">
-                        <a href="./"><img className="imgFilter" src="./img/Plus.png" alt="autres" /></a>
-                        <p>Plus de filtres</p>
+                        <a href="./"><img className="imgFilter" src="./img/Plus.png" alt="autres" />Plus de filtres</a>
+                        
                     </div>
                 </div>
             </div>
             <div className="filters">
                 <h3 className="filterTitle">Destinations</h3>
                 <div className="filterCity">
-                    <div className="mer">
+                    <div className="mer paris">
                         <a href="./"><img className="imgFilter" src="./img/Paris.jpg" alt="paris" /></a>
                         <p>Paris</p>
                     </div>
                     <div className="montagne">
-                        <a href="./"><img className="imgFilter" src="./img/Marseille.jpg" alt="marseille" /></a>
+                        <a href="./"><img className="imgFilter" src="./img/marseille.png" alt="marseille" /></a>
                         <p>Marseille</p>
                     </div>
                     <div className="ville">
                         <a href="./"><img className="imgFilter" src="./img/Bretagne.jpg" alt="bretagne" /></a>
                         <p>Saint Malo</p>
                     </div>
-                    <div className="campagne">
+                    <div className="campagne lille">
                         <a href="./"><img className="imgFilter" src="./img/Lille.jpg" alt="lille" /></a>
                         <p>Lille</p>
                     </div>
                     <div className="autres">
-                        <a href="./"><img className="imgFilter" src="./img/Plus.jpg" alt="autres" /></a>
-                        <p>Plus de destinations</p>
+                        <a href="./"><img className="imgFilter" src="./img/Plus.png" alt="autres" />Plus de destinations</a>
+                        
                     </div>
                 </div>
             </div>

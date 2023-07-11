@@ -33,18 +33,23 @@ function Inscription() {
         <form onSubmit={handleSubmit} className="inscriptionForm">
           <h3>Créez un compte</h3>
           <span className="inputSignIn">Nom d'utilisateur</span>
+          <br/>
           <input
             className="signInPlaceholder"
             type="text"
             onChange={(e) => setValues({ ...values, username: e.target.value })}
           />
+          <br/>
           <span className="inputSignIn">Adresse mail</span>
+          <br/>
           <input
             className="signInPlaceholder"
             type="email"
             onChange={(e) => setValues({ ...values, email: e.target.value })}
           />
+          <br/>
           <span className="inputSignIn">Mot de passe</span>
+          <br/>
           <input
             className="signInPlaceholder"
             type="password"
@@ -53,11 +58,12 @@ function Inscription() {
           <button type="submit" className="signInButton">
             S'inscrire
           </button>
-          <div className="googleConnexion">
+          <br/>
+          <br/>
+          <div className="googleConnexion1">
             <span>Ou continuer avec </span>
             <a href="#">
-              {" "}
-              <GoogleIcon />{" "}
+              Google
             </a>
           </div>
           <div>

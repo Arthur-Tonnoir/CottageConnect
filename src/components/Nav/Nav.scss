@@ -7,10 +7,10 @@ header {
   align-items: center;
   font-size: 1em;
   font-family: Helvetica;
-  // position: fixed;
-  // top: 0;
+  position: fixed;
+  top: 0;
   // overflow: hidden;
-  // z-index: 1;
+  z-index: 99;
 }
 
 .navbar {

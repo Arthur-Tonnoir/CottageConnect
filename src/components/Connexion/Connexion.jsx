@@ -31,35 +31,33 @@ function Connexion() {
       <div className="loginScreen">
         <form onSubmit={handleSubmit} className="connexionForm">
           <h3>Se connecter</h3>
-          <span className="inputLogin">Nom d'utilisateur</span>
+          <span className="inputLogin">Adresse mail</span>
+          <br/>
           <input
             className="loginPlaceholder"
-            placeholder="Utilisateur"
+            // placeholder="Utilisateur"
             type="text"
-            onChange={(e) => setValues({ ...values, username: e.target.value })}
+            // onChange={(e) => setValues({ ...values, username: e.target.value })}
           />
+          <br/>
           <span className="inputLogin">Mot de Passe</span>
+          <br/>
           <input
             className="loginPlaceholder"
-            placeholder="Mot de Passe"
+            // placeholder="Mot de Passe"
             type="password"
-            onChange={(e) => setValues({ ...values, password: e.target.value })}
+            // onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
           <button type="submit" className="loginButton">
-            S'identifier
+            Connexion
           </button>
-          <div className="googleConnexion">
+          <br/>
+          <br/>
+          <div className="googleConnexion1">
             <span>Ou continuer avec </span>
             <a href="#">
-              <GoogleIcon />
+              google
             </a>
-          </div>
-          <div>
-            <input type="checkbox" className="loginScreenSouvenir" />
-            <label className="signupScreenLabelsouvenir">
-              
-              Se souvenir de moi
-            </label>
           </div>
           <div>
             <span className="loginScreen">Vous n'avez pas de compte ? </span>

@@ -1,19 +1,22 @@
 .containerConnexion {
-  background-image: url(../../../public/img/background.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 60vh;
+  // background-image: url(../../../public/img/background.jpg);
+  // background-size: cover;
+  // background-position: center;
+  height: 75vh;
   text-align: center;
-  padding-top: 5em;
+  padding-top: 0em;
   padding-bottom: 5em;
+  margin-top: 10.24em;
+  h3 {
+    padding-bottom: 0.5em;
+  }
 }
 
 .loginScreen {
-  width: 25%;
+  width: 30%;
   padding: 1.5em 3em;
   margin: 0 auto;
-  background: #48be7f;
-  opacity: 90%;
+  // opacity: 90%;
   border-radius: 2%;
 }
 
@@ -23,78 +26,87 @@
 
   h3 {
     font-size: 1.5em;
-    color: azure;
+    color: black;
     margin-bottom: 1em;
   }
 }
 
 .inputLogin {
-  color: azure;
+  color: black;
   text-align: left;
   margin-left: 1em;
+  font-weight: bold;
 }
 
 .loginButton {
   width: 40%;
-  height: 3.42em;
+  height: 3em;
   font-weight: bold;
-  background-color: azure;
-  color: #227448;
+  background-color: #004F7B;
+  color: #fff;
+  font-size: 1em;
   border: none;
-  border-radius: 0.5em;
+  border-radius: 0.9em;
   cursor: pointer;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-  margin-left: 30%;
+  margin-top: 1em;
+  // margin-bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
 
-  &:hover {
-    background-color: azure;
-    color: #227448;
-  }
+  // &:hover {
+  //   background-color: azure;
+  //   color: #227448;
+  // }
 }
 
-.googleConnexion {
-  margin-bottom: 1.2em;
-  color: azure;
-  font-size: 1.5em;
-
-  svg {
-    font-size: 1.5em;
-  }
+.googleConnexion1 {
+  // margin-bottom: 1em;
+  color: black;
+a {
+  color: black;
+  font-size: medium;
+}
+ span {
+  font-size: medium;
+ }
 }
 
 .loginPlaceholder {
   margin-top: 0.5em;
-  color: azure;
-  background-color: #227448;
-  width: 90%;
-  padding: 0.5em;
-  border-color: azure;
+  // color: azure;
+  background-color: #e6e6e6;
+  border: none;
+  width: 100%;
+  height: 3em;
+  // padding: 0.5em;
+  // border-color: azure;
   border-radius: 2em;
   margin-bottom: 1em;
+  margin-left: 0.8em;
 }
 
-.loginPlaceholder::placeholder {
-  color: azure;
-  font-style: italic;
-  font-size: 100%;
-  padding-left: 1.5em;
-}
+// .loginPlaceholder::placeholder {
+//   color: azure;
+//   font-style: italic;
+//   font-size: 100%;
+//   padding-left: 1.5em;
+// }
 
-.signupScreenLabelsouvenir {
-  color: azure;
-  padding: 0.5em;
-}
+// .signupScreenLabelsouvenir {
+//   color: black;
+//   padding: 0.5em;
+// }
 
 .loginScreen {
   text-align: center;
-  color: azure;
+  // color: black;
 }
 
 .linkSignIn {
   cursor: pointer;
   text-decoration: underline;
-  color: azure;
   position: relative;
   z-index: 1;
+  a{
+  color: black;}
 }

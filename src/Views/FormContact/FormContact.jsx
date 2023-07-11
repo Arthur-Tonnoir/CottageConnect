@@ -1,5 +1,5 @@
 import React from "react";
-import './FormContact.scss';
+import './Formulaire.scss';
 import Nav from "../../component/Nav/Nav";
 import Footer from "../../component/Footer/Footer";
 import Formulaire from "../../component/Formulaire/Formulaire";

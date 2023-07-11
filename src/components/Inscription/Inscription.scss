@@ -1,11 +1,12 @@
 .containerInscription {
-  background-image: url(../../../public/img/background.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 60vh;
+  // background-image: url(../../../public/img/background.jpg);
+  // background-size: cover;
+  // background-position: center;
+  height: 82vh;
   text-align: center;
-  padding-top: 5em;
+  padding-top: 0em;
   padding-bottom: 5em;
+  margin-top: 10.24em;
 
   // @media screen and (max-width:480px) {
   //     height: 70vh;
@@ -14,14 +15,16 @@
   // @media screen and (min-width:481px) and (max-width:780px) {
   //     height: 80vh;
   // }
+  h3 {
+    padding-bottom: 0.5em;
+  }
 }
 
 .signInScreen {
-  width: 25%;
+  width: 30%;
   padding: 1.5em 3em;
   margin: 0 auto;
-  background: #48be7f;
-  opacity: 90%;
+  // opacity: 90%;
   border-radius: 2%;
 
   // @media only screen and (min-width: 480px) {
@@ -39,34 +42,37 @@
 
   h3 {
     font-size: 1.5em;
-    color: azure;
+    color: black;
     margin-bottom: 1em;
   }
 }
 
 .inputSignIn {
-  color: azure;
+  color: black;
   text-align: left;
   margin-left: 1em;
+  font-weight: bold;
 }
 
 .signInButton {
   width: 40%;
-  height: 3.42em;
+  height: 3em;
   font-weight: bold;
-  background-color: azure;
-  color: #227448;
+  background-color: #004F7B;
+  color: #fff;
+  font-size: 1em;
   border: none;
-  border-radius: 0.5em;
+  border-radius: 0.9em;
   cursor: pointer;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-  margin-left: 30%;
+  margin-top: 1em;
+  // margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
 
-  &:hover {
-    background-color: azure;
-    color: #227448;
-  }
+  // &:hover {
+  //   background-color: azure;
+  //   color: #227448;
+  // }
 
   // @media only screen and (min-width: 480px) {
   //     width: 30%;
@@ -79,33 +85,36 @@
   // }
 }
 
-.googleConnexion {
-  margin-bottom: 1.2em;
-  color: azure;
-  font-size: 1.5em;
-
-  svg {
-    font-size: 1.5em;
-  }
+.googleConnexion1 {
+  // margin-bottom: 1.7em;
+  color: black;
+a {
+  color: black;
+  font-size: medium;
+}
+ span {
+  font-size: medium;
+ }
 }
 
 .signInPlaceholder {
   margin-top: 0.5em;
-  color: azure;
-  background-color: #227448;
-  width: 90%;
-  padding: 0.5em;
-  border-color: azure;
+  background-color: #e6e6e6;
+  width: 100%;
+  border: none;
+  height: 3em;
+  // padding: 0.5em;
+  // border-color: azure;
   border-radius: 2em;
   margin-bottom: 1em;
   margin-left: 0.8em;
 }
 
-.signInPlaceholder::placeholder {
-  color: azure;
-  font-style: italic;
-  font-size: 100%;
-  padding-left: 1.5em;
+// .signInPlaceholder::placeholder {
+//   color: azure;
+//   font-style: italic;
+//   font-size: 100%;
+//   padding-left: 1.5em;
 
   //     @media only screen and (min-width: 480px) {
   //         width: 80%;
@@ -116,11 +125,10 @@
   //         width: 70%;
   //         margin-left: 15%;
   //     }
-}
+// }
 
 .signInScreen {
   text-align: center;
-  color: azure;
 }
 
 .linkLogin {
@@ -129,4 +137,6 @@
   color: azure;
   position: relative;
   z-index: 1;
+  a{
+    color: black;}
 }

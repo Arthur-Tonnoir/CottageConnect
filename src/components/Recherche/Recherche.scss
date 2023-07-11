@@ -1,11 +1,13 @@
 .searchContainer {
-  height: 50vh;
+  height: auto;
   padding: 4em;
   background-image: url(./fondrecherche.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% ;
   // border: solid;
+  margin-top: 10.24em;
+
  }
  
  /* CARTE INTERACTIVE */
@@ -14,6 +16,7 @@
    width: 35%;
    float: right;
    height: 22.5em;
+  //  height: auto;
   //  background: #AFA8A8;
    padding-top: 1em;
    border-top-right-radius: 15px;

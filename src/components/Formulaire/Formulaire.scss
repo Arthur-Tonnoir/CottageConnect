@@ -1,26 +1,27 @@
 .containerForm {
-    width: 100%;
+
+}
+
+.containerForm {
+    background-image: url(./img-page-contact.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% ;
+    width: auto;    
+    padding-top: 2em;
+    margin-top: 10.24em;
 
     .formTitle {
         text-align: center;
-        // margin-bottom: 2em;
         color: white;
         padding-bottom: 1em;
         font-size: 1.5em;
     }
 }
 
-body {
-    background-image: url(./img-page-contact.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% ;
-}
-
 .inputFormulaires {
     display: flex;
     justify-content: center;
-    // margin-bottom: em;
 }
 
 .inputFormulaire {
@@ -68,6 +69,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: -1em;
+    padding-bottom: 4em;
 }
 
 .buttonSubmit {

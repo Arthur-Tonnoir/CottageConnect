@@ -2,6 +2,7 @@
   height: auto;
   padding-bottom: 2.5em;
   // background-color: green;
+  
 }
 
 
@@ -55,29 +56,40 @@
   width: 30%;
   display: flex;
   flex-direction: column;
-
 }
-
 
 
 .imgFilter {
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
   margin: auto 1em;
+  width: 76%;
+  align-items:center ;
+  height: 12em;
+  object-fit: cover; /* Ajoutez cette ligne */
+}
+
+.montagne .imgFilter {
   width: 75%;
-  // height: 15em;
+}
+
+.lille img {
+  width: 77%;
+}
+
+.paris img {
+  width: 74.5%;
 }
 
 .mer p,
 .montagne p,
 .ville p,
-.campagne p,
-.autres p {
+.campagne p {
   margin: auto 1em;
   justify-content: center;
   width: 74%;
   padding-top: 1.2em;
-  margin-top: -0.2em;
+  margin-top: -0.3em;
   padding-bottom: 1.2em;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
@@ -86,9 +98,37 @@
   // text-decoration: none;
   color: #004F7B;
   font-size: 1.2em;
-  border: solid 0.1em black;
+  border-bottom: solid 0.1em black;
+  border-right: solid 0.1em black;
+  border-left: solid 0.1em black;  
       
 }
+
+
+
+
+.autres a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  //  width: 85%;
+  border-radius: 1em;
+  // margin-bottom: 2em;
+  background-color: #E6E6E6;
+  color: #004F7B;
+  border: solid 0.1em black;
+  text-align: center; /* Ajoutez cette ligne */
+  margin-top: 0; /* Ajoutez cette ligne */
+  font-size: 1.2em; /* Ajoutez cette ligne */
+  // padding: 0.6em 0;
+  margin-bottom: 1em;
+   /* Ajoutez cette ligne */
+  // height: 2.2em;
+}
+
 
 .premier a,
 .deuxieme a,
@@ -102,12 +142,13 @@
   width: 74%;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
-  margin-top: -0.3em;
-  // margin-bottom: 2em;
+  margin-top: -0.5em;
+  margin-bottom: 2em;
   background-color: #E6E6E6;
   text-decoration: none;
   
 }
+
 
 
 .premier a span,
