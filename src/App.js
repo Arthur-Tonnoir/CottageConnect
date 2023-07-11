@@ -1,29 +1,30 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./components/Connexion/Connexion";
-import Register from "./components/Inscription/Inscription";
-import Profil from "./components/Profil";
+import Login from "./Views/Login/Login";
+import Register from "./Views/SignIn/SignIn";
 import HomePage from "./Views/HomePage/HomePage";
 import Admin from "./components/Admin";
 import Footer from "./components/Footer/Footer";
 import Nav from "./components/Nav/Nav";
-import Contact from "./components/Formulaire/Formulaire";
+import Contact from "./Views/FormContact/FormContact";
 import AddCottages from "./components/AddCottages/AddCottages";
 import PageProfil from "./Views/PageProfil/PageProfil";
+import Faq from "./Views/FAQ/Faq";
 function App() {
   return (
     <div className="App">
       <Router>
+      <Nav/>
         <Routes>
           <Route path="/addcottage" Component={AddCottages} />
-          <Route path="/HomePage" Component={HomePage} />
+          <Route path="/" Component={HomePage} />
           <Route path="/login" Component={Login} />
           <Route path="/register" Component={Register} />
-          <Route path="/profil" Component={Profil} />
           <Route path="/admin" Component={Admin} />
+          <Route path="/faq" Component={Faq}/>
           <Route path="/contact" Component={Contact} />
-          <Route path="/PageProfil" Component={PageProfil} />
+          <Route path="/profil" Component={PageProfil} />
         </Routes>
         <Footer />
       </Router>

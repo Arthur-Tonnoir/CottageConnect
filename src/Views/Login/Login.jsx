@@ -1,15 +1,11 @@
 import React from "react";
 import './Login.scss';
-import Nav from "../../component/Nav/Nav";
-import Footer from "../../component/Footer/Footer";
-import Connexion from "../../component/Connexion/Connexion";
+import Connexion from "../../components/Connexion/Connexion";
 
 function Login() {
     return (
         <div>
-            <Nav />
             <Connexion />
-            <Footer />
         </div>
     )
 }
