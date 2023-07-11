@@ -117,18 +117,7 @@ window.onclick = function(event) {
               <option value="11+">11 et plus</option>
           </select></div>
           <br />
-          <div className="dropDown">
-            <button className="dropDownBtn" onClick={toggleDropdown}>Mots-clé<span class="chevron bottom"></span></button>
-            <div className="dropDownContent" id="dropdown-content">
-              <label><input type="checkbox"/> Option 1</label>
-              <label><input type="checkbox" /> Option 2</label>
-              <label><input type="checkbox" /> Option 3</label>
-              <label><input type="checkbox" /> Option 4</label>
-              <label><input type="checkbox" /> Option 5</label>
-              <label><input type="checkbox" /> Option 6</label>
-            </div>
-          </div>
-          <br />
+          
           <a className="champSearch vert boutonVert" href="#">Recherche</a>
 
         </div>
@@ -209,7 +198,7 @@ window.onclick = function(event) {
         </div>
 
       </div>
-    </div >
+    </div>
   )
 }
 
