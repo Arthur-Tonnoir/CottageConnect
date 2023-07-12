@@ -55,7 +55,7 @@
   height: 3.42em;
   font-weight: bold;
   background-color: azure;
-  color: #227448;
+  color: #004F7B;
   border: none;
   border-radius: 0.5em;
   cursor: pointer;
@@ -65,7 +65,7 @@
 
   &:hover {
     background-color: azure;
-    color: #227448;
+    color: #006da8;
   }
 
   // @media only screen and (min-width: 480px) {
@@ -92,7 +92,6 @@
 .signInPlaceholder {
   margin-top: 0.5em;
   color: azure;
-  background-color: #227448;
   width: 90%;
   padding: 0.5em;
   border-color: azure;
