@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import { ResultsContext } from '../Result/ResultContext';
 import { useNavigate } from 'react-router-dom';
 import "./Recherche.scss";
-import axios from "axios";
-
+import { useState } from "react";
+import axios from 'axios';
 
 function Recherche() {
 
@@ -26,6 +26,9 @@ function Recherche() {
       }
     }
   }
+
+
+  //Recherche
 
   // CACHE DES DATES DISPARAISSANT AU CLIC ET REAPARAISSANT EN CLIQUANT AILLEURS
   const [isLabelArriveeHidden, setLabelArriveeHidden] = useState(false);
@@ -108,15 +111,12 @@ window.onclick = function(event) {
     }
   }
 
-  
-
   return (
     <div className="searchContainer">
       <h1 className="titreSearch">Trouvez votre prochaine destination!</h1>
 
       <div className="infoDestination">
         <form className="infoEcrit" onSubmit={handleSubmit}>
-
           <input onChange={(event) => setCity(event.target.value)} className="champSearch" type="text" name="destination" id="destination" placeholder="Où souhaitez-vous aller?" />
           <br />
 
@@ -142,6 +142,7 @@ window.onclick = function(event) {
 
           <br />
             <div className="voyag">
+
           <select className="champSearch" name="voyageurs" id="voyageurs" onChange={(event) => setVoyageurs(event.target.value)}>
               <option value="0" selected>Nombre de voyageurs</option>
               <option value="1">1 Voyageur</option>
@@ -158,9 +159,7 @@ window.onclick = function(event) {
           </select></div>
           <br />
           <button className="champSearch vert boutonVert" type="submit">Recherche</button>
-
         </form>
-        {/* <!-- CARTE --> */}
 
         <div className="mapImage">
           <svg xmlns="http://www.w3.org/2000/svg" xmlnsAmcharts="http://amcharts.com/ammap" xmlnsLlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 612 685">

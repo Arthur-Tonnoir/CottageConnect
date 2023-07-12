@@ -34,34 +34,6 @@
    transition: fill 0.3s;
  }
 
-
- /*DEROULANT MOTS-CLES */
-
- .dropDown {
-   display: inline-block;
- }
-
- .dropDownContent {
-   display: none;
-   position: absolute;
-   min-width: 160px;
-   width: 32em;
-   z-index: 1;
-   background-color: #E6E6E6;
-   color: black;
-   font-weight: bold;
-   border-radius: 15px;
-   /* vertical-align: middle; */
-   padding-top: 0.2em;
-   padding-bottom: 0.5em;
-   padding-left: 0.2em;
-   line-height: 1.5em;
- }
-
- .dropDownContent label {
-   display: block;
- }
-
  /* BOUTONS ET INPUTS/LISTES */
 
  .infoDestination {
@@ -105,8 +77,7 @@
    color: white;
  }
 
- .champSearch,
- .dropDownBtn {
+ .champSearch{
    text-align: center;
    border: none;
    border-radius: 2em;
@@ -118,10 +89,6 @@
    width: 32em;
    text-decoration: none;
   }
-
-  .dropDownBtn {
-   position: relative;
- }
   
  .champSearch::placeholder {
    color: black;
@@ -153,8 +120,7 @@
    
  }
 
- .champSearch:focus,
- .dropDownBtn:focus {
+ .champSearch:focus {
    border: 2px solid black;
  }
 
