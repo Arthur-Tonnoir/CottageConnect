@@ -100,7 +100,9 @@ function Nav() {
           <MenuIcon />
         </button>
         <li className="logoNav">
+        <Link to="/" className="backtohome">
           <img src="http://localhost:3000/img/logo1.png" alt="img" />
+          </Link>
         </li>
         <li className="destinationNav">
           Destinations
@@ -157,7 +159,7 @@ function Nav() {
                   type="text"
                   name="destination"
                   id="destination"
-                  placeholder="Ou souhaitez-vous aller?"
+                  placeholder="Ville"
                 />
                 <br />
 
@@ -221,9 +223,7 @@ function Nav() {
                   <option value="10">10 Voyageurs</option>
                   <option value="11+">11 et plus</option>
                 </select>
-                <button className="btnRecherche">
-                  <span className="spanBtnRecherche">Recherche</span>
-                </button>
+
               </li>
             </ul>
           </li>
@@ -255,7 +255,7 @@ function Nav() {
               ) : (
                 <>
                   <li>
-                    <Link to="/PageProfil">Profil</Link>
+                    <Link to="/rofil">Profil</Link>
                   </li>
                   <button onClick={handleDelete}>Logout</button>
                 </>

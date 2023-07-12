@@ -58,6 +58,7 @@ header {
   // margin-left: 4.313em;
   // font-size: 1.5em;
   // height: 100%;
+  width: 100%;
   margin-top: auto;
   margin-bottom: auto;
   margin-right: 1em;
@@ -138,7 +139,7 @@ li:nth-child(5) {
   list-style: none;
   padding: 0;
 }
-                                          // ICI
+// ICI
 .navbar li:hover ul {
   display: block;
 }
@@ -165,9 +166,8 @@ li:nth-child(5) {
 .navbarSearch {
   z-index: 10;
   position: absolute;
-  display: block;
+  display: flex;
   text-align: center;
-  // width: 82.5em;
   width: 100%;
   margin-top: 0;
   transform: translateX(-50%);
@@ -244,6 +244,8 @@ li:nth-child(5) {
 .navbarSearch {
   height: 3.813em;
   background-color: #004F7B;
+  display: inline-block;
+  width: auto;
 }
 
 .recherche {
@@ -252,6 +254,7 @@ li:nth-child(5) {
   align-items: center;
   justify-content: space-around;
   height: 100%;
+  
 }
 
 .inputDestination {
@@ -260,13 +263,13 @@ li:nth-child(5) {
   text-align: center;
   border: solid 0.2em;
   border-radius: 1em;
-  height: 5em;
-  width: 35em;
+  height: 2em;
+  width: 11em;
   align-items: flex-start;
 }
 
 .inputDestination::placeholder {
-  font-size: 2em;
+  font-size: 1.2em;
   color: #000;
   font-weight: bold;
 }
@@ -307,7 +310,7 @@ li:nth-child(5) {
   font-size: 1em;
   background-color: #E6E6E6;
   color: #000;
-  width: 11em;
+  width: 14em;
   text-decoration: none;
   justify-content: center;
   margin-right: 3.2em;
