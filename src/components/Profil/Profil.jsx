@@ -217,7 +217,7 @@ function Profil() {
                             <ul>
                                 <li>
                                     {!reservations ? " Erreur" :reservations.map((reservation, index) => {
-                                        <Reservation key={index} id={reservation.id}/>
+                                        <Reservation key={index} id={reservation.id} created_at={reservation.created_at} date_start={reservation.date_start} date_end={reservation.date_end} duration={reservation.duration} nombre_personnes={reservation.nombre_personnes} total={reservation.total}/>
                                     })}
                                 </li>
                                 <li>
