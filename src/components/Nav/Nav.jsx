@@ -109,13 +109,13 @@ function Nav() {
           <ul className="navbarDestination">
             <li className="vide"></li>
             <li>
-              <a href="./">Categorie1</a>
+              <a href="./">Par avis</a>
             </li>
             <li>
-              <a href="./">Categorie2</a>
+              <a href="./">Nouveautés</a>
             </li>
             <li>
-              <a href="./">Categorie3</a>
+              <a href="./">Par notes</a>
             </li>
           </ul>
         </li>
@@ -124,10 +124,10 @@ function Nav() {
           <ul className="navbarOffer">
             <li className="vide"></li>
             <li>
-              <a href="./">Categorie1</a>
+              <a href="./">En promo</a>
             </li>
             <li>
-              <a href="./">Categorie2</a>
+              <a href="./">Dernière minute</a>
             </li>
           </ul>
         </li>

@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { ResultsContext } from './ResultContext';
 import "./Result.scss";
 import { Link } from 'react-router-dom';
+import Carousel from '../Carrousel/Carousel2';
 
 const Results = () => {
     const { results } = useContext(ResultsContext);
   return (
     <div className='cottagesDiv'>
+      <Carousel show={4}>
       {results.map((cottage, index) => (
         <Link to={`/cottage/${cottage.id}`} className='cottageCard' key={index}>
           <h3>{cottage.name}</h3>
@@ -21,6 +23,7 @@ const Results = () => {
           <p>Address ID: {cottage.id_adress}</p>
         </Link>
       ))}
+      </Carousel>
     </div>
   );
 };
