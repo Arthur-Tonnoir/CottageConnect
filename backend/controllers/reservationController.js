@@ -61,8 +61,8 @@ exports.create = (req, res) => {
       message: "Le contenu de la requête ne peut pas être vide.",
     });
   }
-  let date = new Date()
-  date = date.toISOString().split('T')[0];
+  let date = new Date();
+  date = date.toISOString().split("T")[0];
   const newReservation = new Reservation({
     created_at: date,
     date_start: req.body.date_start,

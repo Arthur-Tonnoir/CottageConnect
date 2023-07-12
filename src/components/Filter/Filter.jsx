@@ -4,6 +4,7 @@ import Carousel from "../Carrousel/Carousel";
 import Carousel2 from "../Carrousel/Carousel2"
 import axios from "axios";
 import ByCategories from "./ByCategories/ByCategories";
+import ByCity from "./ByCity/ByCity";
 
 function Filter() {
     const images = [
@@ -66,9 +67,8 @@ function Filter() {
     React.useEffect(() => {
         fetchCategories()
         fetchCity()
-    }, []) 
-    console.log(city);
-    
+    }, [])
+
     return (
         <div className="filterContainer">
             <div className="filters">
@@ -80,7 +80,7 @@ function Filter() {
                         <p>En Chargement</p>
                     ) : (
                         categories.map((category, index) => (
-                        <ByCategories key={index} name={category.name} />
+                        <ByCategories  key={index} id={category.id} name={category.name} />
                         ))
                     )}
                 </Carousel2>
@@ -94,7 +94,7 @@ function Filter() {
                         <p>En Chargement</p>
                     ) : (
                         city.map((city, index) => (
-                        <ByCategories key={index} name={city.city} />
+                        <ByCity key={index} name={city.city} />
                         ))
                     )}
                 </Carousel2>

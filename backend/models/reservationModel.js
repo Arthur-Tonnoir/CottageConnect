@@ -23,6 +23,23 @@ Reservation.findAll = (result) => {
     result(null, res);
   });
 };
+Reservation.findUserResa = (id, result) => {
+  sql.query("SELECT created_at, date_start, date_end, duration, nombre_personnes, total, id_cottages, id_client FROM reservation WHERE id_client = ?", id, (err, res) => {
+    if (err) {
+      console.log("Erreur :", err);
+      result(err, null);
+      return;
+    }
+    if (res.length) {
+      console.log("Reservation trouvé :", res[0]);
+      result(null, res[0]);
+      return;
+    }
+
+    result({ kind: "not_found" }, null);
+  });
+};
+
 
 Reservation.findById = (id, result) => {
   sql.query("SELECT created_at, date_start, date_end, duration, nombre_personnes, total, id_cottages, id_client FROM reservation WHERE id = ?", id, (err, res) => {
@@ -69,7 +86,7 @@ Reservation.create = (newReservation, result) => {
       }
       if (res.length === 0) {
         sql.query(
-          "INSERT INTO reservations SET ?",
+          "INSERT INTO reservation SET ?",
           newReservation,
           (err, res) => {
             if (err) {

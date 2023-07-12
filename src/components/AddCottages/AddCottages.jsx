@@ -8,8 +8,7 @@ import CottageConfirm from "./CottageConfirm";
 import axios from "axios";
 import { checkAuth } from "../auth";
 
-import './AddCottages.scss'
-
+import "./AddCottages.scss";
 
 export default class AddCottages extends Component {
   constructor(props) {
@@ -34,7 +33,7 @@ export default class AddCottages extends Component {
       categories: [],
       regions: [],
       prestations: [],
-      file: '',
+      file: "",
     };
   }
 
@@ -114,8 +113,8 @@ export default class AddCottages extends Component {
     axios
       .post("http://localhost:3001/cottages/withAdress", this.state)
       .then((res) => {
-        this.setState({id_cottages: res.data.id})
-        this.setState({ step: 4 });
+        this.setState({ id_cottages: res.data.id });
+        this.setState({ step: 5 });
       })
       .catch((err) => {
         console.log(err);
@@ -125,8 +124,8 @@ export default class AddCottages extends Component {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('id_cottages', this.state.id_cottages);
-    formData.append('photo', this.state.file);
+    formData.append("id_cottages", this.state.id_cottages);
+    formData.append("photo", this.state.file);
     axios
       .post("http://localhost:3001/pictures/", formData)
       .then(() => {
@@ -138,9 +137,9 @@ export default class AddCottages extends Component {
   };
 
   handleFile = (e) => {
-    const file = e.target.files[0]
-    this.setState({ file })
-  }
+    const file = e.target.files[0];
+    this.setState({ file });
+  };
   handleChange = (input) => (e) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -148,96 +147,95 @@ export default class AddCottages extends Component {
   };
 
   render() {
-      const {
-        id_cottages,
-        step,
-        categories,
-        regions,
-        prestations,
-        name,
-        content,
-        dayprice,
-        caution,
-        adress,
-        city,
-        code_postal,
-        max_personnes,
-        id_prestation,
-        id_regions,
-        id_categories,
-        id_users,
-        file,
-      } = this.state;
+    const {
+      id_cottages,
+      step,
+      categories,
+      regions,
+      prestations,
+      name,
+      content,
+      dayprice,
+      caution,
+      adress,
+      city,
+      code_postal,
+      max_personnes,
+      id_prestation,
+      id_regions,
+      id_categories,
+      id_users,
+      file,
+    } = this.state;
 
-      const values = {
-        id_cottages,
-        name,
-        content,
-        dayprice,
-        caution,
-        adress,
-        city,
-        code_postal,
-        max_personnes,
-        id_prestation,
-        id_regions,
-        id_categories,
-        id_users,
-        file,
-      };
+    const values = {
+      id_cottages,
+      name,
+      content,
+      dayprice,
+      caution,
+      adress,
+      city,
+      code_postal,
+      max_personnes,
+      id_prestation,
+      id_regions,
+      id_categories,
+      id_users,
+      file,
+    };
 
-
-      switch (step) {
-        case 1:
-          return (
-            <CottageInfos
-              nextStep={this.nextStep}
-              handleChange={this.handleChange}
-              values={values}
-              regions={regions}
-              prestations={prestations}
-            />
-          );
-        case 2:
-          return (
-            <CottageName
-              nextStep={this.nextStep}
-              prevStep={this.prevStep}
-              handleChange={this.handleChange}
-              values={values}
-              categories={categories}
-            />
-          );
-        case 3:
-          return (
-            <CottagePrice
-              nextStep={this.nextStep}
-              prevStep={this.prevStep}
-              handleChange={this.handleChange}
-              values={values}
-            />
-          );
-        case 4:
-          return (
-            <CottageConfirm
-              prevStep={this.prevStep}
-              handleSubmit={this.handleSubmit}
-              values={values}
-            />
-          );
-        case 5:
-          return (
-            <CottagePhotos
-              handleSubmit={this.handlePhoto}
-              prevStep={this.prevStep}
-              handleFile={this.handleFile}
-              values={values}
-            />
-          );
-        case 6:
-          return <CottageSuccess />;
-        default:
-          break;
-      }
+    switch (step) {
+      case 1:
+        return (
+          <CottageInfos
+            nextStep={this.nextStep}
+            handleChange={this.handleChange}
+            values={values}
+            regions={regions}
+            prestations={prestations}
+          />
+        );
+      case 2:
+        return (
+          <CottageName
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+            categories={categories}
+          />
+        );
+      case 3:
+        return (
+          <CottagePrice
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 4:
+        return (
+          <CottageConfirm
+            prevStep={this.prevStep}
+            handleSubmit={this.handleSubmit}
+            values={values}
+          />
+        );
+      case 5:
+        return (
+          <CottagePhotos
+            handleSubmit={this.handlePhoto}
+            prevStep={this.prevStep}
+            handleFile={this.handleFile}
+            values={values}
+          />
+        );
+      case 6:
+        return <CottageSuccess />;
+      default:
+        break;
+    }
   }
 }

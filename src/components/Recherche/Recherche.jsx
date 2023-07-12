@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { ResultsContext } from '../Result/ResultContext';
+import { useNavigate } from 'react-router-dom';
 import "./Recherche.scss";
 import { useState } from "react";
 import axios from 'axios';
-
 
 function Recherche() {
 
@@ -29,38 +30,6 @@ function Recherche() {
 
   //Recherche
 
-  const [data_voyageur, setVoyageur] = useState();
-  const [ville, setVille] = useState();
-
-  let result = {};
-
-  const handleRechercheClick = () => {
-    const date_start = document.getElementById('arrivee').value;
-    const date_end = document.getElementById('depart').value;
-    
-    
-    const formData = new FormData();
-    formData.append('nombre_personnes', data_voyageur);
-    formData.append('date_start', date_start);
-    formData.append('date_end', date_end);
-    formData.append('city', ville);
-    axios
-      .get(`http://localhost:3001/cottages/cottage/${formData.get("nombre_personnes")}/${formData.get("date_start")}/${formData.get("date_end")}/${formData.get("city")}`)
-      .then((res) => {
-        result = res.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  const handleVille = (e) => {
-    setVille(e.target.value);
-  }
-
-  const handleVoyageur = (e) => {
-    setVoyageur(e.target.value);
-  }
   // CACHE DES DATES DISPARAISSANT AU CLIC ET REAPARAISSANT EN CLIQUANT AILLEURS
   const [isLabelArriveeHidden, setLabelArriveeHidden] = useState(false);
   const [isLabelDepartHidden, setLabelDepartHidden] = useState(false);
@@ -85,14 +54,70 @@ function Recherche() {
     }
   };
 
+// DROPDOWN BOUTON
+
+function toggleDropdown() {
+  var dropdownContent = document.getElementById("dropdown-content");
+  dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropDownBtn')) {
+    var dropdowns = document.getElementsByClassName("dropDownContent");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.style.display === "block") {
+        openDropdown.style.display = "none";
+      }
+    }
+  }
+};
+
+  const [start, setDateStart] = useState('2000-01-01')
+  const [end, setDateEnd] = useState('2050-01-01')
+  const [city, setCity] = useState('0')
+  const [voyageurs, setVoyageurs] = useState('1')
+
+  const navigate = useNavigate();
+  const { setResults } = useContext(ResultsContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const data = {}
+    data.date_start = start
+    if (start === ''){
+      data.date_start = '2000-01-01'
+    }
+    data.date_end = end
+    if (end === ''){
+      data.date_end = '2000-01-01'
+    }
+    data.city = city
+    if (city === ''){
+      data.city = '0'
+    }
+    data.nombre_personnes = voyageurs
+    if (voyageurs === ''){
+      data.nombre_personnes = '0'
+    }
+    try {
+      const response = await axios.get(`http://localhost:3001/cottages/cottage/${data.nombre_personnes}/${data.date_start}/${data.date_end}/${data.city}`)
+
+      setResults(response.data);
+      navigate('/results');
+      
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  }
+
   return (
     <div className="searchContainer">
       <h1 className="titreSearch">Trouvez votre prochaine destination!</h1>
 
       <div className="infoDestination">
-        <div className="infoEcrit">
-
-          <input className="champSearch" type="text" name="destination" id="destination" placeholder="Où souhaitez-vous aller?" onChange={handleVille} />
+        <form className="infoEcrit" onSubmit={handleSubmit}>
+          <input onChange={(event) => setCity(event.target.value)} className="champSearch" type="text" name="destination" id="destination" placeholder="Où souhaitez-vous aller?" />
           <br />
 
           <div className="conteneurSearch">
@@ -101,7 +126,7 @@ function Recherche() {
               <label htmlFor="arrivee" className={`labelDate ${isLabelArriveeHidden ? 'cd1Hidden' : ''}`}
                 min="2023-01-01" max="2040-01-01" onClick={handleArriveeClick}>Arrivée</label>
               <input title="Arrivée" className="champSearch date"
-                type="date" name="arrivee" id="arrivee" onBlur={handleArriveeBlur} />
+                type="date" name="arrivee" id="arrivee" onChange={(event) => setDateStart(event.target.value)} onBlur={handleArriveeBlur} />
 
             </div>
 
@@ -110,14 +135,15 @@ function Recherche() {
                 min="2023-01-01" max="2040-01-01" onClick={handleDepartClick}>Départ</label>
               
               <input placeholder="Départ" className="champSearch date"
-                type="date" name="depart" id="depart" onBlur={handleDepartBlur} />
+                type="date" name="depart" id="depart" onChange={(event) => setDateEnd(event.target.value)} onBlur={handleDepartBlur} />
 
             </div>
           </div>
 
           <br />
             <div className="voyag">
-          <select className="champSearch" name="voyageurs" id="voyageurs" onChange={handleVoyageur}>
+
+          <select className="champSearch" name="voyageurs" id="voyageurs" onChange={(event) => setVoyageurs(event.target.value)}>
               <option value="0" selected>Nombre de voyageurs</option>
               <option value="1">1 Voyageur</option>
               <option value="2">2 Voyageurs</option>
@@ -132,10 +158,8 @@ function Recherche() {
               <option value="11+">11 et plus</option>
           </select></div>
           <br />
-          <a className="champSearch vert boutonVert" href="#" onClick={handleRechercheClick}>Recherche</a>
-
-        </div>
-        {/* <!-- CARTE --> */}
+          <button className="champSearch vert boutonVert" type="submit">Recherche</button>
+        </form>
 
         <div className="mapImage">
           <svg xmlns="http://www.w3.org/2000/svg" xmlnsAmcharts="http://amcharts.com/ammap" xmlnsLlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 612 685">
@@ -212,7 +236,7 @@ function Recherche() {
         </div>
 
       </div>
-    </div >
+    </div>
   )
 }
 
