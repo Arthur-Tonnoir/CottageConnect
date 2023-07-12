@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { ResultsContext } from '../Result/ResultContext';
 import { useNavigate } from 'react-router-dom';
 import "./Recherche.scss";
-import { useState } from "react";
 import axios from 'axios';
 
 function Recherche() {
