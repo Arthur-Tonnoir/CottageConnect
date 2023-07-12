@@ -1,11 +1,12 @@
 .containerPublier {
     text-align: center;
     padding-top: 1em;
-    background-image: url(./publierAnnonce.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% ;
+    
     .publishAnnonce {
+        background-image: url(./publierAnnonce.jpg);
         height: 14.125rem;
         display: flex;
         margin-bottom: 3em;
