@@ -52,13 +52,6 @@ export default function Cottage() {
     } catch (error) {
       console.error(error);
     }
-    console.log("date_start:", arrivee);
-    console.log("date_end:", depart);
-    console.log("duration:", duration);
-    console.log("nombre_personnes:", voyageurs);
-    console.log("total:", total);
-    console.log("id_cottages:", id);
-    console.log("id_client:", userId);
   };
 
   // CACHE DES DATES DISPARAISSANT AU CLIC ET REAPARAISSANT EN CLIQUANT AILLEURS

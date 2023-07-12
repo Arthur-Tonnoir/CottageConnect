@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { ResultsContext } from '../Result/ResultContext';
 import { useNavigate } from 'react-router-dom';
 import "./Recherche.scss";
-import { useState } from "react";
 import axios from 'axios';
 
 function Recherche() {
@@ -73,24 +72,25 @@ window.onclick = function(event) {
   }
 };
 
-  const [start, setDateStart] = useState('2000-01-01')
-  const [end, setDateEnd] = useState('2050-01-01')
+const date = new Date().toISOString().split("T")[0].toString();
+  const [start, setDateStart] = useState(date)
+  const [end, setDateEnd] = useState(date)
   const [city, setCity] = useState('0')
   const [voyageurs, setVoyageurs] = useState('1')
 
   const navigate = useNavigate();
   const { setResults } = useContext(ResultsContext);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
     const data = {}
     data.date_start = start
     if (start === ''){
-      data.date_start = '2000-01-01'
+      data.date_start = date
     }
     data.date_end = end
     if (end === ''){
-      data.date_end = '2000-01-01'
+      data.date_end = date
     }
     data.city = city
     if (city === ''){
@@ -104,7 +104,7 @@ window.onclick = function(event) {
       const response = await axios.get(`http://localhost:3001/cottages/cottage/${data.nombre_personnes}/${data.date_start}/${data.date_end}/${data.city}`)
 
       setResults(response.data);
-      navigate('/results');
+      navigate('/results')
       
     } catch (error) {
       console.log('Error:', error);

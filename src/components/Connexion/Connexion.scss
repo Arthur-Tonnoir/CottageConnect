@@ -12,7 +12,7 @@
   width: 25%;
   padding: 1.5em 3em;
   margin: 0 auto;
-  background: #48be7f;
+  background-color: #004F7B;
   opacity: 90%;
   border-radius: 2%;
 }
@@ -39,7 +39,7 @@
   height: 3.42em;
   font-weight: bold;
   background-color: azure;
-  color: #227448;
+  color: #004F7B;
   border: none;
   border-radius: 0.5em;
   cursor: pointer;
@@ -49,13 +49,13 @@
 
   &:hover {
     background-color: azure;
-    color: #227448;
+    color: #006da8;
   }
 }
 
 .googleConnexion {
   margin-bottom: 1.2em;
-  color: azure;
+  color: black;
   font-size: 1.5em;
 
   svg {
@@ -65,8 +65,8 @@
 
 .loginPlaceholder {
   margin-top: 0.5em;
-  color: azure;
-  background-color: #227448;
+  color: black;
+
   width: 90%;
   padding: 0.5em;
   border-color: azure;
@@ -75,26 +75,26 @@
 }
 
 .loginPlaceholder::placeholder {
-  color: azure;
+  color: black;
   font-style: italic;
   font-size: 100%;
   padding-left: 1.5em;
 }
 
 .signupScreenLabelsouvenir {
-  color: azure;
+  color: black;
   padding: 0.5em;
 }
 
 .loginScreen {
   text-align: center;
-  color: azure;
+  color: black;
 }
 
 .linkSignIn {
   cursor: pointer;
   text-decoration: underline;
-  color: azure;
+  color: black;
   position: relative;
   z-index: 1;
 }

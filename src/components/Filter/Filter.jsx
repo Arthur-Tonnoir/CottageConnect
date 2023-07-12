@@ -68,7 +68,7 @@ function Filter() {
         fetchCategories()
         fetchCity()
     }, [])
-
+    
     return (
         <div className="filterContainer">
             <div className="filters">
