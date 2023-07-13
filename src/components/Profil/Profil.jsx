@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Profil.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Reservation from "../Reservation/Reservation";
 
 function Profil() {
     const [activeContent, setActiveContent] = useState("#Ip");
@@ -14,6 +15,7 @@ function Profil() {
     const [lastname, setLastname] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
+    const [reservations, setReservations] = useState();
     axios.defaults.withCredentials = true;
 
     const handleLinkClick = (event, target) => {
@@ -22,6 +24,26 @@ function Profil() {
     };
 
     useEffect(() => {
+        const reservationFetch = async () => {
+            axios
+                .get("http://localhost:3001/users/")
+                .then((res) => {
+                    if (res.data.Status === "Success") {
+                        return axios.get(`http://localhost:3001/reservations/user/${res.data.id}`)
+                    }
+                })
+                .then((res) => {
+                    if (res) {
+                        setReservations(res.data);
+                        console.log(res);
+                    } else {
+                        return console.error("Not Auth");
+                    }
+                    })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
         const axioFetch = async () => {
             axios
                 .get("http://localhost:3001/users/")
@@ -48,10 +70,9 @@ function Profil() {
                 .catch((err) => {
                     console.log(err);
                 });
-
         }
-
         axioFetch();
+        reservationFetch();
     }, []);
     function SendInfo(e) {
         e.preventDefault();
@@ -132,7 +153,7 @@ function Profil() {
                 <ul>
                     <li><a href="#Ip" onClick={(event) => handleLinkClick(event, "#Ip")}>Informations personnelles</a></li>
                     <li><a href="#Mdp" onClick={(event) => handleLinkClick(event, "#Mdp")}>Mot de passe</a></li>
-                    <li><a href="#Idp" onClick={(event) => handleLinkClick(event, "#Idp")}>Informations de paiement</a></li>
+                    <li><a href="#Rs" onClick={(event) => handleLinkClick(event, "#Rs")}>Mes réservation</a></li>
                     <li><a href="#Smc" onClick={(event) => handleLinkClick(event, "#Smc")}>Supprimer mon compte</a></li>
                 </ul>
             </div>
@@ -191,33 +212,19 @@ function Profil() {
                             <button className="buttonProfil" type="submit">Confirmer</button>
                         </form>
                     </div>
-                    <div id="Idp" style={{ display: activeContent === "#Idp" ? "block" : "none" }}>
-                        <form className="formProfil">
-                            <ul>
-                                <li>
-                                    <label htmlFor="card-number">Numéro de carte :</label><br />
-                                    <input type="text" id="card-number" name="card-number" placeholder="Numéro de carte" />
-                                    <br />
-                                </li>
-                                <li>
-                                    <label htmlFor="card-holder">Nom du titulaire :</label><br />
-                                    <input type="text" id="card-holder" name="card-holder" placeholder="Nom du titulaire" />
-                                    <br />
-                                </li>
-                                <li>
-                                    <label htmlFor="expiry-date">Date d'expiration :</label><br />
-                                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" />
-                                    <br />
-                                </li>
-
-                                <li>
-                                    <label htmlFor="cvv">CVV :</label><br />
-                                    <input type="number" id="cvv" name="cvv" placeholder="CVV" />
-                                    <br />
-                                </li>
+                    <div id="Rs" style={{ display: activeContent === "#Rs" ? "block" : "none" }}>
+                            <ul> 
+                
+                                {!reservations ? (
+                                        <p> En chargement</p>
+                                    ) : (
+                                        reservations.map((reservation, index) => (
+                                            <Reservation key={index} id={reservation.id} date_start={reservation.date_start} date_end={reservation.date_end} duration={reservation.duration} nombre_personnes={reservation.nombre_personnes} total={reservation.total}/>
+                                            
+                                        ))
+                                    )}
+                                
                             </ul>
-                            <button type="submit" className="buttonProfil" value="Valider">Valider</button>
-                        </form>
                     </div>
                     <div id="Smc" style={{ display: activeContent === "#Smc" ? "block" : "none" }}>
                         <p className="deleteTxt">Une fois votre compte supprimé, vos données personnelles,vos réservations <br />ainsi que toutes vos

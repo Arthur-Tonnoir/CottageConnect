@@ -31,22 +31,28 @@ function Footer() {
         <div className="footerSection">
           <div className="footerContact">
             <h3 className="contactTitle">
-              <Link to={'/contact'} className="contactLink">
+              <Link to={"/contact"} className="contactLink">
                 Nous contacter
               </Link>
             </h3>
             <h3 className="contactTitle">
-              <Link className="contactLink" to={'/faq'}>
+              <Link className="contactLink" to={"/faq"}>
                 FAQ
               </Link>
             </h3>
 
             <div className="footerSocials">
               <a href="./" className="footerSocial">
-                <img src="./img/facebook.png" alt="Facebook" />
+                <img
+                  src="http://localhost:3000/img/facebook.png"
+                  alt="Facebook"
+                />
               </a>
               <a href="./" className="footerSocial">
-                <img src="./img/instagram.png" alt="Instagram" />
+                <img
+                  src="http://localhost:3000/img/instagram.png"
+                  alt="Instagram"
+                />
               </a>
             </div>
           </div>
